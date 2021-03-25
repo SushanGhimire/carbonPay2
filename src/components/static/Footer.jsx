@@ -1,7 +1,53 @@
-import React from "react";
-
+import facebook from "../../assets/images/homepage/facebook.svg";
+import instagram from "../../assets/images/homepage/instagram.svg";
+import linkedin from "../../assets/images/homepage/linkedin.svg";
+import twitter from "../../assets/images/homepage/twitter.svg";
 function Footer() {
-  return <div></div>;
+  const logos = [facebook, instagram, linkedin, twitter];
+  return (
+    <div className="w-full bg-secondary p-5 md:p-16 text-white flex-col">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6  border-b pb-5">
+        <div className="col-span-1 flex flex-col">
+          <div className="text-lg font-bold mx-auto">CarbonPay</div>
+          <div className="flex space-x-3 mx-auto py-3">
+            {logos.map((logo) => {
+              return (
+                <div
+                  key={logo}
+                  className="rounded-full border-2 p-2 hover:bg-green-secondary transition-all duration-200"
+                >
+                  <img src={logo} className="w-4 h-4" alt="" />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="col-span-1 mx-auto ">
+          <div className="text-lg font-bold">CarbonPay</div>
+          <ul className="mt-3 space-y-2">
+            <li>CarbonPay 1</li>
+            <li>CarbonPay 2</li>
+            <li>CarbonPay 3</li>
+            <li>CarbonPay 4</li>
+            <li>CarbonPay 5</li>
+          </ul>
+        </div>
+        <div className="col-span-1 mx-auto">
+          <div className="text-lg font-bold">Developers</div>
+          <ul className="mt-3 space-y-2">
+            <li>Developers 1</li>
+            <li>Developers 2</li>
+            <li>Developers 3</li>
+            <li>Developers 4</li>
+            <li>Developers 5</li>
+          </ul>
+        </div>
+      </div>
+      <div className="text-center mx-auto px-5 lg:px-20 pt-5">
+        All Right Reserve &copy; Carbon Pay
+      </div>
+    </div>
+  );
 }
 
 export default Footer;

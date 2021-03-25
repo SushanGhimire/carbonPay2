@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../static/Footer";
 import FrontPage from "./FrontPage";
 import FundClimate from "./FundClimate";
 import MerchantConsumer from "./MerchantConsumer";
@@ -16,7 +15,6 @@ function Home() {
       <StakeHolders />
       <WhatImpact />
       <MerchantConsumer />
-      <Footer />
     </div>
   );
 }

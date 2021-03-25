@@ -1,31 +1,23 @@
 import React from "react";
 // import planet from "../../assets/images/homepage/noPlanet.jpg";
 import impact from "../../assets/images/homepage/impact.jpg";
-import contribution from "../../assets/images/homepage/contribution.svg";
-import select from "../../assets/images/homepage/select.svg";
-import maximize from "../../assets/images/homepage/maximize.svg";
-import innovation from "../../assets/images/homepage/innovation.svg";
 import check from "../../assets/images/homepage/check.svg";
 
 function WhatImpact() {
   const Carbonclimate = [
     {
       blog: "We direct 100% of merchant contribution to carbon removal.",
-      logo: contribution,
     },
     {
       blog:
         "CarbonPay dynamically selects Non-profit with highest net carbon capture effort",
-      logo: select,
     },
     {
       blog: "This creates environment of accountability and innovation",
-      logo: innovation,
     },
     {
       blog:
         "Our software help maximize the long-term impact. CarbonPay buys carbon removal from the exact same Nonprofits.",
-      logo: maximize,
     },
   ];
   return (
