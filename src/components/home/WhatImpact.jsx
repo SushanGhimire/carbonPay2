@@ -1,9 +1,11 @@
 import React from "react";
-import planet from "../../assets/images/homepage/noPlanet.jpg";
+// import planet from "../../assets/images/homepage/noPlanet.jpg";
+import impact from "../../assets/images/homepage/impact.jpg";
 import contribution from "../../assets/images/homepage/contribution.svg";
 import select from "../../assets/images/homepage/select.svg";
 import maximize from "../../assets/images/homepage/maximize.svg";
 import innovation from "../../assets/images/homepage/innovation.svg";
+import check from "../../assets/images/homepage/check.svg";
 
 function WhatImpact() {
   const Carbonclimate = [
@@ -27,10 +29,14 @@ function WhatImpact() {
     },
   ];
   return (
-    <div className="md:flex  bg-gray-200 pb-32">
+    <div className="md:flex py-10 px-5 bg-white">
       <div className="w-full md:w-1/2 md:relative">
-        <img src={planet} className="h-full w-full object-cover" alt="" />
-        <div className="bg-black absolute hidden md:flex w-full h-full top-0 opacity-20"></div>
+        <img
+          src={impact}
+          className="h-full w-full object-cover object-center"
+          alt=""
+        />
+        {/* <div className="bg-black absolute hidden md:flex w-full h-full top-0 opacity-20"></div> */}
       </div>
       <div className="flex-1 flex flex-col p-5 md:p-10 justify-center items-center">
         <div className="font-bold text-2xl md:text-4xl mt-10 md:mt-0 text-center">
@@ -43,15 +49,23 @@ function WhatImpact() {
           <ul className="space-y-4">
             {Carbonclimate.map((blog) => {
               return (
-                <div key={blog.blog} className="flex space-x-3">
+                <div key={blog.blog} className="flex space-x-3 items-center">
                   <div className="w-8 h-8">
-                    <img src={blog.logo} className="w-full h-full" alt="" />
+                    <img src={check} className="w-full h-full" alt="" />
                   </div>
                   <div className="flex-1 text-gray-700">{blog.blog}</div>
                 </div>
               );
             })}
           </ul>
+        </div>
+        <div>
+          <div className="button-animation mt-8">
+            <div className="animation-text px-6 rounded-full py-2 text-lg lg:text-xl">
+              Remove Carbon Now
+            </div>
+            <div className="animation-bg"></div>
+          </div>
         </div>
       </div>
     </div>

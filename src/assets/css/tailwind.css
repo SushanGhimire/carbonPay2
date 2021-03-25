@@ -6,8 +6,8 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #057D3A;
-  --secondary-color: #15BE53;
+  --primary-color: #1FC157;
+  --secondary-color: #057D3A;
 }
 
 * {
@@ -23,6 +23,7 @@
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #FAFAFA;
   }
   
   code {
