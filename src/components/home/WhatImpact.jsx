@@ -21,7 +21,7 @@ function WhatImpact() {
     },
   ];
   return (
-    <div className="md:flex py-10 px-5 bg-white">
+    <div className="md:flex pt-10 pb-20 px-5 bg-white">
       <div className="w-full md:w-1/2 md:relative flex justify-center items-center">
         <img
           src={impact}

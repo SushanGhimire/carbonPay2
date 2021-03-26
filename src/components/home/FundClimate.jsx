@@ -40,13 +40,13 @@ function FundClimate() {
             return (
               <div
                 key={index}
-                className="sm:3/4 md:w-1/2 flex  flex-col cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-green-primary  rounded-lg shadow-lg p-5"
+                className="sm:3/4 md:w-1/2 flex  flex-col cursor-pointer bg-gray-100 hover:bg-gray-200 hover:border-green-primary  rounded-lg shadow-lg p-5"
               >
                 <div className="w-16 h-16 mx-auto">
                   <img src={climate.img} alt="" />
                 </div>
-                <div className="flex justify-center font-semibold items-center space-x-2 mt-3 text-lg">
-                  <span className="text-primary font-header py-2">
+                <div className="flex justify-center font-semibold items-center space-x-2 mt-3 ">
+                  <span className="text-primary font-header py-2 text-xl">
                     .0{index + 1}
                   </span>
                   <div>{climate.qst}</div>

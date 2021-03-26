@@ -13,8 +13,8 @@ function Home() {
       <FundClimate />
       <WhyPayment />
       <StakeHolders />
-      <WhatImpact />
       <MerchantConsumer />
+      <WhatImpact />
     </div>
   );
 }
