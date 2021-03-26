@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         rubik: ["Rubik", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
+        header: ["Dosis", "sans-serif"],
       },
       spacing: {
         100: "30rem",

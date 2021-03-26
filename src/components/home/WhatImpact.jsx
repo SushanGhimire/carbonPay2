@@ -31,7 +31,7 @@ function WhatImpact() {
         {/* <div className="bg-black absolute hidden md:flex w-full h-full top-0 opacity-20"></div> */}
       </div>
       <div className="flex-1 flex flex-col p-5 md:p-10 justify-center items-center">
-        <div className="font-bold text-2xl md:text-4xl mt-10 md:mt-0 text-center">
+        <div className="font-bold text-2xl md:text-4xl mt-10 md:mt-0 text-center font-header">
           What is CarbonPay for Climate Impact and Our planet?
         </div>
         <div>
@@ -53,7 +53,7 @@ function WhatImpact() {
         </div>
         <div>
           <div className="button-animation mt-8">
-            <div className="animation-text px-6 rounded-full py-2 text-lg lg:text-xl">
+            <div className="animation-text px-6 rounded-full py-2 text-lg lg:text-xl font-header">
               Remove Carbon Now
             </div>
             <div className="animation-bg"></div>

@@ -29,7 +29,7 @@ function StakeHolders() {
       "
     >
       <div className="col-span-1 sm:col-span-2 md:col-span-3">
-        <div className="text-xl sm:text-4xl text-center mt-10">
+        <div className="text-xl sm:text-4xl text-center mt-10 font-header">
           Stakeholders
         </div>
         <div>
@@ -46,7 +46,7 @@ function StakeHolders() {
               <div className="mx-auto h-12 w-12 sm:h-16 sm:w-16 lg:w-20 lg:h-20">
                 <img src={card.logo} alt="" />
               </div>
-              <div className="text-center text-2xl sm:text-xl lg:text-2xl text-gray-800 font-semibold">
+              <div className="text-center text-2xl sm:text-xl lg:text-2xl text-gray-800 font-semibold font-header">
                 {card.name}
               </div>
               <div className="text-center sm:text-base lg:text-lg text-gray-700">

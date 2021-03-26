@@ -8,7 +8,7 @@ function Footer() {
     <div className="w-full bg-black p-5 md:pt-10 mt-20 text-white flex-col">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-b p-5">
         <div className="col-span-1 flex flex-col">
-          <div className="text-3xl font-bold mx-auto text-primary">
+          <div className="text-3xl font-bold mx-auto text-primary font-header">
             CarbonPay
           </div>
           <div className="text-center  sm:px-5 py-2 text-sm sm:text-base">
@@ -28,7 +28,7 @@ function Footer() {
           </div>
         </div>
         <div className="col-span-1 mx-auto ">
-          <div className="text-2xl font-bold mx-auto text-primary">
+          <div className="text-2xl font-bold mx-auto text-primary font-header">
             CarbonPay
           </div>
           <ul className="mt-3 space-y-2 text-center text-sm sm:text-base">
@@ -40,7 +40,7 @@ function Footer() {
           </ul>
         </div>
         <div className="col-span-1 mx-auto">
-          <div className="text-2xl font-bold mx-auto text-primary">
+          <div className="text-2xl font-bold mx-auto text-primary font-header">
             Developers
           </div>
           <ul className="mt-3 space-y-2 text-center  text-sm sm:text-base">

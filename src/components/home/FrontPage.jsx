@@ -16,7 +16,7 @@ function FrontPage() {
           </div>
           <div>
             <div className="button-animation">
-              <div className="animation-text px-6 rounded-full py-2 text-lg lg:text-xl">
+              <div className="animation-text px-6 rounded-full py-2 text-lg lg:text-xl font-header">
                 Remove Now
               </div>
               <div className="animation-bg"></div>

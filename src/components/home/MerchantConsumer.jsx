@@ -16,7 +16,7 @@ function MerchantConsumer() {
           />
         </div>
         <div className="flex-1 flex flex-col justify-center items-center px-5 text-center">
-          <div className="px-5 mt-5 text-2xl lg:text-3xl lg:w-2/3 mx-auto font-bold text-center">
+          <div className="px-5 mt-5 text-2xl lg:text-3xl lg:w-2/3 mx-auto font-bold text-center font-header">
             What is the CarbonPay for Merchants?
           </div>
           <div className="z-50 mt-3">
@@ -43,7 +43,7 @@ function MerchantConsumer() {
           />
         </div>
         <div className="flex-1 flex flex-col justify-center items-center px-5 text-center">
-          <div className="px-5 mt-5 text-2xl lg:text-3xl lg:w-2/3 mx-auto font-bold text-center">
+          <div className="px-5 mt-5 text-2xl lg:text-3xl lg:w-2/3 mx-auto font-bold text-center font-header">
             What is the CarbonPay for Merchants?
           </div>
           <div className="z-50 mt-3">

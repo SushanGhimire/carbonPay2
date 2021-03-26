@@ -22,8 +22,8 @@ function FundClimate() {
   return (
     <div className="p-5 md:px-10 md:pb-10 pt-10 md:pt-20 lg:pt-28  flex flex-col justify-center">
       <div className="flex flex-col justify-center items-centerpy-5">
-        <div className="mx-auto lg:w-1/2 text-3xl md:text-4xl font-bold text-center">
-          Fund Climate Change Efforts with Payment
+        <div className="mx-auto lg:w-1/2 text-3xl md:text-4xl font-bold text-center font-header">
+          Fund Climate Change Efforts <br /> with Payment
         </div>
         <div>
           <div className="h-1 w-44 md:w-64 bg-primary mx-auto mt-3"></div>
@@ -46,10 +46,12 @@ function FundClimate() {
                   <img src={climate.img} alt="" />
                 </div>
                 <div className="flex justify-center font-semibold items-center space-x-2 mt-3 text-lg">
-                  <span className="text-primary ">.0{index + 1}</span>
+                  <span className="text-primary font-header py-2">
+                    .0{index + 1}
+                  </span>
                   <div>{climate.qst}</div>
                 </div>
-                <div className="text-center text-gray-700 mt-2 pb-3">
+                <div className="text-center text-gray-700 pb-3">
                   {climate.dis}
                 </div>
               </div>

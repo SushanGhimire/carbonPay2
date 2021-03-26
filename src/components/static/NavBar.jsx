@@ -1,7 +1,34 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 
 function NavBar() {
+  const [width, setWidth] = useState(window.innerWidth);
   const [position, setPosition] = useState(0);
+  const mobileSidebar = useRef();
+  const coverAll = useRef();
+
+  // toggle in mobile
+  const toggleMobileSidebar = () => {
+    const sidebar = mobileSidebar.current;
+    const coverall = coverAll.current;
+    if (sidebar.clientWidth > 0) {
+      sidebar.style.width = "0";
+      coverall.style.display = "none";
+    } else {
+      sidebar.style.width = "288px";
+      coverall.style.display = "block";
+    }
+  };
+
+  // if user is using screen width of laptop and changes to lower than 1023px width, call the function
+  // if user is using screen width of ipad or mobile and changes to higher than 1024px width, call the function
+  const handleWidth = () => {
+    const innerWidth = window.innerWidth;
+    if (innerWidth > 1023 && width < 1024) {
+      setWidth(innerWidth);
+    } else if (innerWidth < 1024 && width > 1023) {
+      setWidth(innerWidth);
+    }
+  };
 
   const handleScroll = () => {
     if (window.pageYOffset > 0 && position === 0) {
@@ -10,36 +37,102 @@ function NavBar() {
       setPosition(0);
     }
   };
+  // const scrollToTop = () => window.scrollTo(0, 0);
 
   useEffect(() => {
     handleScroll();
-    // window.addEventListener("resize", handleWidth);
+    window.addEventListener("resize", handleWidth);
     window.addEventListener("scroll", handleScroll);
     return () => {
-      // window.removeEventListener("resize", handleWidth);
+      window.removeEventListener("resize", handleWidth);
       window.removeEventListener("scroll", handleScroll);
     };
   });
   return (
     <div
-      className={`fixed z-10 w-full font-header  py-5 text-white opacity-90 transition-all duration-300 ease-in-out ${
+      className={`fixed z-10 w-full font-header  py-5 text-white opacity-90 transition-all duration-300 ease-in-out text-lg ${
         position && " bg-black"
       }`}
     >
       <div className="w-full flex justify-between px-10 items-center">
         <div className="cursor-pointer">Carbon Pay</div>
-        <div className="flex space-x-4 items-center">
-          <div className="cursor-pointer">Products</div>
-          <div className="cursor-pointer">Use Cases</div>
-          <div className="cursor-pointer">Developers</div>
-          <div className="cursor-pointer">Company</div>
-          <div className="cursor-pointer">Pricing</div>
-        </div>
-        <div className="button-animation">
-          <div className="animation-text px-6 rounded-full py-2">Signin</div>
-          <div className="animation-bg"></div>
-        </div>
+        {width > 1023 && (
+          <>
+            <div className="flex space-x-4 items-center">
+              <div className="cursor-pointer">Products</div>
+              <div className="cursor-pointer">Use Cases</div>
+              <div className="cursor-pointer">Developers</div>
+              <div className="cursor-pointer">Company</div>
+              <div className="cursor-pointer">Pricing</div>
+            </div>
+
+            <div className="button-animation">
+              <div className="animation-text px-6 rounded-full py-2">
+                Signin
+              </div>
+              <div className="animation-bg"></div>
+            </div>
+          </>
+        )}
+
+        {width < 1024 && (
+          <div>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              onClick={toggleMobileSidebar}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </div>
+        )}
       </div>
+      {/* for ipads and mobiles */}
+      {width < 1024 && (
+        <>
+          <div
+            className="h-screen w-screen fixed left-0 top-0 bg-black bg-opacity-50 hidden"
+            ref={coverAll}
+            onClick={toggleMobileSidebar}
+          ></div>
+          <div
+            className="fixed top-0 left-0 h-screen w-0 z-20 bg-white text-black transition-all duration-300 overflow-hidden"
+            ref={mobileSidebar}
+          >
+            <div className="w-72 flex flex-col px-8 ">
+              <div className="text-3xl md:text-4xl font-header font-bold py-5 text-center text-primary">
+                Carbon Pay
+              </div>
+
+              <div className="flex flex-col space-y-2 items-center">
+                <div className="cursor-pointer">Products</div>
+                <div className="cursor-pointer">Use Cases</div>
+                <div className="cursor-pointer">Developers</div>
+                <div className="cursor-pointer">Company</div>
+                <div className="cursor-pointer">Pricing</div>
+              </div>
+
+              <div className="mx-auto mt-2">
+                <div className="button-animation">
+                  <div className="animation-text px-6 rounded-full py-2">
+                    Signin
+                  </div>
+                  <div className="animation-bg"></div>
+                </div>
+              </div>
+              {/* <NavAuthenticationButton loggedIn={loggedIn} /> */}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
