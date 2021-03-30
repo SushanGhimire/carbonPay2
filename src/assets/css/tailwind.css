@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -30,6 +31,17 @@
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
+  }
+  a:focus,
+  button:focus,
+  input:focus {
+    outline: none;
+  }
+  .hoverme{
+    display: "block";
+  }
+  #hover:hover> .hoverme{
+    display: block;
   }
   #homeBg {
     background-image: url("../images/homepage/animalBg4.jpg");
@@ -63,20 +75,9 @@
   .button-animation:hover > .animation-bg {
     height: 100%;
   }
-
-  /* .animation-card{
-    position: relative;
-    animation-name: example;
-    animation-duration: 4s;
-     animation-iteration-count: infinite;
-     animation-direction: alternate;
-     animation-timing-function: ease; 
+@layer{
+  .button-style{
+    @apply cursor-pointer flex space-x-2 bg-indigo-500 text-white px-4 py-2 rounded shadow  items-center hover:bg-indigo-600 transition-all duration-300 ease-in-out;
+  }
 }
-.animation-card:hover{
-    animation-play-state: paused;
-}
-@keyframes example {
-    0%   {top:-0px;}
-    50%  {top:20px;}
-    100% {top:-20px;}
-  } */
+  

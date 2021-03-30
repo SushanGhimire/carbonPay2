@@ -1,4 +1,5 @@
 import { React, useState, useEffect, useRef } from "react";
+// import logo from "../../assets/images/homepage/carbonPayLogo2.png";
 
 function NavBar() {
   const [width, setWidth] = useState(window.innerWidth);

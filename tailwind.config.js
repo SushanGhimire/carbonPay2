@@ -11,9 +11,11 @@ module.exports = {
         rubik: ["Rubik", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
         header: ["Dosis", "sans-serif"],
+        ubuntu: ["Ubuntu", "sans-serif"],
       },
       spacing: {
         100: "30rem",
+        68: "17rem",
       },
     },
   },
