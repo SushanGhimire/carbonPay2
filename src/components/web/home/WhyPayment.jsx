@@ -1,9 +1,9 @@
 import React from "react";
-import whyBg from "../../assets/images/homepage/whyBg2.jpg";
+import whyBg from "../../../assets/images/homepage/whyBg2.jpg";
 function WhyPayment() {
   return (
     <div
-      className="w-full relative md:mt-16 h-100 bg-center bg-cover bg-no-repeat bg-fixed"
+      className="w-full relative  h-100 bg-center bg-cover bg-no-repeat bg-fixed"
       style={{
         backgroundImage: `url(${whyBg})`,
       }}

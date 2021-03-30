@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#1FC157",
-        secondary: "#057D3A",
+        primary: "#057D3A",
+        secondary: "#1FC157",
+        light_white: " #FAFAFA",
       },
       fontFamily: {
         rubik: ["Rubik", "sans-serif"],

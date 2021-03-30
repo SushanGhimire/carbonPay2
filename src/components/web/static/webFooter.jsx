@@ -1,7 +1,7 @@
-import facebook from "../../assets/images/homepage/facebook.svg";
-import instagram from "../../assets/images/homepage/instagram.svg";
-import linkedin from "../../assets/images/homepage/linkedin.svg";
-import twitter from "../../assets/images/homepage/twitter.svg";
+import facebook from "../../../assets/images/homepage/facebook.svg";
+import instagram from "../../../assets/images/homepage/instagram.svg";
+import linkedin from "../../../assets/images/homepage/linkedin.svg";
+import twitter from "../../../assets/images/homepage/twitter.svg";
 function Footer() {
   const logos = [facebook, instagram, linkedin, twitter];
   return (

@@ -3,7 +3,7 @@ import { React, useState, useEffect, useRef } from "react";
 
 function NavBar() {
   const [width, setWidth] = useState(window.innerWidth);
-  const [position, setPosition] = useState(0);
+  // const [position, setPosition] = useState(0);
   const mobileSidebar = useRef();
   const coverAll = useRef();
 
@@ -31,29 +31,27 @@ function NavBar() {
     }
   };
 
-  const handleScroll = () => {
-    if (window.pageYOffset > 0 && position === 0) {
-      setPosition(1);
-    } else if (window.pageYOffset === 0 && position > 0) {
-      setPosition(0);
-    }
-  };
+  // const handleScroll = () => {
+  //   if (window.pageYOffset > 0 && position === 0) {
+  //     setPosition(1);
+  //   } else if (window.pageYOffset === 0 && position > 0) {
+  //     setPosition(0);
+  //   }
+  // };
   // const scrollToTop = () => window.scrollTo(0, 0);
 
   useEffect(() => {
-    handleScroll();
+    // handleScroll();
     window.addEventListener("resize", handleWidth);
-    window.addEventListener("scroll", handleScroll);
+    // window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("resize", handleWidth);
-      window.removeEventListener("scroll", handleScroll);
+      // window.removeEventListener("scroll", handleScroll);
     };
   });
   return (
     <div
-      className={`fixed z-10 w-full font-header  py-5 text-white opacity-90 transition-all duration-300 ease-in-out text-lg ${
-        position && " bg-black"
-      }`}
+      className={`sticky top-0 z-50 bg-white w-full font-header  py-5  transition-all duration-300 ease-in-out text-lg shadow-md `}
     >
       <div className="w-full flex justify-between px-10 items-center">
         <div className="cursor-pointer">Carbon Pay</div>
@@ -69,7 +67,7 @@ function NavBar() {
 
             <div className="button-animation">
               <div className="animation-text px-6 rounded-full py-2">
-                Signin
+                Sign in
               </div>
               <div className="animation-bg"></div>
             </div>
@@ -124,12 +122,11 @@ function NavBar() {
               <div className="mx-auto mt-2">
                 <div className="button-animation">
                   <div className="animation-text px-6 rounded-full py-2">
-                    Signin
+                    Sign in
                   </div>
                   <div className="animation-bg"></div>
                 </div>
               </div>
-              {/* <NavAuthenticationButton loggedIn={loggedIn} /> */}
             </div>
           </div>
         </>

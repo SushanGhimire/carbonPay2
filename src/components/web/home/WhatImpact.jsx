@@ -1,7 +1,7 @@
 import React from "react";
 // import planet from "../../assets/images/homepage/noPlanet.jpg";
-import impact from "../../assets/images/homepage/impact.jpg";
-import check from "../../assets/images/homepage/check.svg";
+import impact from "../../../assets/images/homepage/impact.jpg";
+import check from "../../../assets/images/homepage/check.svg";
 
 function WhatImpact() {
   const Carbonclimate = [

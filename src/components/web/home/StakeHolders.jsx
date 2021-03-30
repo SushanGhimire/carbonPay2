@@ -1,7 +1,7 @@
 import React from "react";
-import merchant from "../../assets/images/homepage/merchant.svg";
-import consumer from "../../assets/images/homepage/consumer.svg";
-import nature from "../../assets/images/homepage/nature.svg";
+import merchant from "../../../assets/images/homepage/merchant.svg";
+import consumer from "../../../assets/images/homepage/consumer.svg";
+import nature from "../../../assets/images/homepage/nature.svg";
 
 function StakeHolders() {
   const cards = [
@@ -24,10 +24,7 @@ function StakeHolders() {
     },
   ];
   return (
-    <div
-      className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-10 lg:px-20 py-20
-      "
-    >
+    <div className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-10 lg:px-20 py-20 bg-light_white">
       <div className="col-span-1 sm:col-span-2 md:col-span-3">
         <div className="text-xl sm:text-4xl text-center mt-10 font-header">
           Stakeholders

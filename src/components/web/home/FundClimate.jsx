@@ -1,6 +1,6 @@
 import React from "react";
-import coal from "../../assets/images/homepage/connect.svg";
-import planting from "../../assets/images/homepage/email.svg";
+import coal from "../../../assets/images/homepage/connect.svg";
+import planting from "../../../assets/images/homepage/email.svg";
 
 function FundClimate() {
   const climates = [
@@ -20,7 +20,7 @@ function FundClimate() {
     },
   ];
   return (
-    <div className="p-5 md:px-10 md:pb-10 pt-10 md:pt-20 lg:pt-28  flex flex-col justify-center">
+    <div className="p-5 md:px-10 md:pb-28 pt-10 md:pt-20 lg:pt-28  flex flex-col justify-center bg-light_white">
       <div className="flex flex-col justify-center items-centerpy-5">
         <div className="mx-auto lg:w-1/2 text-3xl md:text-4xl font-bold text-center font-header">
           Fund Climate Change Efforts <br /> with Payment
