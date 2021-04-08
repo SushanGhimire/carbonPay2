@@ -23,7 +23,7 @@ function MerchantConsumer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {carbons.map((carbon, index) => {
             return (
-              <div className="col-span-1 sm:flex space-x-4">
+              <div className="col-span-1 sm:flex space-x-4" key={index}>
                 {/* image  */}
                 <div className="flex sm:w-1/3 lg:w-2/5">
                   <img

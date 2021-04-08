@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/css/tailwind.css";
 import { BrowserRouter } from "react-router-dom";
+import UrlDasWebmgnr from "./UrlDasWebmgnr";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UrlDasWebmgnr />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

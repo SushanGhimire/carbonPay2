@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 // import logo from "../../assets/images/homepage/carbonPayLogo2.png";
-
-function NavBar() {
+import { Link } from "react-router-dom";
+function NavBar({ loggedIn }) {
   const [width, setWidth] = useState(window.innerWidth);
   // const [position, setPosition] = useState(0);
   const mobileSidebar = useRef();
@@ -65,12 +65,15 @@ function NavBar() {
               <div className="cursor-pointer">Pricing</div>
             </div>
 
-            <div className="button-animation">
+            <Link
+              to={loggedIn ? "/dashboard" : "/login"}
+              className="button-animation"
+            >
               <div className="animation-text px-6 rounded-full py-2">
-                Sign in
+                {loggedIn ? "Dashboard" : "Sign in"}
               </div>
               <div className="animation-bg"></div>
-            </div>
+            </Link>
           </>
         )}
 
@@ -119,14 +122,14 @@ function NavBar() {
                 <div className="cursor-pointer">Pricing</div>
               </div>
 
-              <div className="mx-auto mt-2">
+              <Link className="mx-auto mt-2">
                 <div className="button-animation">
                   <div className="animation-text px-6 rounded-full py-2">
                     Sign in
                   </div>
                   <div className="animation-bg"></div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </>
