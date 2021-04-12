@@ -122,13 +122,14 @@ function NavBar({ loggedIn }) {
                 <div className="cursor-pointer">Pricing</div>
               </div>
 
-              <Link className="mx-auto mt-2">
-                <div className="button-animation">
-                  <div className="animation-text px-6 rounded-full py-2">
-                    Sign in
-                  </div>
-                  <div className="animation-bg"></div>
+              <Link
+                to={loggedIn ? "/dashboard" : "/login"}
+                className="button-animation text-center mt-2"
+              >
+                <div className="animation-text px-6 rounded-full py-2">
+                  {loggedIn ? "Dashboard" : "Sign in"}
                 </div>
+                <div className="animation-bg"></div>
               </Link>
             </div>
           </div>
