@@ -248,7 +248,9 @@ function NavBar() {
                   </svg>
                 </div>
                 {/* carbonpay  */}
-                <div className="text-lg font-semibold">CarbonPay</div>
+                <Link to="/" className="text-lg font-semibold">
+                  CarbonPay
+                </Link>
               </div>
               <div className="flex space-x-2">
                 {/* feed back  */}

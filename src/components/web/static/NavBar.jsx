@@ -54,7 +54,9 @@ function NavBar({ loggedIn }) {
       className={`sticky top-0 z-50 bg-white w-full font-header  py-5  transition-all duration-300 ease-in-out text-lg shadow-md `}
     >
       <div className="w-full flex justify-between px-10 items-center">
-        <div className="cursor-pointer">Carbon Pay</div>
+        <Link to="/" className="cursor-pointer">
+          Carbon Pay
+        </Link>
         {width > 1023 && (
           <>
             <div className="flex space-x-4 items-center">
@@ -110,9 +112,13 @@ function NavBar({ loggedIn }) {
             ref={mobileSidebar}
           >
             <div className="w-72 flex flex-col px-8 ">
-              <div className="text-3xl md:text-4xl font-header font-bold py-5 text-center text-primary">
+              <Link
+                to="/"
+                onClick={toggleMobileSidebar}
+                className="text-3xl md:text-4xl font-header font-bold py-5 text-center text-primary"
+              >
                 Carbon Pay
-              </div>
+              </Link>
 
               <div className="flex flex-col space-y-2 items-center">
                 <div className="cursor-pointer">Products</div>

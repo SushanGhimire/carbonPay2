@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import FrontPage from "./FrontPage";
 import FundClimate from "./FundClimate";
 import MerchantConsumer from "./MerchantConsumer";

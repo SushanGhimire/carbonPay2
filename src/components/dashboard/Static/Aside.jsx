@@ -100,7 +100,9 @@ function Aside() {
               </svg>
             </div>
             {/* carbonpay  */}
-            <div className="text-xl font-semibold">CarbonPay</div>
+            <Link to="/" className="text-xl font-semibold">
+              CarbonPay
+            </Link>
           </div>
           {/* content part  */}
           <div className="flex flex-col  mt-5">
