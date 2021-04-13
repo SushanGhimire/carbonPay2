@@ -5,7 +5,7 @@ import twitter from "../../../assets/images/homepage/twitter.svg";
 function Footer() {
   const logos = [facebook, instagram, linkedin, twitter];
   return (
-    <div className="w-full bg-black p-5 md:pt-10 text-white flex-col">
+    <div className="w-full p-5 md:pt-10  bg-gray-100 flex-col">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-b p-5">
         <div className="col-span-1 flex flex-col">
           <div className="text-3xl font-bold mx-auto text-primary font-header">
@@ -19,9 +19,9 @@ function Footer() {
               return (
                 <div
                   key={logo}
-                  className="rounded-full border-2 p-2 hover:bg-green-secondary transition-all duration-200 hover:bg-primary cursor-pointer transform hover:-translate-y-1 hover:scale-125"
+                  className="rounded-full border-2 border-primary p-2 hover:bg-green-secondary transition-all duration-200 hover:border-black  cursor-pointer transform  bg-primary hover:-translate-y-1 hover:scale-125"
                 >
-                  <img src={logo} className="w-4 h-4" alt="" />
+                  <img src={logo} className="w-4 h-4 " alt="" />
                 </div>
               );
             })}
