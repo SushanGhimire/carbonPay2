@@ -1,34 +1,112 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { baseUrl } from "./authorization";
-// import backgroundImage from "../../assets/images/authentication/login-background.jpg";
-// import logo from "../../assets/images/dashboard/logo.jpeg";
-import axios from "axios";
+import { baseUrl } from "../authentication/authorization";
 
 export default function Login() {
-  const [login, setLogin] = useState([
-    {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    errors: {
       email: "",
       password: "",
+      login: "",
     },
-  ]);
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    console.log("into login");
-    axios
-      .post(`${baseUrl}/user/login/`, login)
-      .then((res) => {
-        console.log(res.data);
-        console.log("loddedIn");
-        localStorage.setItem("access", res.data.access);
-        localStorage.setItem("refresh", res.data.refresh);
-        window.location = "/";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  });
+
+  const handleErrors = (property, value) => {
+    const { errors } = data;
+    value = value === undefined ? data[property] : value;
+    errors.login = errors.login && "";
+    let result;
+    if (value.trim() === "") {
+      errors[property] = `${property[0].toUpperCase()}${property.slice(
+        1,
+        property.length
+      )} cannot be left empty`;
+      result = false;
+    } else {
+      if (property === "email") {
+        if (!value.match(/^\w+@\w+\.\w+(\.\w+)?$/gi)) {
+          errors.email = "Invalid email";
+          result = false;
+        } else {
+          errors.email = "";
+          result = true;
+        }
+      } else {
+        if (value.length < 8) {
+          errors.password = "Password must be atleast 8 characters long";
+          result = false;
+        } else {
+          errors.password = "";
+          result = true;
+        }
+      }
+    }
+
+    setData({
+      ...data,
+      errors,
+    });
+    return result;
   };
-  console.log(localStorage.getItem("access"));
+
+  const handleChange = ({ target: { value } }, property) => {
+    handleErrors(property, value);
+    setData({
+      ...data,
+      [property]: value,
+    });
+  };
+
+  const handleLoginSubmit = (event) => {
+    event.preventDefault();
+    const url = `${baseUrl}/user/login/`;
+
+    const { email, password, errors } = data;
+    const credentials = ["email", "password"];
+    let goAhead;
+    for (let i = 0; i < credentials.length; i++) {
+      const result = handleErrors(credentials[i]);
+      if (goAhead !== false) {
+        goAhead = result;
+      }
+    }
+
+    if (goAhead) {
+      // submitting the form if all input fields are validated
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("password", password);
+      fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((dta) => {
+          const { detail, access, refresh } = dta;
+          if (detail === "Invalid Crendential, Try again") {
+            errors.login = "Username or password is incorrect";
+            setData({
+              ...data,
+              errors,
+            });
+          } else {
+            localStorage.setItem("access", access);
+            localStorage.setItem("refresh", refresh);
+
+            window.location = "/";
+          }
+        });
+    }
+  };
+
+  const {
+    email,
+    password,
+    errors: { email: emailError, password: passwordError, login: loginError },
+  } = data;
+
   return (
     <div>
       <div className="  w-full h-full grid place-items-center py-16">
@@ -38,15 +116,6 @@ export default function Login() {
           onSubmit={handleLoginSubmit}
         >
           <div className="flex flex-col pb-2 space-y-2">
-            {/* resturant logo  */}
-            {/* <Link to="/" className="w-20 h-20 mx-auto">
-              <img
-                src={logo}
-                alt=""
-                className="w-full h-full rounded-full object-center object-cover"
-              />
-            </Link> */}
-            {/* momo world  */}
             <div className="text-xl font-semibold text-center">Login Form</div>
           </div>
           <div className="space-y-5">
@@ -57,29 +126,39 @@ export default function Login() {
               <input
                 type="text"
                 id="email"
+                value={email}
                 className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
-                value={login.email || ""}
-                onChange={(e) => {
-                  setLogin({ ...login, email: e.target.value });
-                }}
+                onChange={(event) => handleChange(event, "email")}
               />
-              {/* {emailError && <div className="error">{emailError}</div>} */}
+              {emailError && (
+                <div className="error text-red-600">{emailError}</div>
+              )}
             </div>
             <div className="space-y-1 flex flex-col">
-              <label htmlFor="password" className="text-gray-500">
-                Password
-              </label>
+              <div className="flex justify-between">
+                <label htmlFor="password" className="text-gray-500">
+                  Password
+                </label>
+                <label
+                  htmlFor="password"
+                  className="text-gray-500 cursor-pointer hover:text-primary"
+                >
+                  Forget Password?
+                </label>
+              </div>
               <input
                 type="password"
                 id="password"
+                value={password}
                 className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
-                value={login.password || ""}
-                onChange={(e) => {
-                  setLogin({ ...login, password: e.target.value });
-                }}
+                onChange={(event) => handleChange(event, "password")}
               />
-              {/* {passwordError && <div className="error">{passwordError}</div>}
-              {loginError && <div className="error">{loginError}</div>} */}
+              {passwordError && (
+                <div className="error text-red-600">{passwordError}</div>
+              )}
+              {loginError && (
+                <div className="error text-red-600">{loginError}</div>
+              )}
             </div>
 
             <div className="button-animation" style={{ display: "block" }}>
@@ -91,7 +170,11 @@ export default function Login() {
           </div>
           <div className="text-xs mt-2 text-center">
             Dont have an account ?{" "}
-            <Link to="/register" className="underline text-primary">
+            <Link
+              to="/register"
+              className="underline"
+              onClick={() => window.scrollTo(0, 0)}
+            >
               Register now
             </Link>
           </div>

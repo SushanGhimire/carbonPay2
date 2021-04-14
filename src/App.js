@@ -1,6 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import PageNotFound from "./common/page-not-found";
 import Login from "./components/authentication/login";
+import Register from "./components/authentication/register";
 import Home from "./components/web/home/Home";
 import Footer from "./components/web/static/Footer";
 import NavBar from "./components/web/static/NavBar";
@@ -15,7 +16,7 @@ function App(props) {
         {!loggedIn && (
           <>
             <Route exact path="/login" component={Login} />
-            {/* <Route exact path="/register" component={Register} /> */}
+            <Route exact path="/register" component={Register} />
           </>
         )}
         <Route path="/page-not-found" component={PageNotFound} />

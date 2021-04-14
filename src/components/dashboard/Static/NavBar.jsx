@@ -1,8 +1,16 @@
+// import axios from "axios";
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// import { baseUrl } from "../../authentication/authorization";
 
 function NavBar() {
   const [width, setWidth] = useState(window.innerWidth);
+  // const [logout, setLogout] = useState([
+  //   {
+  //     refresh: "",
+  //   },
+  // ]);
+  const [isShown, setIsShown] = useState(false);
   const mobIpadSidebar = useRef();
   const coverAll = useRef();
   const asideLists = [
@@ -62,6 +70,7 @@ function NavBar() {
       ],
     },
   ];
+  // let Refresh = localStorage.getItem("refresh");
   const handleWidth = () => {
     const innerWidth = window.innerWidth;
     if (innerWidth > 1023 && width < 1024) {
@@ -87,8 +96,36 @@ function NavBar() {
       coverall.style.display = "block";
     }
   };
+  const handleShown = () => {
+    if (isShown) {
+      setIsShown(false);
+    } else {
+      setIsShown(true);
+    }
+  };
+  const handleLogout = () => {
+    // let logout = [
+    //   {
+    //     refresh: Refresh,
+    //   },
+    // ];
+    // axios
+    //   .post(`${baseUrl}/logout/`, logout)
+    //   .then((res) => {
+    //     console.log(res);
+    //     window.location("/login");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    localStorage.clear();
+    window.location = "/login";
+  };
   return (
-    <div className="bg-white z-10 w-full py-2  border-b transition-all duration-300 ease-in-out">
+    <div
+      className="bg-white z-10 w-full py-2  border-b transition-all duration-300 ease-in-out px-10"
+      onMouseLeave={() => setIsShown(false)}
+    >
       {/* nav bar  */}
       <div className="w-full flex  items-center px-5">
         {/* search bar  */}
@@ -197,7 +234,7 @@ function NavBar() {
             </svg>
           </div>
           {/* user  */}
-          <div>
+          <div onMouseEnter={handleShown}>
             <svg
               className="w-5 h-5 cursor-pointer"
               fill="none"
@@ -213,6 +250,25 @@ function NavBar() {
               />
             </svg>
           </div>
+          {isShown && (
+            <div
+              className={`absolute solution-list top-7 -right-10 bg-white text-secondary   rounded-md shadow-md cursor-pointer p-3 `}
+              onMouseEnter={() => {
+                setIsShown(true);
+              }}
+              onMouseLeave={() => setIsShown(false)}
+            >
+              <div className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out">
+                Profile
+              </div>
+              <div
+                className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out"
+                onClick={handleLogout}
+              >
+                Logout
+              </div>
+            </div>
+          )}
         </div>
       </div>
       {/* aisde for mobile ipad  */}

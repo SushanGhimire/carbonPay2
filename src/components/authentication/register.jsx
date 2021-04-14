@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { baseUrl } from "./authorization";
-import backgroundImage from "../../assets/images/authentication/login-background.jpg";
-import logo from "../../assets/images/dashboard/logo.jpeg";
+import { baseUrl } from "../authentication/authorization";
 
 export default function Register() {
   const [data, setData] = useState({
@@ -127,72 +125,77 @@ export default function Register() {
   } = errors;
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
-    >
-      <div className="bg-black bg-opacity-70 w-full h-full grid place-items-center py-16 min-h-screen">
+    <div>
+      <div className="  w-full h-full grid place-items-center py-16">
         <form
-          onSubmit={handleRegisterSubmit}
-          className="bg-white px-10 py-5 mx-5 mt-10 max-w-sm w-full authentication-form"
+          className="bg-white border border-gray-300 px-10 py-8 mx-5 max-w-sm w-full authentication-form"
           autoComplete="off"
+          onSubmit={handleRegisterSubmit}
         >
           <div className="flex flex-col pb-2 space-y-2">
-            {/* resturant logo  */}
-            <Link to="/" className="w-20 h-20 mx-auto">
-              <img
-                src={logo}
-                alt=""
-                className="w-full h-full rounded-full object-center object-cover"
-              />
-            </Link>
-            {/* momo world  */}
             <div className="text-xl font-semibold text-center">
               Registration Form
             </div>
           </div>
           <div className="space-y-2">
-            <div className="space-y-1">
-              <label htmlFor="username">Username</label>
+            <div className="space-y-1 flex flex-col">
+              <label htmlFor="email" className="text-gray-500">
+                Username
+              </label>
               <input
                 type="text"
                 id="username"
                 value={username}
+                className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
                 onChange={(event) => handleChange(event, "username")}
               />
-              {usernameErr && <div className="error">{usernameErr}</div>}
+              {usernameErr && (
+                <div className="error text-red-600">{usernameErr}</div>
+              )}
             </div>
-            <div className="space-y-1">
-              <label htmlFor="email">Email Address</label>
+            <div className="space-y-1 flex flex-col">
+              <label htmlFor="email" className="text-gray-500">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
                 value={email}
+                className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
                 onChange={(event) => handleChange(event, "email")}
               />
-              {emailErr && <div className="error">{emailErr}</div>}
+              {emailErr && <div className="error text-red-600">{emailErr}</div>}
             </div>
-            <div className="space-y-1">
-              <label htmlFor="password">Password</label>
+            <div className="space-y-1 flex flex-col">
+              <label htmlFor="email" className="text-gray-500">
+                Password
+              </label>
               <input
                 type="password"
                 id="password"
                 value={password}
+                className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
                 onChange={(event) => handleChange(event, "password")}
               />
-              {passwordErr && <div className="error">{passwordErr}</div>}
+              {passwordErr && (
+                <div className="error text-red-600">{passwordErr}</div>
+              )}
             </div>
-            <div className="space-y-1">
-              <label htmlFor="confirm-password">Confirm Password</label>
+            <div className="space-y-1 flex flex-col">
+              <label htmlFor="email" className="text-gray-500">
+                Confirm Password
+              </label>
               <input
                 type="password"
                 id="confirm-password"
                 value={confirmPassword}
+                className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
                 onChange={(event) => handleChange(event, "confirmPassword")}
               />
               {confirmPasswordErr && (
-                <div className="error text-sm">{confirmPasswordErr}</div>
+                <div className="error text-sm text-red-600">
+                  {confirmPasswordErr}
+                </div>
               )}
             </div>
 
