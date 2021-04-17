@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 function Faq() {
@@ -38,7 +38,7 @@ function Faq() {
       time: "2600",
     },
   ];
-  useState(() => {
+  useEffect(() => {
     AOS.init();
     setfaqs(Faqs);
   }, []);
