@@ -17,7 +17,7 @@ function FlexCard({ title, des, direction, img }) {
         data-aos-anchor-placement="top-bottom"
         data-aos-duration="1500"
       >
-        <div className="font-bold text-2xl sm:text-3xl lg:text-4xl mt-10 md:mt-0 text-left  font-header">
+        <div className="font-bold text-2xl sm:text-3xl lg:text-4xl mt-10 md:mt-0 text-center md:text-left  font-header">
           {title}
         </div>
         <div className="lg:text-base text-center md:text-left text-gray-700">

@@ -2,7 +2,8 @@ import { React, useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 function WhatOffset() {
-  const [offsets, setfaqs] = useState([]);
+  const [offsets, setOffsets] = useState([]);
+  const stop = "stop";
   let Offsets = [
     {
       qst: "Farm Power",
@@ -39,7 +40,7 @@ function WhatOffset() {
   ];
   useEffect(() => {
     AOS.init();
-    setfaqs(Offsets);
+    setOffsets(Offsets);
   }, []);
 
   const handleFaq = (index) => {
@@ -47,7 +48,7 @@ function WhatOffset() {
       ? (Offsets[index].isTrue = false)
       : (Offsets[index].isTrue = true);
 
-    setfaqs(Offsets);
+    setOffsets(Offsets);
   };
 
   return (
@@ -68,12 +69,12 @@ function WhatOffset() {
                 data-aos-duration={time}
               >
                 <div
-                  className="text-3xl hover:text-primary transition-all duration-300 ease-linear cursor-pointer font-bold flex justify-between"
+                  className=" hover:text-primary transition-all duration-300 ease-linear cursor-pointer font-bold flex justify-between"
                   onClick={() => {
                     handleFaq(index);
                   }}
                 >
-                  <div> {qst}</div>
+                  <div className="text-lg lg:text-3xl"> {qst}</div>
                   <div>
                     <svg
                       className="w-6 h-6"
@@ -92,8 +93,8 @@ function WhatOffset() {
                   </div>
                 </div>
                 <div
-                  className={`text-lg text-gray-600 transition-all duration-300 ease-linear  overflow-hidden ${
-                    isTrue ? "h-36" : "h-0"
+                  className={`text-sm lg:text-lg text-gray-600 transition-all duration-300 ease-linear  overflow-hidden ${
+                    isTrue ? "h-44 md:h-36" : "h-0"
                   }`}
                 >
                   {ans}
