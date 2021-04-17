@@ -6,7 +6,20 @@ function NavBar({ loggedIn }) {
   // const [position, setPosition] = useState(0);
   const mobileSidebar = useRef();
   const coverAll = useRef();
-
+  const navlist = [
+    {
+      name: "Climate Change",
+      to: "/climatechange",
+    },
+    {
+      name: "Carbon Offsets?",
+      to: "/carbonoffsets",
+    },
+    {
+      name: "About Us",
+      to: "/about",
+    },
+  ];
   // toggle in mobile
   const toggleMobileSidebar = () => {
     const sidebar = mobileSidebar.current;
@@ -51,7 +64,7 @@ function NavBar({ loggedIn }) {
   });
   return (
     <div
-      className={`sticky top-0 z-50 bg-white w-full font-header  py-5  transition-all duration-300 ease-in-out text-lg shadow-md `}
+      className={`sticky top-0 z-50 bg-white w-full font-header   py-5  transition-all duration-300 ease-in-out text-lg shadow-md `}
     >
       <div className="w-full flex justify-between px-10 items-center">
         <Link to="/" className="cursor-pointer">
@@ -60,11 +73,18 @@ function NavBar({ loggedIn }) {
         {width > 1023 && (
           <>
             <div className="flex space-x-4 items-center">
-              <div className="cursor-pointer">Products</div>
-              <div className="cursor-pointer">Use Cases</div>
-              <div className="cursor-pointer">Developers</div>
-              <div className="cursor-pointer">Company</div>
-              <div className="cursor-pointer">Pricing</div>
+              {navlist.map((list, index) => {
+                const { name, to } = list;
+                return (
+                  <Link
+                    className="cursor-pointer hover:text-primary tracking-wider text-lg"
+                    key={index}
+                    to={to}
+                  >
+                    {name}
+                  </Link>
+                );
+              })}
             </div>
 
             <Link

@@ -2,6 +2,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import PageNotFound from "./common/page-not-found";
 import Login from "./components/authentication/login";
 import Register from "./components/authentication/register";
+import ClimateChange from "./components/web/climate_change/ClimateChange";
 import Home from "./components/web/home/Home";
 import Footer from "./components/web/static/Footer";
 import NavBar from "./components/web/static/NavBar";
@@ -13,6 +14,7 @@ function App(props) {
       <NavBar loggedIn={loggedIn} />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/climatechange" component={ClimateChange} />
         {!loggedIn && (
           <>
             <Route exact path="/login" component={Login} />
