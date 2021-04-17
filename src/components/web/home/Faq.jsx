@@ -82,7 +82,7 @@ function Faq() {
                 </div>
                 <div
                   className={`text-lg text-gray-600 transition-all duration-300 ease-linear  overflow-hidden ${
-                    isTrue ? "h-32" : "h-0"
+                    isTrue ? "h-36" : "h-0"
                   }`}
                 >
                   {ans}
