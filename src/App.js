@@ -4,6 +4,7 @@ import Login from "./components/authentication/login";
 import Register from "./components/authentication/register";
 import ClimateChange from "./components/web/climate_change/ClimateChange";
 import Home from "./components/web/home/Home";
+import offset from "./components/web/offset/offset";
 import Footer from "./components/web/static/Footer";
 import NavBar from "./components/web/static/NavBar";
 
@@ -15,6 +16,7 @@ function App(props) {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/climatechange" component={ClimateChange} />
+        <Route exact path="/carbonoffsets" component={offset} />
         {!loggedIn && (
           <>
             <Route exact path="/login" component={Login} />

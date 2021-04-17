@@ -7,8 +7,8 @@ function FlexCard({ title, des, direction, img }) {
         direction ? "flex-row-reverse" : ""
       } font-header`}
     >
-      <div className="flex w-full md:w-1/2 flex-col space-y-3 md:px-10 lg:px-12 items-center justify-center ">
-        <div className="font-bold text-2xl sm:text-3xl lg:text-4xl mt-10 md:mt-0 text-center font-header">
+      <div className="flex w-full md:w-1/2 flex-col space-y-3 md:px-10 lg:px-12  ">
+        <div className="font-bold text-2xl sm:text-3xl lg:text-4xl mt-10 md:mt-0 text-left  font-header">
           {title}
         </div>
         <div className="lg:text-base text-center md:text-left text-gray-700">
