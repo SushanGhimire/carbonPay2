@@ -1,26 +1,33 @@
-import React from "react";
+import { useEffect } from "react";
 import merchant from "../../../assets/images/homepage/merchant.svg";
 import consumer from "../../../assets/images/homepage/consumer.svg";
 import nature from "../../../assets/images/homepage/nature.svg";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function StakeHolders() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const cards = [
     {
       logo: merchant,
       name: "merchant",
       title: "Climate Impact Payment to increase transaction",
       bg: "bg-seconday",
+      aos: "fade-right",
     },
     {
       logo: consumer,
       name: "Consumers",
       title: "Make Climate Conscious purchase with impact tracking page",
+      aos: "fade-up",
     },
     {
       logo: nature,
       name: "Climate Impact Non-Profit",
       title:
         "Accountability and Incentives for highest net carbon capture efforts",
+      aos: "fade-left",
     },
   ];
   return (
@@ -38,6 +45,9 @@ function StakeHolders() {
           <div
             className="col-span-1 py-10 transition-all duration-300 ease-in-out px-3 hover:bg-gray-50 "
             key={index}
+            data-aos={card.aos}
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="1500"
           >
             <div className={`flex flex-col space-y-4 `}>
               <div className="mx-auto h-12 w-12 sm:h-16 sm:w-16 lg:w-20 lg:h-20">

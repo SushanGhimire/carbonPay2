@@ -1,22 +1,27 @@
-import React from "react";
+import { useEffect } from "react";
 import coal from "../../../assets/images/homepage/connect.svg";
 import planting from "../../../assets/images/homepage/email.svg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function FundClimate() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const climates = [
     {
       img: coal,
       qst: "What Carbon Pay Does?",
       dis:
         " CarbonPay dynamically connects small percentage of each transaction with non-profit with highest net-carbon removal efforts",
-      aos: "fade-right",
+      aos: "fade-up",
     },
     {
       img: planting,
       qst: "How To Verify?",
       dis:
         " CarbonPay automatically sends confirmation email to customer about what happened to their purchase.",
-      aos: "fade-left",
+      aos: "fade-down",
     },
   ];
   return (
@@ -41,6 +46,9 @@ function FundClimate() {
               <div
                 key={index}
                 className="sm:3/4 md:w-1/2 flex  flex-col cursor-pointer bg-gray-100 hover:bg-gray-200 hover:border-green-primary  rounded-lg shadow-lg p-5"
+                data-aos={climate.aos}
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1500"
               >
                 <div className="w-16 h-16 mx-auto">
                   <img src={climate.img} alt="" />

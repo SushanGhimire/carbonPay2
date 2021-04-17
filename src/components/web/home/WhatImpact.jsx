@@ -1,23 +1,35 @@
-import React from "react";
+import { useEffect } from "react";
 // import planet from "../../assets/images/homepage/noPlanet.jpg";
 import impact from "../../../assets/images/homepage/impact.jpg";
 import check from "../../../assets/images/homepage/check.svg";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function WhatImpact() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const Carbonclimate = [
     {
       blog: "We direct 100% of merchant contribution to carbon removal.",
+      aos: "fade-up",
+      time: "2000",
     },
     {
       blog:
         "CarbonPay dynamically selects Non-profit with highest net carbon capture effort",
+      aos: "fade-up",
+      time: "2200",
     },
     {
       blog: "This creates environment of accountability and innovation",
+      aos: "fade-up",
+      time: "2400",
     },
     {
       blog:
         "Our software help maximize the long-term impact. CarbonPay buys carbon removal from the exact same Nonprofits.",
+      aos: "fade-up",
+      time: "2600",
     },
   ];
   return (
@@ -27,6 +39,9 @@ function WhatImpact() {
           src={impact}
           className="w-full h-full md:w-full md:h-1/2 lg:h-full lg:w-full object-cover "
           alt=""
+          data-aos="flip-left"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-duration="2000"
         />
       </div>
       <div className="flex-1 flex flex-col p-5 md:p-10 justify-center items-center">
@@ -38,9 +53,15 @@ function WhatImpact() {
         </div>
         <div className="mt-10  sm:px-0">
           <ul className="space-y-4">
-            {Carbonclimate.map((blog) => {
+            {Carbonclimate.map((blog, index) => {
               return (
-                <div key={blog.blog} className="flex space-x-3 items-center">
+                <div
+                  key={index}
+                  className="flex space-x-3 items-center"
+                  data-aos={blog.aos}
+                  data-aos-anchor-placement="top-bottom"
+                  data-aos-duration={blog.time}
+                >
                   <div className="lg:w-8 w-6 h-6 lg:h-8">
                     <img src={check} className="w-full h-full" alt="" />
                   </div>

@@ -1,8 +1,12 @@
-import React from "react";
+import { useEffect } from "react";
 import Cmerchant from "../../../assets/images/homepage/Cmerchant.jpg";
 import Cconsumer from "../../../assets/images/homepage/Cconsumer.jpg";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function MerchantConsumer() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const carbons = [
     {
       name: "What is the CarbonPay for Merchants?",
@@ -19,7 +23,12 @@ function MerchantConsumer() {
   ];
   return (
     <div className="w-full bg-light_white pb-20">
-      <div className="max-w-5xl mx-auto bg-white mb-10 p-5 rounded-lg shadow-md">
+      <div
+        className="max-w-5xl mx-auto bg-white mb-10 p-5 rounded-lg shadow-md"
+        data-aos="zoom-in"
+        data-aos-anchor-placement="top-bottom"
+        data-aos-duration="1500"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {carbons.map((carbon, index) => {
             return (
