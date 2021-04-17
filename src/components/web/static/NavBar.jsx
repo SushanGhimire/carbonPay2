@@ -141,11 +141,18 @@ function NavBar({ loggedIn }) {
               </Link>
 
               <div className="flex flex-col space-y-2 items-center">
-                <div className="cursor-pointer">Products</div>
-                <div className="cursor-pointer">Use Cases</div>
-                <div className="cursor-pointer">Developers</div>
-                <div className="cursor-pointer">Company</div>
-                <div className="cursor-pointer">Pricing</div>
+                {navlist.map((list, index) => {
+                  const { name, to } = list;
+                  return (
+                    <Link
+                      className="cursor-pointer hover:text-primary tracking-wider text-lg"
+                      key={index}
+                      to={to}
+                    >
+                      {name}
+                    </Link>
+                  );
+                })}
               </div>
 
               <Link

@@ -8,7 +8,7 @@ function offset() {
   return (
     <div>
       <FrontPage
-        header="Carbon Offsets Explained"
+        header="Carbon Offsets "
         des="A cost-effective way to reduce emissions."
         img={front}
       />
