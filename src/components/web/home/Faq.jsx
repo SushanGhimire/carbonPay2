@@ -38,7 +38,7 @@ function Faq() {
   }, []);
 
   const handleFaq = (index) => {
-    Faqs[index].isTrue
+    Faqs[index].isTrue || faqs[index].isTrue
       ? (Faqs[index].isTrue = false)
       : (Faqs[index].isTrue = true);
 
