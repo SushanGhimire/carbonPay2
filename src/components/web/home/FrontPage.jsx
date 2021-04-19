@@ -36,19 +36,18 @@ function FrontPage({ header, des, img }) {
         </div>
       </div>
       {/* right side  */}
-      <div className="flex-1 mt-5 md:mt-0 z-20 flex justify-center items-center bg-no-repeat bg-center ">
-        <img
-          src={img}
-          className=" xl:h-3/4 w-full object-cover"
-          alt=""
-          data-aos="fade-left"
-          data-aos-anchor-placement="top-bottom"
-          data-aos-duration="1500"
-        />
+      <div
+        className="flex-1 mt-5 md:mt-0 z-20 flex justify-center items-center bg-no-repeat bg-center "
+        style={{ backgroundImage: `url(${img})` }}
+        data-aos="fade-left"
+        data-aos-anchor-placement="top-bottom"
+        data-aos-duration="1500"
+      >
+        <img src={img} className=" md:h-64 md:hidden object-cover" alt="" />
       </div>
       {/* <div className="hidden md:flex w-full absolute inset-x-0 bottom-0 z-10">
-      <img src={wave} className="w-full h-full object-cover " alt="" />
-    </div> */}
+        <img src={wave} className="w-full h-full object-cover " alt="" />
+      </div> */}
     </div>
   );
 }
