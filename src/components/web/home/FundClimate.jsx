@@ -25,7 +25,7 @@ function FundClimate() {
     },
   ];
   return (
-    <div className="p-5 md:px-10 md:pb-28 pt-10 md:pt-20 lg:pt-28  flex flex-col justify-center bg-light_white">
+    <div className="p-5 md:px-10 md:pb-28 pt-10 md:pt-20 lg:pt-28  flex flex-col justify-center bg-light_white font-rubik">
       <div className="flex flex-col justify-center items-centerpy-5">
         <div className="mx-auto lg:w-1/2 text-3xl md:text-4xl font-bold text-center font-header">
           Fund Climate Change Efforts <br /> with Payment
@@ -33,7 +33,7 @@ function FundClimate() {
         <div>
           <div className="h-1 w-44 md:w-64 bg-primary mx-auto mt-3"></div>
         </div>
-        <div className=" mt-5 text-lg text-gray-600 text-center">
+        <div className=" mt-5 text-lg text-gray-600 text-center font-rubik">
           With CarbonPay, you can direct a fraction of each payment to donate to{" "}
           <br />
           best carbon removal non-profits in just a few clicks.

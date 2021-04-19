@@ -23,7 +23,7 @@ function FrontPage({ header, des, img }) {
         <div className="font-bold text-4xl md:text-6xl mt-10 md:mt-0">
           {header}
         </div>
-        <div className="text-base md:text-lg font-bold text-gray-600">
+        <div className="text-base md:text-lg font-medium text-gray-600 text-rubik">
           {des}
         </div>
         <div>
@@ -36,14 +36,14 @@ function FrontPage({ header, des, img }) {
         </div>
       </div>
       {/* right side  */}
+
       <div
         className="flex-1 mt-5 md:mt-0 z-20 flex justify-center items-center bg-no-repeat bg-center "
-        style={{ backgroundImage: `url(${img})` }}
         data-aos="fade-left"
         data-aos-anchor-placement="top-bottom"
         data-aos-duration="1500"
       >
-        <img src={img} className=" md:h-64 md:hidden object-cover" alt="" />
+        <img src={img} className="  object-cover" alt="" />
       </div>
       {/* <div className="hidden md:flex w-full absolute inset-x-0 bottom-0 z-10">
         <img src={wave} className="w-full h-full object-cover " alt="" />

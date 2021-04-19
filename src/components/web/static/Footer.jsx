@@ -5,7 +5,7 @@ import twitter from "../../../assets/images/homepage/twitter.svg";
 function Footer() {
   const logos = [facebook, instagram, linkedin, twitter];
   return (
-    <div className="w-full p-5 md:pt-10  bg-gray-100 flex-col">
+    <div className="w-full p-5 md:pt-10  bg-gray-100 flex-col font-rubik">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-b p-5">
         <div className="col-span-1 flex flex-col">
           <div className="text-3xl font-bold mx-auto text-primary font-header">

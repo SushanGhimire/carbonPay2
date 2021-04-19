@@ -12,28 +12,28 @@ function WhatImpact() {
     {
       blog: "We direct 100% of merchant contribution to carbon removal.",
       aos: "fade-up",
-      time: "2000",
+      time: "1500",
     },
     {
       blog:
         "CarbonPay dynamically selects Non-profit with highest net carbon capture effort",
       aos: "fade-up",
-      time: "2200",
+      time: "1700",
     },
     {
       blog: "This creates environment of accountability and innovation",
       aos: "fade-up",
-      time: "2400",
+      time: "1900",
     },
     {
       blog:
         "Our software help maximize the long-term impact. CarbonPay buys carbon removal from the exact same Nonprofits.",
       aos: "fade-up",
-      time: "2600",
+      time: "2100",
     },
   ];
   return (
-    <div className="md:flex pt-10 pb-20 px-5 bg-white">
+    <div className="md:flex pt-10 pb-20 px-5 bg-white font-rubik">
       <div className="w-full md:w-1/2 md:relative flex justify-center items-center">
         <img
           src={impact}

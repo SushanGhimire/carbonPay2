@@ -22,7 +22,7 @@ function MerchantConsumer() {
     },
   ];
   return (
-    <div className="w-full bg-light_white pb-20">
+    <div className="w-full bg-light_white pb-20 font-rubik">
       <div
         className="max-w-5xl mx-auto bg-white mb-10 p-5 rounded-lg shadow-md"
         data-aos="zoom-in"

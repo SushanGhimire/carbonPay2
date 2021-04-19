@@ -13,7 +13,7 @@ function WhyPayment() {
         <div className="font-bold text-white text-4xl md:text-6xl  font-header">
           Why Payment?
         </div>
-        <div className="text-base md:text-lg font-bold text-white text-center">
+        <div className="text-base md:text-lg font-bold text-white text-center font-rubik">
           Taking 1% of every internet transaction to fund Climate Change effort
           has fastest impact
         </div>

@@ -52,7 +52,7 @@ function Faq() {
   };
 
   return (
-    <div className="w-full flex flex-col px-10 lg:px-20 py-20">
+    <div className="w-full flex flex-col px-10 lg:px-20 py-20 font-rubik">
       <div className="text-xl sm:text-4xl text-center mt-10 font-header font-bold">
         FAQ
       </div>
@@ -74,7 +74,7 @@ function Faq() {
                     handleFaq(index);
                   }}
                 >
-                  <div className="text-lg lg:text-3xl"> {qst}</div>
+                  <div className="text-lg lg:text-3xl font-header"> {qst}</div>
                   <div>
                     <svg
                       className="w-6 h-6"
