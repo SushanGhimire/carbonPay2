@@ -86,7 +86,7 @@ export default function Login() {
         .then((dta) => {
           const { detail, access, refresh } = dta;
           if (detail === "Invalid Crendential, Try again") {
-            errors.login = "Username or password is incorrect";
+            errors.login = "Email or password is incorrect";
             setData({
               ...data,
               errors,
@@ -139,12 +139,13 @@ export default function Login() {
                 <label htmlFor="password" className="text-gray-500">
                   Password
                 </label>
-                <label
+                <Link
+                  to="/confirmemail"
                   htmlFor="password"
                   className="text-gray-500 cursor-pointer hover:text-primary"
                 >
                   Forget Password?
-                </label>
+                </Link>
               </div>
               <input
                 type="password"

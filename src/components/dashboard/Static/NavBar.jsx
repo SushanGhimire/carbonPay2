@@ -70,7 +70,8 @@ function NavBar() {
       ],
     },
   ];
-  // let Refresh = localStorage.getItem("refresh");
+  let Refresh = localStorage.getItem("refresh");
+  console.log(Refresh);
   const handleWidth = () => {
     const innerWidth = window.innerWidth;
     if (innerWidth > 1023 && width < 1024) {
@@ -110,7 +111,7 @@ function NavBar() {
     //   },
     // ];
     // axios
-    //   .post(`${baseUrl}/logout/`, logout)
+    //   .post(`${baseUrl}/user/logout/`, logout)
     //   .then((res) => {
     //     console.log(res);
     //     window.location("/login");
@@ -258,14 +259,46 @@ function NavBar() {
               }}
               onMouseLeave={() => setIsShown(false)}
             >
-              <div className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out">
-                Profile
+              <div className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out flex items-center space-x-2">
+                <div>
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <span>Profile</span>
               </div>
               <div
-                className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out"
+                className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out flex items-center space-x-2"
                 onClick={handleLogout}
               >
-                Logout
+                <div>
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                  </svg>
+                </div>
+                <span>Logout</span>
               </div>
             </div>
           )}

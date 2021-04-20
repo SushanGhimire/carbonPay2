@@ -126,7 +126,7 @@ export default function Register() {
 
   return (
     <div>
-      <div className="  w-full h-full grid place-items-center py-16">
+      <div className="  w-full h-full grid place-items-center py-16 font-rubik">
         <form
           className="bg-white border border-gray-300 px-10 py-8 mx-5 max-w-sm w-full authentication-form"
           autoComplete="off"
