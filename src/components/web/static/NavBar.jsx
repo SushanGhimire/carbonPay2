@@ -88,7 +88,7 @@ function NavBar({ loggedIn }) {
             </div>
 
             <Link
-              to={loggedIn ? "/dashboard" : "/login"}
+              to={loggedIn ? "/dashboard/stripeform" : "/login"}
               className="button-animation"
             >
               <div className="animation-text px-6 rounded-full py-2">
@@ -156,7 +156,7 @@ function NavBar({ loggedIn }) {
               </div>
 
               <Link
-                to={loggedIn ? "/dashboard" : "/login"}
+                to={loggedIn ? "/dashboard/stripeform" : "/login"}
                 className="button-animation text-center mt-2"
               >
                 <div className="animation-text px-6 rounded-full py-2">

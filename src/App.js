@@ -1,6 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import PageNotFound from "./common/page-not-found";
 import EmailVerification from "./components/authentication/EmailVerification";
+import EmailVerify from "./components/authentication/EmailVerify";
 import Login from "./components/authentication/login";
 import PassWordReset from "./components/authentication/PassWordReset";
 import Register from "./components/authentication/register";
@@ -28,6 +29,11 @@ function App(props) {
               exact
               path="/user/password-reset/:uidb64/:token"
               component={PassWordReset}
+            />
+            <Route
+              exact
+              path="/user/email-verify/:token"
+              component={EmailVerify}
             />
           </>
         )}

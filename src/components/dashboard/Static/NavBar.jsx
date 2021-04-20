@@ -1,15 +1,11 @@
-// import axios from "axios";
+import axios from "axios";
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import { baseUrl } from "../../authentication/authorization";
+import { baseUrl } from "../../authentication/authorization";
 
 function NavBar() {
   const [width, setWidth] = useState(window.innerWidth);
-  // const [logout, setLogout] = useState([
-  //   {
-  //     refresh: "",
-  //   },
-  // ]);
+  const [redirect, setRedirect] = useState("");
   const [isShown, setIsShown] = useState(false);
   const mobIpadSidebar = useRef();
   const coverAll = useRef();
@@ -71,7 +67,7 @@ function NavBar() {
     },
   ];
   let Refresh = localStorage.getItem("refresh");
-  console.log(Refresh);
+
   const handleWidth = () => {
     const innerWidth = window.innerWidth;
     if (innerWidth > 1023 && width < 1024) {
@@ -122,9 +118,27 @@ function NavBar() {
     localStorage.clear();
     window.location = "/login";
   };
+  const token = localStorage.getItem("access");
+
+  const handleVerify = () => {
+    axios
+      .get(`${baseUrl}/merchants/signup-stripe-onboard/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setRedirect(res.data.redirect_url);
+        console.log(redirect);
+        // window.open(`'/${redirect}','_blank'`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div
-      className="bg-white z-10 w-full py-2  border-b transition-all duration-300 ease-in-out px-10"
+      className="bg-white z-10 w-full py-2  border-b transition-all duration-300 ease-in-out px-10 sticky top-0"
       onMouseLeave={() => setIsShown(false)}
     >
       {/* nav bar  */}
@@ -251,6 +265,12 @@ function NavBar() {
               />
             </svg>
           </div>
+          <button
+            className="bg-indigo-500 text-white px-5 py-2 rounded"
+            onClick={handleVerify}
+          >
+            Verify Account
+          </button>
           {isShown && (
             <div
               className={`absolute solution-list top-7 -right-10 bg-white text-secondary   rounded-md shadow-md cursor-pointer p-3 `}

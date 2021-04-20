@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../authentication/authorization";
+import process from "../../assets/images/loading/progress.svg";
 
 export default function Register() {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     username: "",
     email: "",
@@ -81,6 +83,7 @@ export default function Register() {
     formData.append("username", username);
     formData.append("email", email);
     formData.append("password", password);
+    setLoading(true);
     fetch(url, {
       method: "POST",
       body: formData,
@@ -101,6 +104,7 @@ export default function Register() {
             errors,
           });
         } else {
+          setLoading(false);
           setData({
             ...data,
             confirmationEmail: "Confirmation link has been sent to your email",
@@ -203,8 +207,21 @@ export default function Register() {
               <div className="text-green-600 text-sm">{confirmationEmail}</div>
             )}
             <div className="button-animation" style={{ display: "block" }}>
-              <button className="animation-text text-center px-5 py-3 w-full">
-                Register
+              <button
+                type="submit"
+                className="animation-text text-center px-5 py-3 w-full"
+              >
+                {!loading ? (
+                  <span>Register</span>
+                ) : (
+                  <span>
+                    <img
+                      src={process}
+                      className="animate-spin h-5 w-5 mx-auto"
+                      alt=""
+                    />
+                  </span>
+                )}
               </button>
               <div className="animation-bg"></div>
             </div>
