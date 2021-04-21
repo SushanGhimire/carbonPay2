@@ -29,7 +29,7 @@ function Footer() {
     },
     {
       name: "Carbon Neutral",
-      to: "/carbonnerutral",
+      to: "/carbonneutral",
     },
   ];
   return (
