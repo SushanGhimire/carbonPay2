@@ -2,12 +2,40 @@ import facebook from "../../../assets/images/homepage/facebook.svg";
 import instagram from "../../../assets/images/homepage/instagram.svg";
 import linkedin from "../../../assets/images/homepage/linkedin.svg";
 import twitter from "../../../assets/images/homepage/twitter.svg";
+import image from "../../../assets/images/homepage/forest.svg";
+import { Link } from "react-router-dom";
 function Footer() {
   const logos = [facebook, instagram, linkedin, twitter];
+  const navlist = [
+    {
+      name: "Climate Change",
+      to: "/climatechange",
+    },
+    {
+      name: "Carbon Offsets?",
+      to: "/carbonoffsets",
+    },
+    // {
+    //   name: "About Us",
+    //   to: "/about",
+    // },
+    {
+      name: "For Merchants",
+      to: "/formerchants",
+    },
+    {
+      name: "For Consumers",
+      to: "/forconsumers",
+    },
+    {
+      name: "Carbon Neutral",
+      to: "/carbonnerutral",
+    },
+  ];
   return (
     <div className="w-full p-5 md:pt-10  bg-gray-100 flex-col font-rubik">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-b p-5">
-        <div className="col-span-1 flex flex-col">
+        <div className="col-span-1 flex flex-col items-center justify-center">
           <div className="text-3xl font-bold mx-auto text-primary font-header">
             CarbonPay
           </div>
@@ -27,29 +55,28 @@ function Footer() {
             })}
           </div>
         </div>
-        <div className="col-span-1 mx-auto ">
-          <div className="text-2xl font-bold mx-auto text-primary font-header">
-            CarbonPay
+        <div className="col-span-1 mx-auto flex flex-col items-center justify-center">
+          <div className="text-2xl font-bold mx-auto text-primary font-header ">
+            Quick Link
           </div>
-          <ul className="mt-3 space-y-2 text-center text-sm sm:text-base">
-            <li>CarbonPay 1</li>
-            <li>CarbonPay 2</li>
-            <li>CarbonPay 3</li>
-            <li>CarbonPay 4</li>
-            <li>CarbonPay 5</li>
-          </ul>
+          <div className="flex flex-col space-y-2 mt-3 space-y-2  text-sm sm:text-base">
+            {navlist.map((list, index) => {
+              const { name, to } = list;
+              return (
+                <Link
+                  className="cursor-pointer hover:text-primary tracking-wider text-lg"
+                  key={index}
+                  to={to}
+                >
+                  {name}
+                </Link>
+              );
+            })}
+          </div>
         </div>
-        <div className="col-span-1 mx-auto">
-          <div className="text-2xl font-bold mx-auto text-primary font-header">
-            Developers
-          </div>
-          <ul className="mt-3 space-y-2 text-center  text-sm sm:text-base">
-            <li>Developers 1</li>
-            <li>Developers 2</li>
-            <li>Developers 3</li>
-            <li>Developers 4</li>
-            <li>Developers 5</li>
-          </ul>
+
+        <div className="col-span-1 mx-auto w-full h-full ">
+          <img src={image} alt="" />
         </div>
       </div>
       <div className="text-center mx-auto px-5 lg:px-20 pt-5">

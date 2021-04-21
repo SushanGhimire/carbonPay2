@@ -41,6 +41,7 @@ function WhatOffset() {
   useEffect(() => {
     AOS.init();
     setOffsets(Offsets);
+    // eslint-disable-next-line
   }, []);
 
   const handleFaq = (index) => {
@@ -93,8 +94,8 @@ function WhatOffset() {
                   </div>
                 </div>
                 <div
-                  className={`text-sm lg:text-lg text-gray-600 transition-all duration-300 ease-linear  overflow-hidden ${
-                    isTrue ? "h-44 md:h-36" : "h-0"
+                  className={`text-xs sm:text-sm lg:text-lg text-gray-600 transition-all duration-300 ease-linear  overflow-hidden ${
+                    isTrue ? "h-64 sm:h-44 md:h-32 lg:h-40 xl:h-36" : "h-0"
                   }`}
                 >
                   {ans}

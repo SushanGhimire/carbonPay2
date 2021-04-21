@@ -15,9 +15,21 @@ function NavBar({ loggedIn }) {
       name: "Carbon Offsets?",
       to: "/carbonoffsets",
     },
+    // {
+    //   name: "About Us",
+    //   to: "/about",
+    // },
     {
-      name: "About Us",
-      to: "/about",
+      name: "For Merchants",
+      to: "/formerchants",
+    },
+    {
+      name: "For Consumers",
+      to: "/forconsumers",
+    },
+    {
+      name: "Carbon Neutral",
+      to: "/carbonneutral",
     },
   ];
   // toggle in mobile
@@ -148,6 +160,7 @@ function NavBar({ loggedIn }) {
                       className="cursor-pointer hover:text-primary tracking-wider text-lg"
                       key={index}
                       to={to}
+                      onClick={toggleMobileSidebar}
                     >
                       {name}
                     </Link>

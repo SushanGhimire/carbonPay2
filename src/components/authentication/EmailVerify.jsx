@@ -4,7 +4,7 @@ import axios from "axios";
 import { baseUrl } from "../authentication/authorization";
 function EmailVerify() {
   const { token } = useParams();
-  //   let token = window.location.pathname.split("/")[3];
+  // let token = window.location.pathname.split("/")[3];
   useEffect(() => {
     axios
       .get(`${baseUrl}/user/email-verify/?${token}`)
@@ -14,7 +14,7 @@ function EmailVerify() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [token]);
   return <div></div>;
 }
 

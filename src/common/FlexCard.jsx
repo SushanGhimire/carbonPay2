@@ -30,8 +30,8 @@ function FlexCard({ title, des, direction, img }) {
         data-aos-anchor-placement="top-bottom"
         data-aos-duration="1500"
       >
-        <div className="h-100">
-          <img src={img} className="h-full mx-auto" alt="" />
+        <div className="">
+          <img src={img} className=" mx-auto" alt="" />
         </div>
       </div>
     </div>

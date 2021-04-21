@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 function Faq() {
   //   const [height, setHeight] = useState("h-0");
   const [faqs, setfaqs] = useState([]);
+  const count = "1";
   let Faqs = [
     {
       qst: "What on Earth is a carbon offset?",
@@ -41,7 +42,8 @@ function Faq() {
   useEffect(() => {
     AOS.init();
     setfaqs(Faqs);
-  }, []);
+    // eslint-disable-next-line
+  }, [count]);
 
   const handleFaq = (index) => {
     Faqs[index].isTrue || faqs[index].isTrue
@@ -93,8 +95,8 @@ function Faq() {
                   </div>
                 </div>
                 <div
-                  className={`text-sm lg:text-lg text-gray-600 transition-all duration-300 ease-linear  overflow-hidden ${
-                    isTrue ? "h-44 md:h-36" : "h-0"
+                  className={`text-xs sm:text-sm lg:text-lg text-gray-600 transition-all duration-300 ease-linear  overflow-hidden ${
+                    isTrue ? "h-64 sm:h-44 md:h-32 lg:h-40 xl:h-36" : "h-0"
                   }`}
                 >
                   {ans}

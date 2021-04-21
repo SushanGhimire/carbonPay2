@@ -1,11 +1,9 @@
-import axios from "axios";
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { baseUrl } from "../../authentication/authorization";
 
-function NavBar() {
+function NavBar({ handleVerify }) {
   const [width, setWidth] = useState(window.innerWidth);
-  const [redirect, setRedirect] = useState("");
+
   const [isShown, setIsShown] = useState(false);
   const mobIpadSidebar = useRef();
   const coverAll = useRef();
@@ -66,8 +64,7 @@ function NavBar() {
       ],
     },
   ];
-  let Refresh = localStorage.getItem("refresh");
-
+  // let Refresh = localStorage.getItem("refresh");
   const handleWidth = () => {
     const innerWidth = window.innerWidth;
     if (innerWidth > 1023 && width < 1024) {
@@ -118,24 +115,7 @@ function NavBar() {
     localStorage.clear();
     window.location = "/login";
   };
-  const token = localStorage.getItem("access");
 
-  const handleVerify = () => {
-    axios
-      .get(`${baseUrl}/merchants/signup-stripe-onboard/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setRedirect(res.data.redirect_url);
-        console.log(redirect);
-        // window.open(`'/${redirect}','_blank'`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   return (
     <div
       className="bg-white z-10 w-full py-2  border-b transition-all duration-300 ease-in-out px-10 sticky top-0"

@@ -1,42 +1,19 @@
 import { useEffect } from "react";
 // import planet from "../../assets/images/homepage/noPlanet.jpg";
-import impact from "../../../assets/images/homepage/impact.jpg";
-import check from "../../../assets/images/homepage/check.svg";
+
+import check from "../assets/images/homepage/check.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-function WhatImpact() {
+function WhatImpact({ Carbonclimate, cardImage }) {
   useEffect(() => {
     AOS.init();
   }, []);
-  const Carbonclimate = [
-    {
-      blog: "We direct 100% of merchant contribution to carbon removal.",
-      aos: "fade-up",
-      time: "1500",
-    },
-    {
-      blog:
-        "CarbonPay dynamically selects Non-profit with highest net carbon capture effort",
-      aos: "fade-up",
-      time: "1700",
-    },
-    {
-      blog: "This creates environment of accountability and innovation",
-      aos: "fade-up",
-      time: "1900",
-    },
-    {
-      blog:
-        "Our software help maximize the long-term impact. CarbonPay buys carbon removal from the exact same Nonprofits.",
-      aos: "fade-up",
-      time: "2100",
-    },
-  ];
+
   return (
     <div className="md:flex pt-10 pb-20 px-5 bg-white font-rubik">
       <div className="w-full md:w-1/2 md:relative flex justify-center items-center">
         <img
-          src={impact}
+          src={cardImage}
           className="w-full h-full md:w-full md:h-1/2 lg:h-full lg:w-full object-cover "
           alt=""
           data-aos="flip-left"

@@ -1,40 +1,23 @@
 import { useEffect } from "react";
-import merchant from "../../../assets/images/homepage/merchant.svg";
-import consumer from "../../../assets/images/homepage/consumer.svg";
-import nature from "../../../assets/images/homepage/nature.svg";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
-function StakeHolders() {
+function StakeHolders({ cards, title, grid }) {
   useEffect(() => {
     AOS.init();
   }, []);
-  const cards = [
-    {
-      logo: merchant,
-      name: "merchant",
-      title: "Climate Impact Payment to increase transaction",
-      bg: "bg-seconday",
-      aos: "fade-down",
-    },
-    {
-      logo: consumer,
-      name: "Consumers",
-      title: "Make Climate Conscious purchase with impact tracking page",
-      aos: "fade-up",
-    },
-    {
-      logo: nature,
-      name: "Climate Impact Non-Profit",
-      title:
-        "Accountability and Incentives for highest net carbon capture efforts",
-      aos: "fade-down",
-    },
-  ];
+
   return (
-    <div className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-10 lg:px-20 py-20 bg-light_white font-rubik">
-      <div className="col-span-1 sm:col-span-2 md:col-span-3">
+    <div
+      className={`grid w-full grid-cols-1 sm:grid-cols-2 md:${grid} gap-6 px-10 lg:px-20 py-20 bg-light_white font-rubik`}
+    >
+      <div
+        className={`col-span-1 sm:col-span-2 md:${
+          grid === "grid-cols-3" ? "col-span-3" : "col-span-4"
+        }`}
+      >
         <div className="text-xl sm:text-4xl text-center mt-10 font-header font-bold">
-          Stakeholders
+          {title}
         </div>
         <div>
           <div className="h-1 w-20 md:w-32 bg-primary mx-auto mt-3"></div>
