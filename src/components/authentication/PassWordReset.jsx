@@ -3,6 +3,7 @@ import axios from "axios";
 import { baseUrl } from "../authentication/authorization";
 import { useParams } from "react-router-dom";
 function PassWordReset() {
+  const [loading, setLoading] = useState(false);
   let { uidb64 } = useParams();
   let { token } = useParams();
   const [Password, setPassword] = useState({
@@ -19,10 +20,12 @@ function PassWordReset() {
     } else if (password.length < 8) {
       setError("passsword must be 8 character long");
     } else {
+      setLoading(true);
       axios
         .patch(`${baseUrl}/user/password-reset-complete/`, Password)
         .then((res) => {
           console.log(res);
+          setLoading(false);
           window.location = "/login";
         })
         .catch((err) => {
@@ -62,9 +65,17 @@ function PassWordReset() {
             <div className="button-animation" style={{ display: "block" }}>
               <button
                 type="submit"
-                className="animation-text text-center px-5 py-3 w-full"
+                className="animation-text text-center px-5 py-3 w-full flex items-center space-x-4"
               >
-                Submit
+                <span>{loading ? "Submiting" : "Submit"}</span>
+                {loading && (
+                  <div className="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                )}
               </button>
               <div className="animation-bg"></div>
             </div>

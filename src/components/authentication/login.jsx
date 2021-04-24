@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { baseUrl } from "../authentication/authorization";
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -78,6 +79,7 @@ export default function Login() {
       const formData = new FormData();
       formData.append("email", email);
       formData.append("password", password);
+      setLoading(true);
       fetch(url, {
         method: "POST",
         body: formData,
@@ -87,6 +89,7 @@ export default function Login() {
           const { detail, access, refresh } = dta;
           if (detail === "Invalid Crendential, Try again") {
             errors.login = "Email or password is incorrect";
+            setLoading(false);
             setData({
               ...data,
               errors,
@@ -163,8 +166,16 @@ export default function Login() {
             </div>
 
             <div className="button-animation" style={{ display: "block" }}>
-              <button className="animation-text text-center px-5 py-3 w-full">
-                Login
+              <button className="animation-text text-center px-5 py-3 w-full flex items-center space-x-4">
+                <span>Sign In</span>
+                {loading && (
+                  <div className="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                )}
               </button>
               <div className="animation-bg"></div>
             </div>

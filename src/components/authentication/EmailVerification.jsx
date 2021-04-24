@@ -62,18 +62,16 @@ function EmailVerification() {
             <div className="button-animation" style={{ display: "block" }}>
               <button
                 type="submit"
-                className="animation-text text-center px-5 py-3 w-full"
+                className="animation-text text-center px-5 py-3 w-full flex items-center space-x-4"
               >
-                {!loading ? (
-                  <span>Submit</span>
-                ) : (
-                  <span>
-                    <img
-                      src={process}
-                      className="animate-spin h-5 w-5 mx-auto"
-                      alt=""
-                    />
-                  </span>
+                <span>{loading ? "Submiting" : "Submit"}</span>
+                {loading && (
+                  <div className="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
                 )}
               </button>
               <div className="animation-bg"></div>
