@@ -11,6 +11,7 @@ import { baseUrl } from "../authentication/authorization";
 function DashboardManagement() {
   const token = localStorage.getItem("access");
   const [redirect, setRedirect] = useState("");
+  const [isForm, setIsForm] = useState(true);
   const handleVerify = () => {
     console.log("parent");
     axios
@@ -29,29 +30,42 @@ function DashboardManagement() {
   };
 
   return (
-    <div className="bg-white h-screen flex font-rubik">
-      <Aside />
-      <div className="flex-1 flex flex-col overflow-auto">
-        <NavBar handleVerify={handleVerify} />
-        <Switch>
-          <Route exact path="/dashboard" component={Home}></Route>
-          <Route exact path="/dashboard/payments" component={Payment}></Route>
-          <Route exact path="/dashboard/balances" component={Balance}></Route>
-          <Route
-            exact
-            path="/dashboard/verify"
-            component={() => {
-              window.location.href = `${redirect}`;
-              return null;
-            }}
-          ></Route>
-          <Route
+    <div className="bg-white h-screen flex font-rubik relative">
+      {isForm && <StripeRegForm className="" />}
+      {!isForm && (
+        <>
+          <Aside />
+          <div className="flex-1 flex flex-col overflow-auto">
+            <NavBar handleVerify={handleVerify} />
+            <Switch>
+              <Route exact path="/dashboard" component={Home}></Route>
+              <Route
+                exact
+                path="/dashboard/payments"
+                component={Payment}
+              ></Route>
+              <Route
+                exact
+                path="/dashboard/balances"
+                component={Balance}
+              ></Route>
+              <Route
+                exact
+                path="/dashboard/verify"
+                component={() => {
+                  window.location.href = `${redirect}`;
+                  return null;
+                }}
+              ></Route>
+              {/* <Route
             exact
             path="/dashboard/stripeform"
             component={StripeRegForm}
-          ></Route>
-        </Switch>
-      </div>
+          ></Route> */}
+            </Switch>
+          </div>
+        </>
+      )}
     </div>
   );
 }

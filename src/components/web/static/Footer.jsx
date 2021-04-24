@@ -57,7 +57,7 @@ function Footer() {
         </div>
         <div className="col-span-1 mx-auto flex flex-col items-center justify-center">
           <div className="text-2xl font-bold mx-auto text-primary font-header ">
-            Quick Link
+            Quick Links
           </div>
           <div className="flex flex-col space-y-2 mt-3 space-y-2  text-sm sm:text-base">
             {navlist.map((list, index) => {
