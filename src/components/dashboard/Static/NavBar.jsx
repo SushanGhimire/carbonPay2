@@ -229,7 +229,7 @@ function NavBar({ handleVerify }) {
             </svg>
           </div>
           {/* user  */}
-          <div onMouseEnter={handleShown}>
+          <div onClick={handleShown}>
             <svg
               className="w-5 h-5 cursor-pointer"
               fill="none"
@@ -245,21 +245,15 @@ function NavBar({ handleVerify }) {
               />
             </svg>
           </div>
-          <button
-            className="bg-indigo-500 text-white px-5 py-2 rounded"
-            onClick={handleVerify}
-          >
-            Verify Account
-          </button>
+
           {isShown && (
             <div
-              className={`absolute solution-list top-7 -right-10 bg-white text-secondary   rounded-md shadow-md cursor-pointer p-3 `}
-              onMouseEnter={() => {
-                setIsShown(true);
-              }}
-              onMouseLeave={() => setIsShown(false)}
+              className={`absolute solution-list top-10 -right-10 bg-gray-100 text-secondary   rounded-md shadow-md cursor-pointer p-3 `}
             >
-              <div className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out flex items-center space-x-2">
+              <Link
+                to="/dashboard/userprofile"
+                className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out flex items-center space-x-2"
+              >
                 <div>
                   <svg
                     className="w-6 h-6"
@@ -277,7 +271,7 @@ function NavBar({ handleVerify }) {
                   </svg>
                 </div>
                 <span>Profile</span>
-              </div>
+              </Link>
               <div
                 className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out flex items-center space-x-2"
                 onClick={handleLogout}
@@ -303,6 +297,12 @@ function NavBar({ handleVerify }) {
             </div>
           )}
         </div>
+        <button
+          className="bg-indigo-500 text-white px-5 py-2 rounded ml-4"
+          onClick={handleVerify}
+        >
+          Verify Account
+        </button>
       </div>
       {/* aisde for mobile ipad  */}
       {width < 1024 && (

@@ -8,10 +8,12 @@ import Balance from "../dashboard/balance/Balance";
 import StripeRegForm from "./StripeRegForm.jsx/StripeRegForm";
 import axios from "axios";
 import { baseUrl } from "../authentication/authorization";
+import Profile from "./profile/Profile";
+import EmailVerification from "../authentication/EmailVerification";
 function DashboardManagement() {
   const token = localStorage.getItem("access");
   const [redirect, setRedirect] = useState("");
-  const [isForm, setIsForm] = useState(true);
+  const [isForm, setIsForm] = useState(false);
   const handleVerify = () => {
     console.log("parent");
     axios
@@ -39,6 +41,15 @@ function DashboardManagement() {
             <NavBar handleVerify={handleVerify} />
             <Switch>
               <Route exact path="/dashboard" component={Home}></Route>
+              <Route
+                exact
+                path="/dashboard/userprofile"
+                component={Profile}
+              ></Route>
+              <Route
+                path="/dashboard/confirmemail"
+                component={EmailVerification}
+              />
               <Route
                 exact
                 path="/dashboard/payments"

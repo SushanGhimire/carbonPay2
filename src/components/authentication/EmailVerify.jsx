@@ -6,14 +6,24 @@ function EmailVerify() {
   const { token } = useParams();
   // let token = window.location.pathname.split("/")[3];
   useEffect(() => {
-    axios
-      .get(`${baseUrl}/user/email-verify/?${token}`)
-      .then(() => {
-        window.location = "/login";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const controller = new AbortController();
+    const { signal } = controller;
+    const verifyEmail = async () => {
+      axios
+        .get(`${baseUrl}/user/email-verify/?${token}`, {
+          signal,
+        })
+        .then(() => {
+          window.location = "/login";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      verifyEmail();
+      return () => {
+        controller.abort();
+      };
+    };
   }, [token]);
   return <div></div>;
 }

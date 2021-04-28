@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 
 function Payment() {
-  const paymentSubLists = ["Succeeded", "Refunded", "Uncaptured", "All"];
+  const paymentSubLists = ["All", "Succeeded", "Refunded", "Uncaptured"];
   const [width, setWidth] = useState(window.innerWidth);
   const Transations = [
     {
