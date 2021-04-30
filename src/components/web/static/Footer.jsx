@@ -4,7 +4,7 @@ import linkedin from "../../../assets/images/homepage/linkedin.svg";
 import twitter from "../../../assets/images/homepage/twitter.svg";
 import image from "../../../assets/images/homepage/forest.svg";
 import aspiration from "../../../assets/images/homepage/aspiration.svg";
-import retail from "../../../assets/images/homepage/Retaillogo.svg";
+import retail from "../../../assets/images/homepage/retaillogo1.svg";
 import { Link } from "react-router-dom";
 function Footer() {
   const logos = [facebook, instagram, linkedin, twitter];
@@ -49,12 +49,11 @@ function Footer() {
               <a
                 href="https://retail-scout.herokuapp.com/"
                 target="new tab"
-                className="p-1"
-                style={{
-                  backgroundColor: "#0B1C28",
-                }}
+                className="flex items-center mt-2 font-semibold"
               >
-                <img src={retail} alt="" className="w-24" />
+                <img src={retail} alt="" className="w-5 mr-1" />
+                <span>Retail</span>
+                <span className="text-primary">Scout</span>
               </a>
               <a
                 href="https://www.aspiration.com/"
