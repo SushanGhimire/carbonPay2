@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../authentication/authorization";
-import process from "../../assets/images/loading/progress.svg";
+// import process from "../../assets/images/loading/progress.svg";
 function EmailVerification() {
   const [Email, setEmail] = useState({
     email: "",

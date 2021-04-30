@@ -19,10 +19,10 @@ function EmailVerify() {
         .catch((err) => {
           console.log(err);
         });
-      verifyEmail();
-      return () => {
-        controller.abort();
-      };
+    };
+    verifyEmail();
+    return () => {
+      controller.abort();
     };
   }, [token]);
   return <div></div>;

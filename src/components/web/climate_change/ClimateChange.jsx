@@ -20,20 +20,21 @@ function ClimateChange() {
         img={temprature}
         direction="true"
       />
-      <FlexCard
+      {/* <FlexCard
         title="How do I contribute to climate change?"
         des="In our everyday lives, we all create carbon emissions which make-up our carbon footprint. According to The Union of Concerned Scientists, the average carbon emissions per person in the United States is 17.62 mT per person or the equivalent of keeping 3.7 passenger cars on the road for a year."
         img={contribute}
         direction=""
-      />
+      /> */}
       <FlexCard
-        title="How can I reduce my carbon footprint?"
-        des="The first step to reducing your carbon footprint is knowing where your carbon emissions are coming from. Both individuals and businesses can calculate their carbon footprints by using our Carbon Calculator. Once you have assessed where your carbon emissions are coming from, you can take action to reduce your footprint. Small changes can make a big difference. Below are a few ideas to help you get started."
+        title="How can I reduce  carbon with Carbonpay?"
+        des="The first step to reducing your carbon is knowing where carbon emissions are coming from. On every transaction you can donate the some percentage of your transaction amount for carbon removal. You can donate according to your wish to make the better environment and better earth"
         img={save}
         direction="true"
       />
     </div>
   );
 }
+// Both individuals and businesses can calculate their carbon footprints by using our Carbon Calculator. Once you have assessed where your carbon emissions are coming from, you can take action to reduce your footprint. Small changes can make a big difference. Below are a few ideas to help you get started.
 
 export default ClimateChange;

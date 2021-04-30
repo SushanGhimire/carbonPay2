@@ -10,7 +10,7 @@ import ClimateChange from "./components/web/climate_change/ClimateChange";
 import ForConsumer from "./components/web/forConsumer/ForConsumer";
 import forMerchant from "./components/web/forMerchant/forMerchant";
 import Home from "./components/web/home/Home";
-import offset from "./components/web/offset/offset";
+// import offset from "./components/web/offset/offset";
 import Footer from "./components/web/static/Footer";
 import NavBar from "./components/web/static/NavBar";
 

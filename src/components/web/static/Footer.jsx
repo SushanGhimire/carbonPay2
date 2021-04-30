@@ -42,8 +42,10 @@ function Footer() {
             CarbonPay
           </div>
           <div className=" flex flex-col text-center sm:px-5 py-2 text-sm sm:text-base  w-full">
-            <div className=" underline">Partnerships</div>
-            <div className="flex items-center flex-wrap mt-2 space-y-2 justify-evenly">
+            <div className=" underline text-lg font-semibold text-gray-700">
+              Partnerships
+            </div>
+            <div className="flex items-center flex-wrap  space-y-2 justify-evenly">
               <a
                 href="https://retail-scout.herokuapp.com/"
                 target="new tab"
@@ -59,7 +61,7 @@ function Footer() {
                 target="new tab"
                 className=""
               >
-                <img src={aspiration} alt="" className="w-24" />
+                <img src={aspiration} alt="" className="w-24 mt-1" />
               </a>
               <a
                 href="https://www.linkedin.com/company/selcouth-technology/about/"
