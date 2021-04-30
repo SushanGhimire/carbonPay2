@@ -11,10 +11,10 @@ function NavBar({ loggedIn }) {
       name: "Climate Change",
       to: "/climatechange",
     },
-    {
-      name: "Carbon Offsets?",
-      to: "/carbonoffsets",
-    },
+    // {
+    //   name: "Carbon Offsets?",
+    //   to: "/carbonoffsets",
+    // },
     // {
     //   name: "About Us",
     //   to: "/about",

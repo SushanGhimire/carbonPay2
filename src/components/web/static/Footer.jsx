@@ -3,6 +3,8 @@ import instagram from "../../../assets/images/homepage/instagram.svg";
 import linkedin from "../../../assets/images/homepage/linkedin.svg";
 import twitter from "../../../assets/images/homepage/twitter.svg";
 import image from "../../../assets/images/homepage/forest.svg";
+import aspiration from "../../../assets/images/homepage/aspiration.svg";
+import retail from "../../../assets/images/homepage/Retaillogo.svg";
 import { Link } from "react-router-dom";
 function Footer() {
   const logos = [facebook, instagram, linkedin, twitter];
@@ -11,10 +13,10 @@ function Footer() {
       name: "Climate Change",
       to: "/climatechange",
     },
-    {
-      name: "Carbon Offsets?",
-      to: "/carbonoffsets",
-    },
+    // {
+    //   name: "Carbon Offsets?",
+    //   to: "/carbonoffsets",
+    // },
     // {
     //   name: "About Us",
     //   to: "/about",
@@ -35,12 +37,38 @@ function Footer() {
   return (
     <div className="w-full p-5 md:pt-10  bg-gray-100 flex-col font-rubik">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-b p-5">
-        <div className="col-span-1 flex flex-col items-center justify-center">
+        <div className="col-span-1 flex flex-col items-center justify-center ">
           <div className="text-3xl font-bold mx-auto text-primary font-header">
             CarbonPay
           </div>
-          <div className="text-center  sm:px-5 py-2 text-sm sm:text-base">
-            Removing Carbon From Environment with Every Online Purchase
+          <div className=" flex flex-col text-center sm:px-5 py-2 text-sm sm:text-base  w-full">
+            <div className=" underline">Partnerships</div>
+            <div className="flex items-center flex-wrap mt-2 space-y-2 justify-evenly">
+              <a
+                href="https://retail-scout.herokuapp.com/"
+                target="new tab"
+                className="p-1"
+                style={{
+                  backgroundColor: "#0B1C28",
+                }}
+              >
+                <img src={retail} alt="" className="w-24" />
+              </a>
+              <a
+                href="https://www.aspiration.com/"
+                target="new tab"
+                className=""
+              >
+                <img src={aspiration} alt="" className="w-24" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/selcouth-technology/about/"
+                target="new tab"
+                className="font-semibold font-rubik text-indigo-600"
+              >
+                Selcouth Technology
+              </a>
+            </div>
           </div>
           <div className="flex space-x-3 mx-auto py-3">
             {logos.map((logo) => {

@@ -34,7 +34,11 @@ function CarbonNeutral() {
         des="Enabling consumers to purchase items online and pay consciously with Carbon Neutral Price for any online transaction "
         img={image}
       />
-      <WhatImpact Carbonclimate={Carbonclimate} cardImage={cardImage} />
+      <WhatImpact
+        title="Carbon Neutral Purchases"
+        Carbonclimate={Carbonclimate}
+        cardImage={cardImage}
+      />
       <WhyPayment
         title="Enabling Carbon Neutral Purchases"
         des="For the first time both merchants and customers can make the choice to be carbon neutral."

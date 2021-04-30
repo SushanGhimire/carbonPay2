@@ -25,13 +25,12 @@ function App(props) {
         <Route exact path="/climatechange" component={ClimateChange} />
         <Route exact path="/formerchants" component={forMerchant} />
         <Route exact path="/forconsumers" component={ForConsumer} />
-        <Route exact path="/carbonoffsets" component={offset} />
+        {/* <Route exact path="/carbonoffsets" component={offset} /> */}
         {!loggedIn && (
           <>
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/confirmemail" component={EmailVerification} />
-            <Route exact path="/carbonneutral" component={CarbonNeutral} />
             <Route
               exact
               path="/user/password-reset/:uidb64/:token"
@@ -44,6 +43,7 @@ function App(props) {
             />
           </>
         )}
+        <Route exact path="/carbonneutral" component={CarbonNeutral} />
         <Route path="/page-not-found" component={PageNotFound} />
         <Redirect to="/page-not-found"></Redirect>
       </Switch>

@@ -103,7 +103,11 @@ function Home() {
       />
       <StakeHolders cards={cards} title="Stakeholders" grid="grid-cols-3" />
       {/* <MerchantConsumer /> */}
-      <WhatImpact Carbonclimate={Carbonclimate} cardImage={cardImage} />
+      <WhatImpact
+        title="What is CarbonPay for Climate Impact and Our planet?"
+        Carbonclimate={Carbonclimate}
+        cardImage={cardImage}
+      />
       <Faq Faq={Faqs} />
     </div>
   );

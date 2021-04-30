@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import check from "../assets/images/homepage/check.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-function WhatImpact({ Carbonclimate, cardImage }) {
+function WhatImpact({ Carbonclimate, cardImage, title }) {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -23,7 +23,7 @@ function WhatImpact({ Carbonclimate, cardImage }) {
       </div>
       <div className="flex-1 flex flex-col p-5 md:p-10 justify-center items-center">
         <div className="font-bold text-2xl sm:text-3xl lg:text-4xl mt-10 md:mt-0 text-center font-header">
-          What is CarbonPay for Climate Impact and Our planet?
+          {title}
         </div>
         <div>
           <div className="h-1 w-44 md:w-64 bg-primary mx-auto mt-3"></div>
