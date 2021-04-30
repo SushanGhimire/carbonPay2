@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../../authentication/authorization";
 import process from "../../../assets/images/loading/progress.svg";
+import info from "../../../assets/images/loading/info.svg";
 function StripeRegForm() {
   const token = localStorage.getItem("access");
   const [istrue, setIstrue] = useState(false);
   const [loading, setLoading] = useState(false);
   // let result;
+  const [Tooltips, setTooltips] = useState(false);
   const [merchant, setMerchant] = useState({
     business_type: "individual",
     first_name: "",
@@ -24,6 +26,9 @@ function StripeRegForm() {
       dob_date: "",
     },
   });
+  const handleTooltips = () => {
+    Tooltips ? setTooltips(false) : setTooltips(true);
+  };
   const handleCompany = (value) => {
     setMerchant({ ...merchant, business_type: value });
     if (value === "individual") {
@@ -313,7 +318,7 @@ function StripeRegForm() {
         <div className="space-y-1 flex flex-col col-span-1 relative">
           <div className="space-y-1 flex flex-col">
             <label htmlFor="text" className="text-sm text-gray-500">
-              Donation % to be donated
+              Donation in %
             </label>
             <select
               className="appearance-none bg-white border text-gray-700 w-full px-3 py-2 border-gray-300 focus:border-indigo-500 focus:outline-none text-sm"
@@ -348,6 +353,34 @@ function StripeRegForm() {
               />
             </svg>
           </div>
+          <div className="mx-auto col-span-2 font-semibold mt-2 text-xs text-gray-600 flex space-x-1 items-center">
+            <div>Powered by</div>
+            <a
+              href="https://aspiration.com/"
+              className="text-indigo-600"
+              target="new tab"
+            >
+              Aspiration
+            </a>
+            <div className="cursor-pointer relative  ">
+              <img
+                src={info}
+                alt=""
+                className="h-3 w-3"
+                onMouseEnter={handleTooltips}
+                onMouseLeave={handleTooltips}
+              />
+              {Tooltips && (
+                <div className="absolute  w-64 -top-16 -left-32 bg-gray-800 text-white p-3">
+                  The amount you donate is going to tree planting campaign
+                  powered by Aspiration
+                </div>
+              )}
+              {Tooltips && (
+                <div className=" w-4 h-4 bg-gray-800 absolute transform rotate-45 -top-5 -right-0.5"></div>
+              )}
+            </div>
+          </div>
         </div>
         <div className="col-span-2">
           <div className="button-animation" style={{ display: "block" }}>
@@ -369,16 +402,6 @@ function StripeRegForm() {
             </button>
             <div className="animation-bg"></div>
           </div>
-        </div>
-        <div className="mx-auto col-span-2 font-semibold mt-2">
-          Powered by{" "}
-          <a
-            href="https://aspiration.com/"
-            className="text-indigo-600"
-            target="new tab"
-          >
-            Aspiration
-          </a>
         </div>
       </form>
     </div>
