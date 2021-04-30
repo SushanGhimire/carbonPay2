@@ -3,6 +3,7 @@ import axios from "axios";
 import { baseUrl } from "../../authentication/authorization";
 import process from "../../../assets/images/loading/progress.svg";
 import info from "../../../assets/images/loading/info.svg";
+import aspiration from "../../../assets/images/homepage/aspiration.svg";
 function StripeRegForm() {
   const token = localStorage.getItem("access");
   const [istrue, setIstrue] = useState(false);
@@ -353,14 +354,14 @@ function StripeRegForm() {
               />
             </svg>
           </div>
-          <div className="mx-auto col-span-2 font-semibold mt-2 text-xs text-gray-600 flex space-x-1 items-center">
+          <div className="mx-auto col-span-2 font-semibold  text-xs text-gray-600 flex space-x-1 items-center">
             <div>Powered by</div>
             <a
               href="https://aspiration.com/"
-              className="text-indigo-600"
+              className="text-indigo-600 mt-1.5"
               target="new tab"
             >
-              Aspiration
+              <img src={aspiration} alt="" className="w-16" />
             </a>
             <div className="cursor-pointer relative  ">
               <img
