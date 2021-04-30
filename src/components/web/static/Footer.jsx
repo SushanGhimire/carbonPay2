@@ -58,7 +58,7 @@ function Footer() {
               <a
                 href="https://www.aspiration.com/"
                 target="new tab"
-                className=""
+                className="ml-1"
               >
                 <img src={aspiration} alt="" className="w-24 mt-1" />
               </a>
