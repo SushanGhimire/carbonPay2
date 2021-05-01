@@ -2,7 +2,7 @@ import React from "react";
 import FrontPage from "../home/FrontPage";
 import climate from "../../../assets/images/climate_change/climateChange12.png";
 import temprature from "../../../assets/images/climate_change/temperature.jpg";
-import contribute from "../../../assets/images/climate_change/contribute.jpg";
+// import contribute from "../../../assets/images/climate_change/contribute.jpg";
 import save from "../../../assets/images/climate_change/save.jpg";
 
 import FlexCard from "../../../common/FlexCard";

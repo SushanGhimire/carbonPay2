@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { baseUrl } from "../../authentication/authorization";
+// import axios from "axios";
+// import { baseUrl } from "../../authentication/authorization";
 import process from "../../../assets/images/loading/progress.svg";
 import info from "../../../assets/images/loading/info.svg";
 import aspiration from "../../../assets/images/homepage/aspiration.svg";
-function StripeRegForm() {
-  const token = localStorage.getItem("access");
+function StripeRegForm({ submitMerchatForm, loading }) {
   const [istrue, setIstrue] = useState(false);
-  const [loading, setLoading] = useState(false);
+
   // let result;
   const [Tooltips, setTooltips] = useState(false);
   const [merchant, setMerchant] = useState({
@@ -51,6 +50,7 @@ function StripeRegForm() {
       dob_date,
       dob_month,
       dob_year,
+      donation,
     } = merchant;
     // validation
     if (first_name === "") {
@@ -73,28 +73,15 @@ function StripeRegForm() {
       formData.append("dob_year", dob_year);
       formData.append("dob_month", dob_month);
       formData.append("dob_date", dob_date);
+      formData.append("donation", donation);
       if (business_type === "company") {
         formData.append("business_name", business_name);
       } else {
         formData.append("business_name", "");
       }
-      setLoading(true);
+
       console.log(merchant);
-      axios
-        .post(`${baseUrl}/merchants/create-stripe-account/`, formData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err);
-          setLoading(false);
-          alert("Internal Server Error");
-        });
+      submitMerchatForm(formData);
     }
     setMerchant({ ...merchant, error });
   };

@@ -14,10 +14,34 @@ function DashboardManagement() {
   const token = localStorage.getItem("access");
   const [redirect, setRedirect] = useState("");
   const [isForm, setIsForm] = useState(true);
+  const [loading, setLoading] = useState(false);
+  // const form = () => {
+  //   setIsForm(false);
+  // };
+  const submitMerchatForm = (formData) => {
+    setLoading(true);
+    axios
+      .post(`${baseUrl}/merchants/create-stripe-account/`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          // "Content-Type": `application/json`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        // setLoading(false);
+        setIsForm(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        alert("Internal Server Error");
+      });
+  };
   const handleVerify = () => {
     console.log("parent");
     axios
-      .get(`${baseUrl}/merchants/signup-stripe-onboard/`, {
+      .get(`${baseUrl}/merchants/check-stripe-verified/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +57,13 @@ function DashboardManagement() {
 
   return (
     <div className="bg-white h-screen flex font-rubik relative">
-      {isForm && <StripeRegForm className="" />}
+      {isForm && (
+        <StripeRegForm
+          className=""
+          loading={loading}
+          submitMerchatForm={submitMerchatForm}
+        />
+      )}
       {!isForm && (
         <>
           <Aside />

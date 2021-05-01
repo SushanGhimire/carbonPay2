@@ -31,7 +31,7 @@ function Profile() {
     });
   };
   console.log(UserDetails);
-  const { username, email, password } = UserDetails;
+  const { username, email } = UserDetails;
   return (
     <div className="flex md:p-10 flex-col">
       {/* top header  */}

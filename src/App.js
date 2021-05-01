@@ -5,6 +5,7 @@ import EmailVerify from "./components/authentication/EmailVerify";
 import Login from "./components/authentication/login";
 import PassWordReset from "./components/authentication/PassWordReset";
 import Register from "./components/authentication/register";
+import Docsmgnt from "./components/documentation/Docsmgnt";
 import CarbonNeutral from "./components/web/CarbonNeutral/CarbonNeutral";
 import ClimateChange from "./components/web/climate_change/ClimateChange";
 import ForConsumer from "./components/web/forConsumer/ForConsumer";
@@ -25,6 +26,8 @@ function App(props) {
         <Route exact path="/climatechange" component={ClimateChange} />
         <Route exact path="/formerchants" component={forMerchant} />
         <Route exact path="/forconsumers" component={ForConsumer} />
+        <Route exact path="/docs" render={() => <Docsmgnt />} />
+        <Route exact path="/docs/plugins" render={() => <Docsmgnt />} />
         {/* <Route exact path="/carbonoffsets" component={offset} /> */}
         {!loggedIn && (
           <>

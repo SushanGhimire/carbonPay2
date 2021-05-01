@@ -110,6 +110,10 @@ export default function Register() {
             confirmationEmail: "Confirmation link has been sent to your email",
           });
         }
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
       });
   };
 

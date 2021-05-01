@@ -3,6 +3,8 @@ import { React, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 function NavBar({ loggedIn }) {
   const [width, setWidth] = useState(window.innerWidth);
+  let nav = window.location.pathname.split("/")[1];
+  const [navListName, setNavListName] = useState(`/${nav}`);
   // const [position, setPosition] = useState(0);
   const mobileSidebar = useRef();
   const coverAll = useRef();
@@ -31,7 +33,18 @@ function NavBar({ loggedIn }) {
       name: "Carbon Neutral",
       to: "/carbonneutral",
     },
+    {
+      name: "Docs",
+      to: "/docs",
+    },
   ];
+  const changeNavListName = () => {
+    if (navListName) {
+      setNavListName("");
+    } else {
+      setNavListName(`/${nav}`);
+    }
+  };
   // toggle in mobile
   const toggleMobileSidebar = () => {
     const sidebar = mobileSidebar.current;
@@ -76,7 +89,7 @@ function NavBar({ loggedIn }) {
   });
   return (
     <div
-      className={`sticky top-0 z-50 bg-white w-full font-header   py-5  transition-all duration-300 ease-in-out text-lg shadow-md `}
+      className={`sticky top-0 z-50 bg-white w-full font-header transition-all duration-300 ease-in-out text-lg shadow-md py-6 lg:py-0 `}
     >
       <div className="w-full flex justify-between px-10 items-center">
         <Link to="/" className="cursor-pointer">
@@ -84,12 +97,18 @@ function NavBar({ loggedIn }) {
         </Link>
         {width > 1023 && (
           <>
-            <div className="flex space-x-4 items-center">
+            <div
+              className="flex space-x-4 items-center"
+              onMouseEnter={changeNavListName}
+              onMouseLeave={changeNavListName}
+            >
               {navlist.map((list, index) => {
                 const { name, to } = list;
                 return (
                   <Link
-                    className="cursor-pointer hover:text-primary tracking-wider text-lg"
+                    className={`cursor-pointer hover:text-primary tracking-wider text-lg py-6   border-b-4 border-white hover:border-primary transition-all duration-300 ease-linear ${
+                      to === navListName ? "border-primary border-b-4" : ""
+                    }`}
                     key={index}
                     to={to}
                   >

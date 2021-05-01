@@ -10,7 +10,7 @@ function WhyPayment({ title, des }) {
     >
       <div className="w-full h-full bg-black absolute bg-opacity-50"></div>
       <div className="absolute w-full flex justify-center flex-col items-center space-y-4 top-52 right-0">
-        <div className="font-bold text-white text-4xl md:text-6xl  font-header">
+        <div className="font-bold text-white text-4xl md:text-6xl  font-header text-center">
           {title}
         </div>
         <div className="text-base md:text-lg font-bold text-white text-center font-rubik">
