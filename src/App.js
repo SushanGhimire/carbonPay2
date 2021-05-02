@@ -30,6 +30,17 @@ function App(props) {
         <Route exact path="/docs/aboutcarbonpay" render={() => <Docsmgnt />} />
         <Route exact path="/docs/merchantsignup" render={() => <Docsmgnt />} />
         <Route exact path="/docs/merchantselect" render={() => <Docsmgnt />} />
+        <Route exact path="/docs/carbonpaylogin" render={() => <Docsmgnt />} />
+        <Route
+          exact
+          path="/docs/howcarbonpayworks"
+          render={() => <Docsmgnt />}
+        />
+        <Route
+          exact
+          path="/docs/charbonneutralcheckout"
+          render={() => <Docsmgnt />}
+        />
         <Route
           exact
           path="/docs/charbonpaycheckout"

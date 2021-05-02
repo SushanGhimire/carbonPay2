@@ -5,6 +5,9 @@ import About from "./About.jsx/About";
 import MerchantSignup from "./formerchant/MerchantSignup";
 import MerchantSelect from "./merchantSelect/MerchantSelect";
 import CarbonpayCheckout from "./carbonPayCheckout/CarbonpayCheckout";
+import CarbonNeutralCheckout from "./carbonNeutral/CarbonNeutralCheckout";
+import HowCarbonPayWorks from "./carbonpay/HowCarbonPayWorks";
+import CarbonPayLogin from "./carbonpay/CarbonPayLogin";
 function Docsmgnt() {
   return (
     <div className="flex ">
@@ -14,6 +17,17 @@ function Docsmgnt() {
           <Route exact path="/docs/aboutcarbonpay" component={About} />
           <Route exact path="/docs/merchantsignup" component={MerchantSignup} />
           <Route exact path="/docs/merchantselect" component={MerchantSelect} />
+          <Route exact path="/docs/carbonpaylogin" component={CarbonPayLogin} />
+          <Route
+            exact
+            path="/docs/howcarbonpayworks"
+            component={HowCarbonPayWorks}
+          />
+          <Route
+            exact
+            path="/docs/charbonneutralcheckout"
+            component={CarbonNeutralCheckout}
+          />
           <Route
             exact
             path="/docs/charbonpaycheckout"
