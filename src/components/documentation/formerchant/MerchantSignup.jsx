@@ -27,7 +27,7 @@ function MerchantSignup() {
           </div>
           {/* create acction  */}
           <div className="flex flex-col border-b border-gray-400 pb-2">
-            <div className="text-xl font-semibold mt-5 text-primary">
+            <div className="text-xl font-semibold  text-primary">
               Create an account
             </div>
             <div className="flex text-justify ">
