@@ -25,9 +25,10 @@ function App(props) {
         <Route exact path="/climatechange" component={ClimateChange} />
         <Route exact path="/climatechange" component={ClimateChange} />
         <Route exact path="/formerchants" component={forMerchant} />
+        <Route exact path="/carbonneutral" component={CarbonNeutral} />
         <Route exact path="/forconsumers" component={ForConsumer} />
-        <Route exact path="/docs" render={() => <Docsmgnt />} />
-        <Route exact path="/docs/plugins" render={() => <Docsmgnt />} />
+        <Route exact path="/docs/aboutcarbonpay" render={() => <Docsmgnt />} />
+        <Route exact path="/docs/merchantsignup" render={() => <Docsmgnt />} />
         {/* <Route exact path="/carbonoffsets" component={offset} /> */}
         {!loggedIn && (
           <>
@@ -46,7 +47,6 @@ function App(props) {
             />
           </>
         )}
-        <Route exact path="/carbonneutral" component={CarbonNeutral} />
         <Route path="/page-not-found" component={PageNotFound} />
         <Redirect to="/page-not-found"></Redirect>
       </Switch>

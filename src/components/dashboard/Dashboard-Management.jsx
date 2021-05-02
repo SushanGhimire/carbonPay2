@@ -13,7 +13,7 @@ import EmailVerification from "../authentication/EmailVerification";
 function DashboardManagement() {
   const token = localStorage.getItem("access");
   const [redirect, setRedirect] = useState("");
-  const [isForm, setIsForm] = useState(true);
+  const [isForm, setIsForm] = useState(false);
   const [loading, setLoading] = useState(false);
   // const form = () => {
   //   setIsForm(false);

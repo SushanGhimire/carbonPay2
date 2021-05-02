@@ -35,7 +35,7 @@ function NavBar({ loggedIn }) {
     },
     {
       name: "Docs",
-      to: "/docs",
+      to: "/docs/aboutcarbonpay",
     },
   ];
   const changeNavListName = () => {
