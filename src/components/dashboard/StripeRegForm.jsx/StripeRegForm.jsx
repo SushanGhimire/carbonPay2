@@ -159,9 +159,9 @@ function StripeRegForm({ submitMerchatForm, loading }) {
     dob_year: edob_year,
   } = error;
   return (
-    <div className=" w-full min-h-screen justify-center items-center bg-gray-100 font-rubik overflow-auto py-10 absolute top-0">
+    <div className=" w-full min-h-screen justify-center items-center  font-rubik overflow-auto py-10 absolute top-0">
       <form
-        className="w-full md:max-w-xl mx-auto bg-white p-10 shadow-md grid grid-cols-2 gap-6"
+        className="w-full md:max-w-xl mx-auto border p-10 border-gray-300 grid grid-cols-2 gap-6"
         onSubmit={handleLoginSubmit}
       >
         {/* header  */}

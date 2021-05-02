@@ -5,7 +5,6 @@ function NavBar({ loggedIn }) {
   const [width, setWidth] = useState(window.innerWidth);
   let nav = window.location.pathname.split("/")[1];
   const [navListName, setNavListName] = useState(`/${nav}`);
-  // const [position, setPosition] = useState(0);
   const mobileSidebar = useRef();
   const coverAll = useRef();
   const navlist = [
@@ -106,8 +105,10 @@ function NavBar({ loggedIn }) {
                 const { name, to } = list;
                 return (
                   <Link
-                    className={`cursor-pointer hover:text-primary tracking-wider text-lg py-6   border-b-4 border-white hover:border-primary transition-all duration-300 ease-linear ${
-                      to === navListName ? "border-primary border-b-4" : ""
+                    className={`cursor-pointer hover:text-primary tracking-wider text-lg py-6   border-b-4 border-white hover:border-primary transition-all duration-300 ease-linear  ${
+                      to === navListName
+                        ? "border-primary border-b-4 text-primary font-semibold"
+                        : ""
                     }`}
                     key={index}
                     to={to}

@@ -29,6 +29,12 @@ function App(props) {
         <Route exact path="/forconsumers" component={ForConsumer} />
         <Route exact path="/docs/aboutcarbonpay" render={() => <Docsmgnt />} />
         <Route exact path="/docs/merchantsignup" render={() => <Docsmgnt />} />
+        <Route exact path="/docs/merchantselect" render={() => <Docsmgnt />} />
+        <Route
+          exact
+          path="/docs/charbonpaycheckout"
+          render={() => <Docsmgnt />}
+        />
         {/* <Route exact path="/carbonoffsets" component={offset} /> */}
         {!loggedIn && (
           <>

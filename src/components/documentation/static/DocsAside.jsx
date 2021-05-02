@@ -24,7 +24,7 @@ function DocsAside() {
           path: "/docs/merchantsignup",
         },
         {
-          name: "Merchant select",
+          name: "Merchant select %",
           logo: "M8 9l4-4 4 4m0 6l-4 4-4-4",
           path: "/docs/merchantselect",
         },
@@ -40,6 +40,12 @@ function DocsAside() {
           path: "/docs/charbonpaycheckout",
         },
         {
+          name: "Carbon Neutral checkouts",
+          logo:
+            "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z",
+          path: "/docs/charbonneutralcheckout",
+        },
+        {
           name: "How carbonpay works",
           logo:
             "M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
@@ -53,9 +59,26 @@ function DocsAside() {
         },
       ],
     },
+    {
+      title: "Integrating with CarbonPay",
+      items: [
+        {
+          name: "WooCommerce",
+          logo:
+            "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
+          path: "/docs/merchantsignup",
+        },
+        {
+          name: "Shopify",
+          logo:
+            "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
+          path: "/docs/merchantselect",
+        },
+      ],
+    },
   ];
   return (
-    <div className="bg-gray-50 w-64 border overflow-auto min-h-screen font-rubik pt-4">
+    <div className="bg-gray-50 w-68 border overflow-auto min-h-screen font-rubik pt-4 ">
       {asideLists.map((asidelist, index) => {
         const { title, items } = asidelist;
         return (
@@ -76,11 +99,11 @@ function DocsAside() {
                     onClick={() => setState(!State)}
                   >
                     <div
-                      className={`flex  space-x-4 hover:bg-primary hover:text-white py-1 pl-3 rounded-full transition-all duration-300 ease-in-out `}
+                      className={`flex items-center space-x-4 hover:bg-primary hover:text-white py-1 pl-3 rounded-full transition-all duration-300 ease-in-out `}
                     >
                       <div>
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"

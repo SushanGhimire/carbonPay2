@@ -6,7 +6,7 @@ import login from "../../../assets/images/documentation/login.png";
 
 function MerchantSignup() {
   return (
-    <div className="flex flex-col pt-10 px-16">
+    <div className="flex flex-col pt-10 px-16 ">
       <div className="flex flex-col space-y-5">
         {/* Become a merchant  */}
         <div className="flex flex-col  max-w-2xl space-y-2">
@@ -26,7 +26,7 @@ function MerchantSignup() {
             Merchant Signup
           </div>
           {/* create acction  */}
-          <div className="flex flex-col border-b border-gray-400 pb-2">
+          <div className="flex flex-col border-b border-gray-300 pb-2">
             <div className="text-xl font-semibold  text-primary">
               Create an account
             </div>
@@ -41,7 +41,7 @@ function MerchantSignup() {
             </div>
           </div>
           {/*  Email Verification  */}
-          <div className="flex flex-col border-b border-gray-400 pb-2">
+          <div className="flex flex-col border-b border-gray-300 pb-2">
             <div className="text-xl font-semibold mt-5 text-primary">
               Email Verification
             </div>
@@ -57,7 +57,7 @@ function MerchantSignup() {
             </div>
           </div>
           {/*  Login with account  */}
-          <div className="flex flex-col border-b border-gray-400 pb-2">
+          <div className="flex flex-col border-b border-gray-300 pb-2">
             <div className="text-xl font-semibold mt-5 text-primary ">
               Login with account
             </div>
