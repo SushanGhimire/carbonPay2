@@ -1,10 +1,8 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 
-function DocsAside() {
-  // const [State, setState] = useState(true);
-  const [width, setWidth] = useState(window.innerWidth);
-  const [AsideWidth, setAsideWidth] = useState("w-0");
+function DocAsideMob() {
+  const [State, setState] = useState(true);
   const asideLists = [
     {
       title: "Getting Started",
@@ -68,82 +66,26 @@ function DocsAside() {
           name: "WooCommerce",
           logo:
             "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
-          // path: "/docs/merchantsignup",
+          path: "/docs/merchantsignup",
         },
         {
           name: "Shopify",
           logo:
             "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
-          // path: "/docs/merchantselect",
+          path: "/docs/merchantselect",
         },
       ],
     },
   ];
-  const setAsideWidthHanddler = () => {
-    AsideWidth === "w-0" ? setAsideWidth("w-full") : setAsideWidth("w-0");
-  };
-  const handleWidth = () => {
-    const innerWidth = window.innerWidth;
-    if (innerWidth > 1023 && width < 1024) {
-      setWidth(innerWidth);
-      setAsideWidth("w-full");
-    } else if (innerWidth < 1024 && width > 1023) {
-      setWidth(innerWidth);
-      setAsideWidth("w-0");
-    }
-  };
-  useEffect(() => {
-    // handleScroll();
-    window.addEventListener("resize", handleWidth);
-    // window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("resize", handleWidth);
-      // window.removeEventListener("scroll", handleScroll);
-    };
-  });
-  console.log(width);
-  console.log(window.innerWidth);
   return (
-    <div className={` ${width < 1024 ? " fixed h-screen z-20" : "flex "}`}>
-      <div
-        className={`bg-gray-50 ${AsideWidth} ${
-          width < 1024 ? "h-full" : ""
-        }   lg:w-68 border overflow-auto font-rubik pt-4  lg:block relative transition-all duration-200 ease-in-out pb-20`}
-      >
-        {/* docs arrow  */}
-        <div
-          className="fixed bg-primary text-white  px-2 py-4 rounded-r-full flex space-x-2 items-center text-sm -left-6 lg:hidden"
-          style={{
-            top: "50%",
-            transform: "translateX(50%)",
-          }}
-          onClick={setAsideWidthHanddler}
-        >
-          <svg
-            className="w-4 h-4 "
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d={`${
-                AsideWidth === "w-0"
-                  ? "M13 5l7 7-7 7M5 5l7 7-7 7"
-                  : "M11 19l-7-7 7-7m8 14l-7-7 7-7"
-              }`}
-            />
-          </svg>
-        </div>
+    <div className="bg-gray-50 w-64 border overflow-auto min-h-screen font-rubik pt-4 absolute ">
+      <div>
         {asideLists.map((asidelist, index) => {
           const { title, items } = asidelist;
           return (
             <div key={index}>
               {/* for merhcant  */}
-              <div className="font-semibold pl-8 pr-2 pt-3 pb-2 text-lg text-gray-900">
+              <div className="font-semibold pl-8 pr-2 pt-3 pb-2  text-gray-900">
                 {title}
               </div>
               {/* content part  */}
@@ -155,10 +97,10 @@ function DocsAside() {
                       to={path}
                       key={index}
                       className="text-gray-700 pl-5 pr-2 "
-                      onClick={setAsideWidthHanddler}
+                      onClick={() => setState(!State)}
                     >
                       <div
-                        className={`flex items-center space-x-4 hover:bg-primary hover:text-white py-1 pl-3 rounded-full transition-all duration-300 ease-in-out `}
+                        className={`flex items-center space-x-4 hover:bg-primary hover:text-white py-1 pl-3 rounded-full transition-all duration-300 ease-in-out text-sm`}
                       >
                         <div>
                           <svg
@@ -190,4 +132,4 @@ function DocsAside() {
   );
 }
 
-export default DocsAside;
+export default DocAsideMob;

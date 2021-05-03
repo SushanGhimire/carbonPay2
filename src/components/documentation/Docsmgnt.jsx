@@ -10,7 +10,7 @@ import HowCarbonPayWorks from "./carbonpay/HowCarbonPayWorks";
 import CarbonPayLogin from "./carbonpay/CarbonPayLogin";
 function Docsmgnt() {
   return (
-    <div className="flex ">
+    <div className="flex relative">
       <DocsAside />
       <div className="flex-1 flex flex-col ">
         <Switch>

@@ -2,35 +2,35 @@ import React from "react";
 
 function About() {
   return (
-    <div className="flex flex-col pt-10 px-16">
+    <div className="flex flex-col pt-10 px-7 md:px-16">
       {/* top header  */}
-      <div className="text-3xl font-semibold  text-primary pb-8">
+      <div className="text-2xl md:text-3xl font-semibold  text-primary pb-8">
         Welcome to CarbonPay Documentation
       </div>
       {/* about carbonpay  */}
       <div className="flex flex-col ">
         {/* about  */}
         <div className="flex flex-col  max-w-2xl space-y-2">
-          <div className="text-2xl font-semibold text-primary">
+          <div className="text-xl md:text-2xl font-semibold text-primary">
             About the CarbonPay
           </div>
           {/* what is carbonpay  */}
-          <div className="flex  ">
+          <div className="flex  text-sm md:text-base">
             CarbonPay is a standard through which any user can help to remove
             carbon from environment with every Online Perchase.
           </div>
         </div>
         {/* Fund Climate Change Efforts with Payment */}
         <div className="flex flex-col  max-w-2xl space-y-2">
-          <div className="text-xl font-semibold mt-5 text-primary">
+          <div className="text-lg md:text-xl font-semibold mt-5 text-primary">
             Fund Climate Change Efforts with Payment
           </div>
-          <div className="flex ">
+          <div className="flex text-sm md:text-base">
             With CarbonPay, you can direct a fraction of each payment to donate
             to best carbon removal non-profits in just a few clicks.{" "}
           </div>
           <div className=" max-w-2xl   pl-4 ">
-            <ol className="list-decimal space-y-1">
+            <ol className="list-decimal space-y-1 text-sm md:text-base">
               <li>
                 CarbonPay dynamically connects small percentage of each
                 transaction with non-profit with highest net-carbon removal
@@ -51,7 +51,7 @@ function About() {
         </div>
         {/* Fight Climate Change with each Payment */}
         <div className="flex flex-col  max-w-2xl space-y-2">
-          <div className="text-xl font-semibold mt-5 text-primary">
+          <div className="text-lg md:text-xl font-semibold mt-5 text-primary">
             Fight Climate Change with each Payment
           </div>
           <div className="flex ">
@@ -73,7 +73,7 @@ function About() {
         </div>
         {/* Why Payment? */}
         <div className="flex flex-col  max-w-2xl space-y-2">
-          <div className="text-xl font-semibold text-primary mt-5">
+          <div className="text-lg md:text-xl font-semibold text-primary mt-5">
             Why Payment?
           </div>
           {/* what is carbonpay  */}

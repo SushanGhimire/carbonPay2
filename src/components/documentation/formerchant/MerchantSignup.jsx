@@ -6,11 +6,11 @@ import login from "../../../assets/images/documentation/login.png";
 
 function MerchantSignup() {
   return (
-    <div className="flex flex-col pt-10 px-16 ">
+    <div className="flex flex-col pt-10  px-7 md:px-16 ">
       <div className="flex flex-col space-y-5">
         {/* Become a merchant  */}
         <div className="flex flex-col  max-w-2xl space-y-2">
-          <div className="text-2xl font-semibold text-primary">
+          <div className="text-xl md:text-2xl font-semibold text-primary">
             Become a merchant
           </div>
           {/* what is carbonpay  */}
@@ -22,15 +22,15 @@ function MerchantSignup() {
         </div>
         {/*Merchant Signup */}
         <div className="flex flex-col  max-w-2xl space-y-2 pb-10">
-          <div className="text-2xl font-semibold text-primary">
+          <div className="text-xl md:text-2xl font-semibold text-primary">
             Merchant Signup
           </div>
           {/* create acction  */}
           <div className="flex flex-col border-b border-gray-300 pb-2">
-            <div className="text-xl font-semibold  text-primary">
+            <div className="text-lg md:text-xl font-semibold  text-primary">
               Create an account
             </div>
-            <div className="flex  ">
+            <div className="flex text-sm md:text-base">
               Start by completing the account form with your username, email and
               password. This will establish your authentication with your
               CarbonPay make sure you enter your email correctly for the account
@@ -42,7 +42,7 @@ function MerchantSignup() {
           </div>
           {/*  Email Verification  */}
           <div className="flex flex-col border-b border-gray-300 pb-2">
-            <div className="text-xl font-semibold mt-5 text-primary">
+            <div className="text-lg md:text-xl font-semibold mt-5 text-primary">
               Email Verification
             </div>
             <div className="flex  mb-2">
@@ -58,7 +58,7 @@ function MerchantSignup() {
           </div>
           {/*  Login with account  */}
           <div className="flex flex-col border-b border-gray-300 pb-2">
-            <div className="text-xl font-semibold mt-5 text-primary ">
+            <div className="text-lg md:text-xl font-semibold mt-5 text-primary ">
               Login with account
             </div>
             <div className="flex  ">
