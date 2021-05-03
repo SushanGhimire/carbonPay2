@@ -14,7 +14,7 @@ function MerchantSelect() {
           <div className="text-2xl font-semibold  text-primary">
             Merchant Select Donation %
           </div>
-          <div className="flex text-justify mt-2">
+          <div className="flex  mt-2">
             After Login with login credintials merchat can fill their
             information on Merchant Form along with donation percentage they
             want to donate on every online purchanse which is powered by

@@ -35,16 +35,16 @@ function CarbonNeutral() {
         img={image}
       />
       <WhatImpact
-        title="Carbon Neutral Purchases"
+        title="Carbon neutral purchases"
         Carbonclimate={Carbonclimate}
         cardImage={cardImage}
       />
       <WhyPayment
-        title="Enabling Carbon Neutral Purchases"
+        title="Enabling carbon neutral purchases"
         des="For the first time both merchants and customers can make the choice to be carbon neutral."
       />
       <FlexCard
-        title="How Carbon Neutral Purchase works?"
+        title="How carbon neutral purchase works?"
         des="It’s an easy to implement plugin that educates the consumer on the true cost of purchasing an item for the climate and how to pay a climate conscious price to offset the carbon. Merchants can Create CarbonPay account select their E-Commerce Inventory and CarbonPay will dynamically create a new Climate Conscious price for each item in the inventory. Now, in every e-commerce transaction a customer can select a Climate Conscious price and the CarbonPay helps offset the carbon with it’s network of Carbon Offset non-profits."
         img={purchase}
         direction=""

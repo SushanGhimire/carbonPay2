@@ -15,7 +15,7 @@ function About() {
             About the CarbonPay
           </div>
           {/* what is carbonpay  */}
-          <div className="flex text-justify ">
+          <div className="flex  ">
             CarbonPay is a standard through which any user can help to remove
             carbon from environment with every Online Perchase.
           </div>
@@ -25,11 +25,11 @@ function About() {
           <div className="text-xl font-semibold mt-5 text-primary">
             Fund Climate Change Efforts with Payment
           </div>
-          <div className="flex text-justify">
+          <div className="flex ">
             With CarbonPay, you can direct a fraction of each payment to donate
             to best carbon removal non-profits in just a few clicks.{" "}
           </div>
-          <div className=" max-w-2xl  text-justify pl-4 ">
+          <div className=" max-w-2xl   pl-4 ">
             <ol className="list-decimal space-y-1">
               <li>
                 CarbonPay dynamically connects small percentage of each
@@ -54,11 +54,11 @@ function About() {
           <div className="text-xl font-semibold mt-5 text-primary">
             Fight Climate Change with each Payment
           </div>
-          <div className="flex text-justify">
+          <div className="flex ">
             With CarbonPay you donate a portion of each payment to a non-profit
             fighting climate change
           </div>
-          <div className=" flex text-justify pl-4 ">
+          <div className=" flex  pl-4 ">
             <ol className="list-decimal space-y-1">
               <li>
                 Funds are directed to non-profits with the highest net-carbon
@@ -77,7 +77,7 @@ function About() {
             Why Payment?
           </div>
           {/* what is carbonpay  */}
-          <div className="flex text-justify pb-20">
+          <div className="flex  pb-20">
             Taking merchant selecetd % off of every internet transaction to fund
             the highest impact Climate Change efforts
           </div>

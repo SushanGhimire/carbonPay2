@@ -10,7 +10,7 @@ function CarbonPayLogin() {
           <div className="text-2xl font-semibold mt-5 text-primary ">
             CarbonPay Login
           </div>
-          <div className="flex text-justify ">
+          <div className="flex mt-2 ">
             After clicking the email verification link, your email will be
             verified and it will redirect you to login page and fill the form
             with your credintials.
@@ -22,7 +22,7 @@ function CarbonPayLogin() {
         {/*  Fast  */}
         <div className="flex flex-col mt-10">
           <div className="text-2xl font-semibold  text-primary">Fast</div>
-          <div className="flex text-justify mt-2 pb-5">
+          <div className="flex  mt-2 pb-5">
             With the CarbonPay Checkout button, customers check out and pay in
             one easy step. It’s quick and safe.
           </div>
@@ -30,7 +30,7 @@ function CarbonPayLogin() {
         {/*  Simple  */}
         <div className="flex flex-col">
           <div className="text-2xl font-semibold  text-primary">Simple</div>
-          <div className="flex text-justify mt-2 pb-5">
+          <div className="flex  mt-2 pb-5">
             CarbonPay Checkout is easy to integrate for ecommerce platforms. We
             handle all the complexity of logins, checkout, and payments, so you
             can focus on user acquisition and sales.
@@ -39,7 +39,7 @@ function CarbonPayLogin() {
         {/*  Secure  */}
         <div className="flex flex-col mb-20">
           <div className="text-2xl font-semibold  text-primary">Secure</div>
-          <div className="flex text-justify mt-2 pb-5">
+          <div className="flex  mt-2 pb-5">
             CarbonPay Checkout ishighly secure. We use security and encryption
             technology to fight fraud and protect data, and we’ll never sell
             your information to anyone.

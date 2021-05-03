@@ -12,21 +12,21 @@ function forMerchant() {
   const cards = [
     {
       logo: payment,
-      name: "Payments with Purpose",
+      name: "Payments with purpose",
       title:
         "Payment infrastructure app for internet business that lets businesses and customers give back to the planet.",
       aos: "fade-down",
     },
     {
       logo: setup,
-      name: "Easy Set Up",
+      name: "Easy set up",
       title:
-        "Native integrations for Shopify, BigCommerce WooCommerce and Magento. Easy Set up",
+        "Native integrations for Shopify, BigCommerce WooCommerce and Magento.",
       aos: "fade-up",
     },
     {
       logo: see,
-      name: "Customers See Their Impact",
+      name: "Customers see their impact",
       title:
         "Customers pick their % contribution and get a confirmation email showing their impact.",
       aos: "fade-down",
@@ -40,7 +40,7 @@ function forMerchant() {
         img={image}
       />
       <FlexCard
-        title="What is CarbonPay for Merchants?"
+        title="What is CarbonPay for merchants?"
         des="A payment infrastructure app for internet business that runs in Shopify, BigCommerce WooCommerce and Magento. It’s an easy to implement native apps that lets you and your customers give back to the climate. CarbonPay lets you select your % contribution in each transaction. With every e-commerce transaction your customer get a confirmation email with the impact of their purchase towards the climate."
         img={merchant}
         direction="true"

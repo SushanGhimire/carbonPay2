@@ -11,14 +11,14 @@ function FundClimate() {
   const climates = [
     {
       img: coal,
-      qst: "What Carbon Pay Does?",
+      qst: "What CarbonPay does?",
       dis:
-        " CarbonPay dynamically connects small percentage of each transaction with non-profit with highest net-carbon removal efforts",
+        " CarbonPay dynamically connects small percentage of each transaction with non-profit with highest net-carbon removal efforts.",
       aos: "fade-up",
     },
     {
       img: planting,
-      qst: "How To Verify?",
+      qst: "How to verify?",
       dis:
         " CarbonPay automatically sends confirmation email to customer about what happened to their purchase.",
       aos: "fade-down",

@@ -45,22 +45,22 @@ function Home() {
   const cards = [
     {
       logo: merchant,
-      name: "merchant",
-      title: "Climate Impact Payment to increase transaction",
+      name: "Merchant",
+      title: "Climate Impact Payment to increase transaction.",
       bg: "bg-seconday",
       aos: "fade-down",
     },
     {
       logo: consumer,
       name: "Consumers",
-      title: "Make Climate Conscious purchase with impact tracking page",
+      title: "Make Climate Conscious purchase with impact tracking page.",
       aos: "fade-up",
     },
     {
       logo: nature,
-      name: "Climate Impact Non-Profit",
+      name: "Climate impact non-Profit",
       title:
-        "Accountability and Incentives for highest net carbon capture efforts",
+        "Accountability and Incentives for highest net carbon capture efforts.",
       aos: "fade-down",
     },
   ];
@@ -72,12 +72,12 @@ function Home() {
     },
     {
       blog:
-        "CarbonPay dynamically selects Non-profit with highest net carbon capture effort",
+        "CarbonPay dynamically selects Non-profit with highest net carbon capture effort.",
       aos: "fade-up",
       time: "1700",
     },
     {
-      blog: "This creates environment of accountability and innovation",
+      blog: "This creates environment of accountability and innovation.",
       aos: "fade-up",
       time: "1900",
     },
@@ -97,14 +97,14 @@ function Home() {
       />
       <FundClimate />
       <WhyPayment
-        title="Why Payment?"
+        title="Why payment?"
         des=" Taking 1% of every internet transaction to fund Climate Change effort
-          has fastest impact"
+          has fastest impact."
       />
       <StakeHolders cards={cards} title="Stakeholders" grid="grid-cols-3" />
       {/* <MerchantConsumer /> */}
       <WhatImpact
-        title="What is CarbonPay for Climate Impact and Our planet?"
+        title="What is CarbonPay for climate impact and our planet?"
         Carbonclimate={Carbonclimate}
         cardImage={cardImage}
       />

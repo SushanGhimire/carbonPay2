@@ -14,7 +14,7 @@ function StakeHolders({ cards, title, grid }) {
           {title}
         </div>
         <div>
-          <div className="h-1 w-20 md:w-32 bg-primary mx-auto mt-3"></div>
+          <div className="h-1 w-20 md:w-32 bg-primary mx-auto mt-3 mb-10"></div>
         </div>
       </div>
       <div

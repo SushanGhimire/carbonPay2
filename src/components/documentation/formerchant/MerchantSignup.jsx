@@ -14,7 +14,7 @@ function MerchantSignup() {
             Become a merchant
           </div>
           {/* what is carbonpay  */}
-          <div className="flex text-justify ">
+          <div className="flex  ">
             The first step to integrating CarbonPay with your store is to become
             a merchant with CarbonPay. here are the some steps to get started
             with CarbonPay.
@@ -30,7 +30,7 @@ function MerchantSignup() {
             <div className="text-xl font-semibold  text-primary">
               Create an account
             </div>
-            <div className="flex text-justify ">
+            <div className="flex  ">
               Start by completing the account form with your username, email and
               password. This will establish your authentication with your
               CarbonPay make sure you enter your email correctly for the account
@@ -45,7 +45,7 @@ function MerchantSignup() {
             <div className="text-xl font-semibold mt-5 text-primary">
               Email Verification
             </div>
-            <div className="flex text-justify mb-2">
+            <div className="flex  mb-2">
               After completing the account form with your username, email and
               password. Email verification link is sent to your email.
             </div>
@@ -61,7 +61,7 @@ function MerchantSignup() {
             <div className="text-xl font-semibold mt-5 text-primary ">
               Login with account
             </div>
-            <div className="flex text-justify ">
+            <div className="flex  ">
               After clicking the email verification link, your email will be
               verified and it will redirect you to login page and fill the form
               with your credintials.

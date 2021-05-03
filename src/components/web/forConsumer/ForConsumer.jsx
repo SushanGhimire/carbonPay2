@@ -13,25 +13,24 @@ function ForConsumer() {
     {
       logo: buy,
       title:
-        "Payment infrastructure app for internet business that lets businesses and customers give back to the planet.",
+        "Buy from merchants committed to fighting climate change through our trusted badge.",
       aos: "fade-down",
     },
     {
       logo: choose,
       title:
-        "Native integrations for Shopify, BigCommerce WooCommerce and Magento. Easy Set up",
+        "Consumers can choose to make the purchase climate neutral or even  contribute extra.",
       aos: "fade-up",
     },
     {
       logo: tracking,
       title:
-        "Customers pick their % contribution and get a confirmation email showing their impact.",
+        "Track their Carbon Capture efforts and the positive impact of their purchases.",
       aos: "fade-down",
     },
     {
       logo: capture,
-      title:
-        "Native integrations for Shopify, BigCommerce WooCommerce and Magento. Easy Set up",
+      title: "Creates buying habits and awareness that helps the planet.",
       aos: "fade-up",
     },
   ];
@@ -43,7 +42,7 @@ function ForConsumer() {
         img={image}
       />
       <FlexCard
-        title="What is CarbonPay for Consumers?"
+        title="What is CarbonPay for consumers?"
         des="CarbonPay Lets consumer know about merchants commitment with a new badge updated automatically on CarbonPay checkout, receipts, and invoices. In our website consumers track summary of their Carbon Capture efforts and how much impact it was able to create. It helps create better habits that helps the planet."
         img={consumer}
         direction=""
