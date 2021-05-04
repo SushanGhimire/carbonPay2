@@ -23,7 +23,7 @@ function FrontPage({ header, des, img }) {
         <div className="font-bold text-4xl md:text-6xl mt-10 md:mt-0">
           {header}
         </div>
-        <div className="text-base md:text-lg font-medium text-gray-600 text-rubik">
+        <div className="text-base md:text-lg font-semibold text-gray-600 font-rubik">
           {des}
         </div>
         <div>

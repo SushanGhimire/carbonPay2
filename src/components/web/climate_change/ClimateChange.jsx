@@ -30,7 +30,7 @@ function ClimateChange() {
         title="How can I reduce  carbon with Carbonpay?"
         des="The first step to reducing your carbon is knowing where carbon emissions are coming from. On every transaction you can donate the some percentage of your transaction amount for carbon removal. You can donate according to your wish to make the better environment and better earth."
         img={save}
-        direction="true"
+        direction=""
       />
     </div>
   );
