@@ -45,11 +45,7 @@ function forMerchant() {
         img={merchant}
         direction="true"
       />
-      <StakeHolders
-        title="CarbonPay for Merchants"
-        cards={cards}
-        grid="grid-cols-3"
-      />
+      <StakeHolders title="CarbonPay for Merchants" cards={cards} grid={true} />
     </div>
   );
 }

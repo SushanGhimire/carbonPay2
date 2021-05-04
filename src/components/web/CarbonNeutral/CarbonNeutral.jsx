@@ -68,25 +68,27 @@ function CarbonNeutral() {
         des="Enabling consumers to purchase items online and pay consciously with Carbon Neutral Price for any online transaction "
         img={image}
       />
-      <WhatImpact
-        title="Carbon neutral purchases"
-        Carbonclimate={Carbonclimate}
-        cardImage={cardImage}
-      />
+
       <FlexCard
         title="How carbon neutral purchase works?"
         des="It’s an easy to implement plugin that educates the consumer on the true cost of purchasing an item for the climate and how to pay a climate conscious price to offset the carbon. Merchants can Create CarbonPay account select their E-Commerce Inventory and CarbonPay will dynamically create a new Climate Conscious price for each item in the inventory. Now, in every e-commerce transaction a customer can select a Climate Conscious price and the CarbonPay helps offset the carbon with it’s network of Carbon Offset non-profits."
         img={purchase}
         direction=""
       />
+
       <StakeHolders
         cards={cards}
         title="How it works in just a few steps"
-        grid="grid-cols-4"
+        grid={false}
       />
       <WhyPayment
         title="Enabling carbon neutral purchases"
         des="For the first time both merchants and customers can make the choice to be carbon neutral."
+      />
+      <WhatImpact
+        title="Carbon neutral purchases"
+        Carbonclimate={Carbonclimate}
+        cardImage={cardImage}
       />
     </div>
   );

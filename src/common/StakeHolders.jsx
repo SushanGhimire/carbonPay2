@@ -18,7 +18,9 @@ function StakeHolders({ cards, title, grid }) {
         </div>
       </div>
       <div
-        className={`grid w-full grid-cols-1 sm:grid-cols-2 md:${grid} gap-6 px-10 lg:px-20 py-20 bg-light_white font-rubik`}
+        className={`grid w-full grid-cols-1 sm:grid-cols-2 md:${
+          grid ? "grid-cols-3" : "grid-cols-4"
+        } gap-6 px-10 lg:px-20 py-20 bg-light_white font-rubik`}
       >
         {cards.map((card, index) => {
           return (

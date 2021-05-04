@@ -50,7 +50,7 @@ function ForConsumer() {
       <StakeHolders
         cards={cards}
         title="CarbonPay for Consumers"
-        grid="grid-cols-4"
+        grid={false}
       />
     </div>
   );
