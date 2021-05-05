@@ -33,9 +33,9 @@ function Profile() {
   console.log(UserDetails);
   const { username, email } = UserDetails;
   return (
-    <div className="flex md:p-10 flex-col">
+    <div className="flex p-5 md:p-10 flex-col">
       {/* top header  */}
-      <div className="w-full md:flex justify-between items-center space-y-3 md:space-y-0 p-5 lg:px-0 border-b">
+      <div className="w-full flex justify-between items-center  p-5 lg:px-0 border-b">
         <div className="text-3xl font-semibold">Profile</div>
         <div className="flex space-x-4">
           {!edit && (

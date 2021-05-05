@@ -17,7 +17,7 @@ function Billing() {
   };
   const { card_name, card_number, exp_month, exp_year, cvccvv } = cardInfo;
   return (
-    <div className="flex md:p-10 flex-col">
+    <div className="flex p-5 md:p-10 flex-col">
       {/* top header  */}
       <div className="w-full flex flex-col justify-between  space-y-1 p-5 lg:px-0">
         <div className="text-3xl font-semibold">Billing</div>
@@ -45,7 +45,7 @@ function Billing() {
           </div>
         </div>
         {/* card name and expiry date  */}
-        <div className="flex w-full space-x-6">
+        <div className="md:flex w-full md:space-x-6 space-y-2 md:space-y-0">
           {/* card name  */}
           <div className="flex flex-1 flex-col font-rubik space-y-2">
             <label htmlFor="">Name on Number</label>
