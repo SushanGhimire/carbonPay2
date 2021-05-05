@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 
 function Aside() {
   const [width, setWidth] = useState(window.innerWidth);
+  let nav = window.location.pathname.split("/")[2];
+  const [navListName, setNavListName] = useState(`/dashboard/${nav}`);
+
   const asideLists = [
     {
       name: "Home",
       logo:
         "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
-      path: "/dashboard",
+      path: "/dashboard/home",
     },
     {
       name: "Transactions",
@@ -52,6 +55,9 @@ function Aside() {
     }
   };
   useEffect(() => {
+    setNavListName(`/dashboard/${nav}`);
+  }, [nav]);
+  useEffect(() => {
     window.addEventListener("resize", handleWidth);
     return () => {
       window.removeEventListener("resize", handleWidth);
@@ -88,27 +94,54 @@ function Aside() {
           {/* content part  */}
           <div className="flex flex-col px-4 mt-5">
             {asideLists.map((list, index) => {
+              const { path, name, logo } = list;
               return (
-                <Link to={list.path} key={index} className="flex ">
-                  <div className="flex space-x-4 py-2 rounded-full w-full px-4 hover:bg-primary hover:text-white text-gray-700 transition-all duration-300 ease-in-out">
-                    <div>
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d={list.logo}
-                        />
-                      </svg>
+                <Link to={path} key={index} className="flex ">
+                  {path === navListName ? (
+                    <div
+                      className={`flex space-x-4 py-2  rounded-full w-full px-4 bg-primary text-white  transition-all duration-300 ease-in-out mt-0.5`}
+                    >
+                      <div>
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d={logo}
+                          />
+                        </svg>
+                      </div>
+                      <span> {name}</span>
                     </div>
-                    <span> {list.name}</span>
-                  </div>
+                  ) : (
+                    <div
+                      className={`flex space-x-4 py-2 rounded-full w-full px-4 hover:bg-primary hover:text-white text-gray-700 transition-all duration-300 ease-in-out mt-0.5`}
+                    >
+                      <div>
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d={logo}
+                          />
+                        </svg>
+                      </div>
+                      <span> {name}</span>
+                    </div>
+                  )}
                 </Link>
               );
             })}

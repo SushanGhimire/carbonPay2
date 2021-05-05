@@ -67,16 +67,6 @@ function NavBar({ loggedIn }) {
       setWidth(innerWidth);
     }
   };
-
-  // const handleScroll = () => {
-  //   if (window.pageYOffset > 0 && position === 0) {
-  //     setPosition(1);
-  //   } else if (window.pageYOffset === 0 && position > 0) {
-  //     setPosition(0);
-  //   }
-  // };
-  // const scrollToTop = () => window.scrollTo(0, 0);
-
   useEffect(() => {
     // handleScroll();
     window.addEventListener("resize", handleWidth);
@@ -120,7 +110,7 @@ function NavBar({ loggedIn }) {
             </div>
 
             <Link
-              to={loggedIn ? "/dashboard/stripeform" : "/login"}
+              to={loggedIn ? "/dashboard/home" : "/login"}
               className="button-animation"
             >
               <div className="animation-text px-6 rounded-full py-2">

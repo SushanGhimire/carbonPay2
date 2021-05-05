@@ -72,7 +72,7 @@ function DashboardManagement() {
           <div className="flex-1 flex flex-col overflow-auto">
             <NavBar handleVerify={handleVerify} />
             <Switch>
-              <Route exact path="/dashboard" component={Home}></Route>
+              <Route exact path="/dashboard/home" component={Home}></Route>
               <Route
                 exact
                 path="/dashboard/userprofile"
