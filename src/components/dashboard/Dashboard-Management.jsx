@@ -4,16 +4,17 @@ import NavBar from "./Static/NavBar";
 import Aside from "./Static/Aside";
 import Home from "./Home/Home";
 import Payment from "../dashboard/payment/Payment";
-import Balance from "../dashboard/balance/Balance";
+// import Balance from "../dashboard/balance/Balance";
 import StripeRegForm from "./StripeRegForm.jsx/StripeRegForm";
 import axios from "axios";
 import { baseUrl } from "../authentication/authorization";
 import Profile from "./profile/Profile";
 import EmailVerification from "../authentication/EmailVerification";
+import Billing from "./billing/Billing";
 function DashboardManagement() {
   const token = localStorage.getItem("access");
   const [redirect, setRedirect] = useState("");
-  const [isForm, setIsForm] = useState(true);
+  const [isForm, setIsForm] = useState(false);
   const [loading, setLoading] = useState(false);
   // const form = () => {
   //   setIsForm(false);
@@ -82,13 +83,18 @@ function DashboardManagement() {
               />
               <Route
                 exact
-                path="/dashboard/payments"
+                path="/dashboard/transaction"
                 component={Payment}
               ></Route>
-              <Route
+              {/* <Route
                 exact
                 path="/dashboard/balances"
                 component={Balance}
+              ></Route> */}
+              <Route
+                exact
+                path="/dashboard/billing"
+                component={Billing}
               ></Route>
               <Route
                 exact
