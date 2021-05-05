@@ -11,6 +11,7 @@ import { baseUrl } from "../authentication/authorization";
 import Profile from "./profile/Profile";
 import EmailVerification from "../authentication/EmailVerification";
 import Billing from "./billing/Billing";
+import Integration from "./integration/Integration";
 function DashboardManagement() {
   const token = localStorage.getItem("access");
   const [redirect, setRedirect] = useState("");
@@ -85,6 +86,11 @@ function DashboardManagement() {
                 exact
                 path="/dashboard/transaction"
                 component={Payment}
+              ></Route>
+              <Route
+                exact
+                path="/dashboard/integrations"
+                component={Integration}
               ></Route>
               {/* <Route
                 exact
