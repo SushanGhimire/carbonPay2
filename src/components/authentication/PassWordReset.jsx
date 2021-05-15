@@ -51,7 +51,7 @@ function PassWordReset() {
                 Password
               </label>
               <input
-                type="text"
+                type="password"
                 id="email"
                 value={Password.password}
                 onChange={(e) =>

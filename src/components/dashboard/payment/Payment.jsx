@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 
 function Payment() {
-  const paymentSubLists = ["All", "Succeeded", "Refunded", "Uncaptured"];
+  const paymentSubLists = ["All", "Paid", "Unpaid", "Date"];
   const [width, setWidth] = useState(window.innerWidth);
   const Transations = [
     {
@@ -39,9 +39,9 @@ function Payment() {
     <div className="flex md:p-10 flex-col">
       {/* top header  */}
       <div className="w-full md:flex justify-between items-center space-y-3 md:space-y-0 p-5 lg:px-0">
-        <div className="text-3xl font-semibold">Payments</div>
+        <div className="text-3xl font-semibold">Transactions</div>
         <div className="">
-          <div className="button-style">
+          <button className="button-style">
             <div>
               <svg
                 className="w-5 h-5"
@@ -58,8 +58,8 @@ function Payment() {
                 />
               </svg>
             </div>
-            <span>Create Payment</span>
-          </div>
+            <span>Carbon Donation</span>
+          </button>
         </div>
       </div>
       {/* sub header  */}
@@ -104,12 +104,12 @@ function Payment() {
                       <span className="text-gray-500">USD</span>
                       {pay.sucess === true && (
                         <span className="bg-green-300 rounded px-2 lg:py-0.5 text-xs">
-                          Succeeded
+                          Paid
                         </span>
                       )}
                       {pay.sucess === false && (
-                        <span className="bg-blue-300 rounded px-2 lg:py-0.5 text-xs">
-                          Refunded
+                        <span className="bg-red-400 rounded px-2 lg:py-0.5 text-xs">
+                          Unpaid
                         </span>
                       )}
                     </td>
@@ -177,12 +177,12 @@ function Payment() {
                     <span className="text-gray-500">USD</span>
                     {pay.sucess === true && (
                       <span className="bg-green-300 rounded px-2 lg:py-0.5 text-xs">
-                        Succeeded
+                        Paid
                       </span>
                     )}
                     {pay.sucess === false && (
-                      <span className="bg-blue-300 rounded px-2 lg:py-0.5 text-xs">
-                        Refunded
+                      <span className="bg-red-400 rounded px-2 lg:py-0.5 text-xs">
+                        Unpaid
                       </span>
                     )}
                   </div>

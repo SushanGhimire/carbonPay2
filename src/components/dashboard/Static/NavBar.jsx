@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { baseUrl } from "../../authentication/authorization";
+import axios from "axios";
 function NavBar({ handleVerify }) {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -45,7 +46,8 @@ function NavBar({ handleVerify }) {
     //   path: "/dashboard/balances",
     // },
   ];
-  // let Refresh = localStorage.getItem("refresh");
+  let Refresh = localStorage.getItem("refresh");
+  let token = localStorage.getItem("access");
   const handleWidth = () => {
     const innerWidth = window.innerWidth;
     if (innerWidth > 1023 && width < 1024) {
@@ -80,13 +82,20 @@ function NavBar({ handleVerify }) {
     }
   };
   const handleLogout = () => {
-    // let logout = [
-    //   {
-    //     refresh: Refresh,
-    //   },
-    // ];
+    // const logout = {
+    //   refresh: Refresh,
+    // };
+    // console.log(logout);
     // axios
-    //   .post(`${baseUrl}/user/logout/`, logout)
+    //   .post(
+    //     `${baseUrl}/user/logout/`,
+    //     {
+    //       headers: {
+    //         Authorization: ` Bearer ${token}`,
+    //       },
+    //     },
+    //     logout
+    //   )
     //   .then((res) => {
     //     console.log(res);
     //     window.location("/login");

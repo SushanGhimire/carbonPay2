@@ -8,11 +8,13 @@ function Profile() {
     username: "",
     email: "",
     password: "",
+    secretKey: "",
   });
   const userInfo = {
     username: "Sushan Ghimire",
     email: "sushangmi55@gmail.com",
     password: "11111111",
+    secretKey: "adagfiazxgidakxasidzasdkasdkagsikshdakksgeiugalidi",
   };
   const handleEdit = () => {
     // edit ? setEdit(false) : setEdit(true);
@@ -87,16 +89,17 @@ function Profile() {
       </div>
 
       {/* user info  */}
-      <div className="flex flex-col space-y-6 py-5 border-b">
+      <form className="flex flex-col space-y-6 py-5 border-b">
         {/* email  */}
-        <div className="flex space-x-4 items-center">
-          <label
-            htmlFor=""
-            className="w-32 font-rubik font-semibold text-gray-800"
-          >
-            Email
-          </label>
-          {!edit && (
+        {!edit && (
+          <div className="flex space-x-4 items-center">
+            <label
+              htmlFor=""
+              className="w-32 font-rubik font-semibold text-gray-800"
+            >
+              Email
+            </label>
+
             <input
               type="text"
               id="email"
@@ -104,19 +107,8 @@ function Profile() {
               className={`text-gray-700 font-medium w-auto rounded-md  px-6 py-1`}
               readOnly={edit ? false : true}
             />
-          )}
-          {edit && (
-            <input
-              type="text"
-              id="email"
-              value={email}
-              className={`text-gray-700 font-medium w-auto rounded-md ${
-                edit ? "border" : ""
-              } px-6 py-1`}
-              onChange={(event) => handleChange(event, "email")}
-            />
-          )}
-        </div>
+          </div>
+        )}
         {/* name  */}
         <div className="flex space-x-4 items-center">
           <label
@@ -167,11 +159,58 @@ function Profile() {
           {edit && (
             <Link
               to="/dashboard/confirmemail"
-              className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md"
+              className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md font-semibold"
             >
               Change Password..
             </Link>
           )}
+        </div>
+        {/* Secret Key */}
+        <div className="flex space-x-4 items-center  filter blur-lg">
+          <label
+            htmlFor=""
+            className="w-32 font-rubik font-semibold text-gray-800"
+          >
+            Secret Key
+          </label>
+          <textarea
+            id="secretKey"
+            value={userInfo.secretKey}
+            type="text"
+            className="text-gray-700 font-medium px-6 py-1 rounded-md focus:outline-none"
+            onChange={(event) => handleChange(event, "password")}
+            readOnly={edit ? false : true}
+          />
+          <div>
+            {!edit && (
+              <button className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md transform hover:-translate-y-1 transition-all duration-300 ease-in-out hover:bg-gray-100 font-semibold">
+                view key
+              </button>
+            )}
+            {edit && (
+              <button className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md transform hover:-translate-y-1 transition-all duration-300 ease-in-out hover:bg-gray-100 font-semibold">
+                Update Key
+              </button>
+            )}
+          </div>
+          {/* {!edit && (
+            <input
+              id="secretKey"
+              value={userInfo.secretKey}
+              type="text"
+              className="text-gray-700 font-medium  px-6 py-1 rounded-md  w-full"
+              onChange={(event) => handleChange(event, "password")}
+              readOnly={edit ? false : true}
+            />
+          )} */}
+          {/* {edit && (
+            <Link
+              to="/dashboard/confirmemail"
+              className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md"
+            >
+              Change Password..
+            </Link>
+          )} */}
         </div>
         {/* verified  */}
         {!edit && (
@@ -218,7 +257,7 @@ function Profile() {
             </div>
           </div>
         )}
-      </div>
+      </form>
     </div>
   );
 }
