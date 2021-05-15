@@ -11,3 +11,18 @@ export const headers = () => {
     return null;
   }
 };
+
+export const handleLogout = () => {
+  fetch(`${baseUrl}/user/logout/`, {
+    method: "POST",
+    headers: { ...headers(), "Content-Type": "application/json" },
+    body: JSON.stringify({ refresh: localStorage.getItem("refresh") }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        localStorage.clear();
+        window.location = "/";
+      }
+    })
+    .catch((error) => localStorage.clear());
+};

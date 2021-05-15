@@ -4,6 +4,7 @@ function Profile() {
   const [edit, setEdit] = useState(false);
   const [Disable, setDisable] = useState(true);
   const verified = true;
+  const [isSecret, setIsSecret] = useState(true);
   const [UserDetails, setUserDetails] = useState({
     username: "",
     email: "",
@@ -32,8 +33,14 @@ function Profile() {
       [property]: value,
     });
   };
+  const handleSecret = () => {
+    isSecret ? setIsSecret(false) : setIsSecret(true);
+  };
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+  };
   console.log(UserDetails);
-  const { username, email } = UserDetails;
+  const { username } = UserDetails;
   return (
     <div className="flex p-5 md:p-10 flex-col">
       {/* top header  */}
@@ -89,7 +96,10 @@ function Profile() {
       </div>
 
       {/* user info  */}
-      <form className="flex flex-col space-y-6 py-5 border-b">
+      <form
+        className="flex flex-col space-y-6 py-5 border-b"
+        onSubmit={handleLoginSubmit}
+      >
         {/* email  */}
         {!edit && (
           <div className="flex space-x-4 items-center">
@@ -166,29 +176,44 @@ function Profile() {
           )}
         </div>
         {/* Secret Key */}
-        <div className="flex space-x-4 items-center  filter blur-lg">
+        <div className="flex space-x-4 items-center ">
           <label
             htmlFor=""
             className="w-32 font-rubik font-semibold text-gray-800"
           >
             Secret Key
           </label>
-          <textarea
-            id="secretKey"
-            value={userInfo.secretKey}
-            type="text"
-            className="text-gray-700 font-medium px-6 py-1 rounded-md focus:outline-none"
-            onChange={(event) => handleChange(event, "password")}
-            readOnly={edit ? false : true}
-          />
+          {isSecret && (
+            <textarea
+              id="secretKey"
+              value="sjdbfkjsbd-sdfsdf-sdf-sd-f-sd-fs-dfsdfsd-f-sdfsd"
+              type="text"
+              className={`text-gray-700 font-medium px-6 py-1 rounded-md focus:outline-none  ${
+                isSecret ? "filter blur " : ""
+              }`}
+              readOnly={edit ? false : true}
+            />
+          )}
+          {!isSecret && (
+            <textarea
+              id="secretKey"
+              value={userInfo.secretKey}
+              type="text"
+              className={`text-gray-700 font-medium px-6 py-1 rounded-md focus:outline-none  `}
+              onChange={(event) => handleChange(event, "secretKey")}
+              readOnly={edit ? false : true}
+            />
+          )}
           <div>
-            {!edit && (
-              <button className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md transform hover:-translate-y-1 transition-all duration-300 ease-in-out hover:bg-gray-100 font-semibold">
-                view key
-              </button>
-            )}
+            <button
+              className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md transform hover:-translate-y-1 transition-all duration-300 ease-in-out hover:bg-gray-100 font-semibold"
+              onClick={handleSecret}
+            >
+              {isSecret ? "view key" : "hide key"}
+            </button>
+
             {edit && (
-              <button className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md transform hover:-translate-y-1 transition-all duration-300 ease-in-out hover:bg-gray-100 font-semibold">
+              <button className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md transform hover:-translate-y-1 transition-all duration-300 ease-in-out hover:bg-gray-100 font-semibold ml-4">
                 Update Key
               </button>
             )}
