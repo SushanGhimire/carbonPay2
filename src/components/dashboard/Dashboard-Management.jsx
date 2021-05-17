@@ -41,7 +41,6 @@ function DashboardManagement() {
       });
   };
   const handleVerify = () => {
-    console.log("parent");
     axios
       .get(`${baseUrl}/merchants/check-stripe-verified/`, {
         headers: {

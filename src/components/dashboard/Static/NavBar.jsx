@@ -6,6 +6,7 @@ import axios from "axios";
 function NavBar({ handleVerify }) {
   const [width, setWidth] = useState(window.innerWidth);
   const token = localStorage.getItem("access");
+
   const [isShown, setIsShown] = useState(false);
   const mobIpadSidebar = useRef();
   const coverAll = useRef();
@@ -42,8 +43,6 @@ function NavBar({ handleVerify }) {
     //   path: "/dashboard/balances",
     // },
   ];
-  // let Refresh = localStorage.getItem("refresh");
-  // let token = localStorage.getItem("access");
   const handleWidth = () => {
     const innerWidth = window.innerWidth;
     if (innerWidth > 1023 && width < 1024) {
@@ -52,8 +51,10 @@ function NavBar({ handleVerify }) {
       setWidth(innerWidth);
     }
   };
+
   useEffect(() => {
     window.addEventListener("resize", handleWidth);
+
     return () => {
       window.removeEventListener("resize", handleWidth);
     };
@@ -91,7 +92,7 @@ function NavBar({ handleVerify }) {
       })
       .then((res) => {
         localStorage.clear();
-        window.location = "/login";
+        window.location = "/";
         console.log(res);
       })
       .catch((err) => {

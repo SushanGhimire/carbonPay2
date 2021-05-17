@@ -7,6 +7,7 @@ function NavBar({ loggedIn }) {
   const [navListName, setNavListName] = useState(`/${nav}`);
   const mobileSidebar = useRef();
   const coverAll = useRef();
+  // const [position, setPosition] = useState(0);
   const navlist = [
     {
       name: "Climate Change",
@@ -67,6 +68,15 @@ function NavBar({ loggedIn }) {
       setWidth(innerWidth);
     }
   };
+  const scrollToTop = () => window.scrollTo(0, 0);
+
+  // const handleScroll = () => {
+  //   if (window.pageYOffset > 0 && position === 0) {
+  //     setPosition(1);
+  //   } else if (window.pageYOffset === 0 && position > 0) {
+  //     setPosition(0);
+  //   }
+  // };
   useEffect(() => {
     // handleScroll();
     window.addEventListener("resize", handleWidth);
@@ -81,7 +91,7 @@ function NavBar({ loggedIn }) {
       className={`sticky top-0 z-50 bg-white w-full font-header transition-all duration-300 ease-in-out text-lg shadow-md py-6 lg:py-0 `}
     >
       <div className="w-full flex justify-between px-10 items-center">
-        <Link to="/" className="cursor-pointer">
+        <Link to="/" className="cursor-pointer" onClick={scrollToTop}>
           Carbon Pay
         </Link>
         {width > 1023 && (
@@ -102,6 +112,7 @@ function NavBar({ loggedIn }) {
                     }`}
                     key={index}
                     to={to}
+                    onClick={scrollToTop}
                   >
                     {name}
                   </Link>
@@ -156,7 +167,10 @@ function NavBar({ loggedIn }) {
             <div className="w-72 flex flex-col px-8 ">
               <Link
                 to="/"
-                onClick={toggleMobileSidebar}
+                onClick={() => {
+                  toggleMobileSidebar();
+                  scrollToTop();
+                }}
                 className="text-3xl md:text-4xl font-header font-bold py-5 text-center text-primary"
               >
                 Carbon Pay
@@ -170,7 +184,10 @@ function NavBar({ loggedIn }) {
                       className="cursor-pointer hover:text-primary tracking-wider text-lg"
                       key={index}
                       to={to}
-                      onClick={toggleMobileSidebar}
+                      onClick={() => {
+                        toggleMobileSidebar();
+                        scrollToTop();
+                      }}
                     >
                       {name}
                     </Link>
