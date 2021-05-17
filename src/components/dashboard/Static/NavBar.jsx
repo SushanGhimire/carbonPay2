@@ -96,13 +96,16 @@ function NavBar({ handleVerify }) {
         console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.data.code === "token_not_valid") {
+          localStorage.clear();
+          window.location = "/";
+        }
       });
   };
 
   return (
     <div
-      className="bg-white z-10 w-full py-2  border-b transition-all duration-300 ease-in-out lg:px-10 sticky top-0"
+      className="bg-white z-30 w-full py-2  border-b transition-all duration-300 ease-in-out lg:px-10 sticky top-0"
       onMouseLeave={() => setIsShown(false)}
     >
       {/* nav bar  */}
@@ -213,7 +216,7 @@ function NavBar({ handleVerify }) {
             onClick={toggleMobIpadSidebar}
           ></div>
           <div
-            className="bg-gray-50 fixed top-0 left-0 h-screen w-0 z-20 border overflow-auto
+            className="bg-gray-50 fixed top-0 left-0 h-screen w-0 z-40 border overflow-auto
             transition-all duration-300"
             ref={mobIpadSidebar}
           >

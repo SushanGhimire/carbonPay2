@@ -18,6 +18,8 @@ function Payment() {
 
   const [width, setWidth] = useState(window.innerWidth);
   const [transactionDetail, setTransactionDetail] = useState(false);
+  const [transactionDetailInformation, setTransactionDetailInformation] =
+    useState([]);
   const [Transactions, setTransactions] = useState([]);
   // if user is using screen width of laptop and changes to lower than 1023px width, call the function
   // if user is using screen width of ipad or mobile and changes to higher than 1024px width, call the function
@@ -39,8 +41,9 @@ function Payment() {
     handleTransactionData("All", 0);
     // eslint-disable-next-line
   }, []);
-  const showTransactionDetail = (id) => {
+  const showTransactionDetail = (pay) => {
     setTransactionDetail(!transactionDetail);
+    setTransactionDetailInformation(pay);
   };
   const token = localStorage.getItem("access");
   const handleTransactionData = (name, index) => {
@@ -57,7 +60,10 @@ function Payment() {
           setTransactions(res.data.data);
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response.data.code === "token_not_valid") {
+            localStorage.clear();
+            window.location = "/";
+          }
         });
     } else if (name === "Paid") {
       subTitle[index].isTrue = true;
@@ -72,7 +78,10 @@ function Payment() {
           setTransactions(res.data.data);
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response.data.code === "token_not_valid") {
+            localStorage.clear();
+            window.location = "/";
+          }
         });
     } else if (name === "Unpaid") {
       subTitle[index].isTrue = true;
@@ -87,7 +96,10 @@ function Payment() {
           setTransactions(res.data.data);
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response.data.code === "token_not_valid") {
+            localStorage.clear();
+            window.location = "/";
+          }
         });
     }
     // else if (name === "Date") {
@@ -95,10 +107,17 @@ function Payment() {
     //   setPaymentSubLists(subTitle);
     // }
   };
+  // const [transactionAlt, setTransactionAlt] = useState(false);
+  // const handleTransactionAlt = () => {
+  //   setTransactionAlt(!transactionAlt);
+  // };
   return (
     <div className="flex md:p-10 flex-col relative h-full">
       {transactionDetail && (
-        <TransactionDetail showTransactionDetail={showTransactionDetail} />
+        <TransactionDetail
+          showTransactionDetail={showTransactionDetail}
+          transactionDetailInformation={transactionDetailInformation}
+        />
       )}
       {/* top header  */}
       <div className="w-full md:flex justify-between items-center space-y-3 md:space-y-0 p-5 lg:px-0">
@@ -144,7 +163,7 @@ function Payment() {
       {/* table  */}
       {/* for labtop  */}
       {width > 767 && (
-        <div className="w-full flex mt-4">
+        <div className="w-full flex mt-4 relative">
           <table className="table-auto w-full">
             <thead className="">
               <tr className="font-semibold text-gray-700 text-xs ">
@@ -171,11 +190,11 @@ function Payment() {
                 } = pay;
                 return (
                   <tr
-                    className="cursor-pointer hover:bg-gray-100 text-xs lg:text-sm text-gray-600  border-b transition-all duration-300"
+                    className="cursor-pointer hover:bg-gray-100 text-xs lg:text-sm text-gray-600  border-b transition-all duration-300 "
                     key={index}
-                    onClick={() => showTransactionDetail(pay.id)}
+                    onClick={() => showTransactionDetail(pay)}
                   >
-                    <td className="py-2">{customer_name}</td>
+                    <td className="py-2 relative">{customer_name}</td>
                     <td className="py-2">${initial_price}</td>
                     <td className="py-2">${increased_price}</td>
                     <td className=" flex space-x-4 py-2 items-center pl-2">
@@ -270,6 +289,7 @@ function Payment() {
               <div
                 className="flex flex-col bg-gray-50 shadow mt-2 py-2 rounded px-5 text-sm space-y-1"
                 key={index}
+                onClick={() => showTransactionDetail(pay)}
               >
                 {/* Customer  */}
                 <div className="flex space-x-4 items-center">

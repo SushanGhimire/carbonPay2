@@ -37,7 +37,12 @@ function DashboardManagement() {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        alert("Internal Server Error");
+        if (err.response.data.code === "token_not_valid") {
+          localStorage.clear();
+          window.location = "/";
+        } else {
+          alert("Internal Server Error");
+        }
       });
   };
   const handleVerify = () => {
@@ -52,7 +57,10 @@ function DashboardManagement() {
         console.log(redirect);
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.data.code === "token_not_valid") {
+          localStorage.clear();
+          window.location = "/";
+        }
       });
   };
 
