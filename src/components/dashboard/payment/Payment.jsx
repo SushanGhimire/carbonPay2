@@ -1,10 +1,13 @@
 import { React, useState, useEffect } from "react";
+import TransactionDetail from "./TransactionDetail";
 
 function Payment() {
   const paymentSubLists = ["All", "Paid", "Unpaid", "Date"];
   const [width, setWidth] = useState(window.innerWidth);
+  const [transactionDetail, setTransactionDetail] = useState(false);
   const Transations = [
     {
+      id: 1,
       amount: "$100.00",
       sucess: true,
       dis: "Subscription Updated",
@@ -12,6 +15,7 @@ function Payment() {
       date: "10Aug 12:00 AM",
     },
     {
+      id: 2,
       amount: "$80.00",
       sucess: false,
       dis: "Subscription Updated",
@@ -35,8 +39,14 @@ function Payment() {
       window.removeEventListener("resize", handleWidth);
     };
   });
+  const showTransactionDetail = (id) => {
+    setTransactionDetail(!transactionDetail);
+  };
   return (
-    <div className="flex md:p-10 flex-col">
+    <div className="flex md:p-10 flex-col relative h-full">
+      {transactionDetail && (
+        <TransactionDetail showTransactionDetail={showTransactionDetail} />
+      )}
       {/* top header  */}
       <div className="w-full md:flex justify-between items-center space-y-3 md:space-y-0 p-5 lg:px-0">
         <div className="text-3xl font-semibold">Transactions</div>
@@ -63,12 +73,12 @@ function Payment() {
         </div>
       </div>
       {/* sub header  */}
-      <div className="flex space-x-4 text-gray-500  font-medium text-sm border-b px-5 lg:px-0">
+      <div className="flex text-gray-500  font-medium text-sm border-b px-5 lg:px-0">
         {paymentSubLists.map((list, index) => {
           return (
             <div
               key={index}
-              className="hover:text-indigo-500 transition-all duration-300 ease-in-out cursor-pointer border-b border-white hover:border-indigo-400 py-2"
+              className="transition-all duration-300 ease-in-out cursor-pointer border-b border-white py-2 px-3 hover:bg-indigo-500 hover:text-white font-semibold"
             >
               {list}
             </div>
@@ -95,6 +105,7 @@ function Payment() {
                   <tr
                     className="cursor-pointer hover:bg-gray-100 text-xs lg:text-sm text-gray-600  border-b transition-all duration-300"
                     key={index}
+                    onClick={() => showTransactionDetail(pay.id)}
                   >
                     <td className=" flex space-x-4 py-2 items-center pl-2">
                       <span className="font-semibold text-gray-800">

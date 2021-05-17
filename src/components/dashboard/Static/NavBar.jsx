@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { handleLogout } from "../../authentication/authorization";
-// import { baseUrl } from "../../authentication/authorization";
-// import axios from "axios";
+// import { handleLogout } from "../../authentication/authorization";
+import { baseUrl } from "../../authentication/authorization";
+import axios from "axios";
 function NavBar({ handleVerify }) {
   const [width, setWidth] = useState(window.innerWidth);
-
+  const token = localStorage.getItem("access");
   const [isShown, setIsShown] = useState(false);
   const mobIpadSidebar = useRef();
   const coverAll = useRef();
@@ -77,10 +77,27 @@ function NavBar({ handleVerify }) {
       setIsShown(true);
     }
   };
-  // const handleLogout = () => {
-  //   localStorage.clear();
-  //   window.location = "/login";
-  // };
+
+  const handleLogout = () => {
+    const refresh = JSON.stringify({
+      refresh: localStorage.getItem("refresh"),
+    });
+    axios
+      .post(`${baseUrl}/user/logout/`, refresh, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": `application/json`,
+        },
+      })
+      .then((res) => {
+        localStorage.clear();
+        window.location = "/login";
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div

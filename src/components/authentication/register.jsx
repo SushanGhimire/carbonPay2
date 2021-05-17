@@ -96,7 +96,6 @@ export default function Register() {
       })
       .catch((err) => {
         const { email, username } = err.response.data;
-        console.log(err.response.data);
         if (Array.isArray(email) || Array.isArray(username)) {
           if (Array.isArray(email)) {
             errors.email = "Email already exists";

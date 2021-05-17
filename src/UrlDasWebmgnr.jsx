@@ -3,11 +3,11 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import App from "./App";
 import jwt_decode from "jwt-decode";
 import DashboardManagement from "./components/dashboard/Dashboard-Management";
-import LoadingPage from "./common/LoadingPage";
+// import LoadingPage from "./common/LoadingPage";
 function UrlDasWebmgnr() {
   const [loggedIn, setLoggedIn] = useState("");
   const histroy = useHistory();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   function tokenManager() {
     const token = localStorage.getItem("refresh");
@@ -19,28 +19,25 @@ function UrlDasWebmgnr() {
     }
     const loggedIn = decoded && decoded.jti && true;
     setLoggedIn(loggedIn);
-    setLoading(false);
+    // setLoading(false);
   }
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     histroy.listen(() => tokenManager());
     tokenManager();
   }, [histroy]);
 
   return (
     <div className="relative">
-      {loading && <LoadingPage />}
-      {!loading && (
-        <Switch>
-          {loggedIn && (
-            <Route path="/dashboard" component={DashboardManagement} />
-          )}
-          <Route
-            path="/"
-            render={(props) => <App loggedIn={loggedIn} {...props} />}
-          />
-        </Switch>
-      )}
+      <Switch>
+        {loggedIn && (
+          <Route path="/dashboard" component={DashboardManagement} />
+        )}
+        <Route
+          path="/"
+          render={(props) => <App loggedIn={loggedIn} {...props} />}
+        />
+      </Switch>
     </div>
   );
 }
