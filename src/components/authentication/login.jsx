@@ -132,6 +132,7 @@ export default function Login() {
                 value={email}
                 className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
                 onChange={(event) => handleChange(event, "email")}
+                autoComplete="off"
               />
               {emailError && (
                 <div className="error text-red-600">{emailError}</div>
@@ -156,6 +157,7 @@ export default function Login() {
                 value={password}
                 className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
                 onChange={(event) => handleChange(event, "password")}
+                autoComplete="off"
               />
               {passwordError && (
                 <div className="error text-red-600">{passwordError}</div>

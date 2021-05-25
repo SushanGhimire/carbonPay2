@@ -7,30 +7,29 @@ function Integration() {
   const integrations = [
     {
       name: "Shopify",
-      desc:
-        "Carbon neutral order for your shopify customers at no cost to you.",
+      desc: "Carbon neutral order for your shopify customers at no cost to you.",
       isInstalled: true,
       logo: shopify,
-    },
-    {
-      name: "Bigcommerce",
-      desc:
-        "Carbon neutral order for your shopify customers at no cost to you.",
-      isInstalled: false,
-      logo: bigcommerce,
+      link: "https://astranix-1.myshopify.com/password",
     },
     {
       name: "Woocommerce",
-      desc:
-        "Carbon neutral order for your shopify customers at no cost to you.",
-      isInstalled: false,
+      desc: "Carbon neutral order for your shopify customers at no cost to you.",
+      isInstalled: true,
       logo: woocommerce,
+      link: "http://carbonpay.ashiish.me/wp-admin/",
     },
     {
+      name: "Bigcommerce",
+      desc: "Carbon neutral order for your shopify customers at no cost to you.",
+      isInstalled: false,
+      logo: bigcommerce,
+    },
+
+    {
       name: "Magento",
-      desc:
-        "Carbon neutral order for your shopify customers at no cost to you.",
-      isInstalled: true,
+      desc: "Carbon neutral order for your shopify customers at no cost to you.",
+      isInstalled: false,
       logo: magento,
     },
   ];
@@ -48,7 +47,7 @@ function Integration() {
       <div className="w-full max-w-4xl grid   md:grid-cols-2 gap-6">
         {/* card  */}
         {integrations.map((item, index) => {
-          const { name, desc, isInstalled, logo } = item;
+          const { name, desc, isInstalled, logo, link } = item;
           return (
             <div
               className="flex flex-col space-y-3 col-span-1 bg-gray-100 p-5"
@@ -65,7 +64,9 @@ function Integration() {
               <div className="text-gray-700">{desc}</div>
               {isInstalled ? (
                 <div className="text-lg font-semibold text-primary">
-                  Installed
+                  <a href={link} target="_blank" rel="noreferrer">
+                    Installed
+                  </a>
                 </div>
               ) : (
                 <div>

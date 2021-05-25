@@ -46,22 +46,18 @@ function App(props) {
           path="/docs/charbonpaycheckout"
           render={() => <Docsmgnt />}
         />
+        <Route exact path="/confirmemail" component={EmailVerification} />
+        <Route
+          exact
+          path="/user/password-reset/:uidb64/:token"
+          component={PassWordReset}
+        />
+        <Route exact path="/user/email-verify/:token" component={EmailVerify} />
         {/* <Route exact path="/carbonoffsets" component={offset} /> */}
         {!loggedIn && (
           <>
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/confirmemail" component={EmailVerification} />
-            <Route
-              exact
-              path="/user/password-reset/:uidb64/:token"
-              component={PassWordReset}
-            />
-            <Route
-              exact
-              path="/user/email-verify/:token"
-              component={EmailVerify}
-            />
           </>
         )}
         <Route path="/page-not-found" component={PageNotFound} />

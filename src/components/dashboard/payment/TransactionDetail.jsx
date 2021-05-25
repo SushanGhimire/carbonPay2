@@ -9,7 +9,7 @@ function TransactionDetail({
     customer_name,
     increased_price,
     initial_price,
-    paid,
+    // paid,
     timestamp,
     total_price,
     cart_detail,
@@ -33,7 +33,7 @@ function TransactionDetail({
             </button>
           </div>
           {/* customer and cart  */}
-          <div className="grid grid-cols-1 md:grid-cols-3 px-7  mt-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 px-7  mt-5">
             {/* customer details  */}
             <div className="flex col-span-1 md:col-span-2 flex-col ">
               {/* customer detail header  */}
@@ -76,25 +76,28 @@ function TransactionDetail({
                 </div>
               </div>
             </div>
-            {/* Cart details  */}
+            {/* Amount details  */}
             <div className="flex col-span-1 flex-col ">
-              {/* cart detail header  */}
+              {/* Amount detail header  */}
               <div className="font-semibold text-lg mb-2 text-primary">
-                Cart Detail
+                Amount Detail
               </div>
-              {/* Name  */}
+              {/* initial  */}
               <div className="flex  items-center">
-                <div className="font-semibold text-sm w-28 "> Name</div>
-                <div className="  text-gray-600 text-sm ">
-                  {cart_detail.Name}
-                </div>
+                <div className="font-semibold text-sm w-28 ">Initial</div>
+                <div className="  text-gray-600 text-sm ">${initial_price}</div>
               </div>
-              {/* Date  */}
+              {/* increased  */}
               <div className="flex  items-center">
-                <div className="font-semibold text-sm w-28">Quantity</div>
+                <div className="font-semibold text-sm w-28">Increased</div>
                 <div className="   text-gray-600 text-sm">
-                  {cart_detail.Quantity}
+                  ${increased_price}
                 </div>
+              </div>
+              {/* total  */}
+              <div className="flex  items-center">
+                <div className="font-semibold text-sm w-28"> Total </div>
+                <div className="   text-gray-600 text-sm">${total_price}</div>
               </div>
             </div>
           </div>
@@ -102,29 +105,39 @@ function TransactionDetail({
           <div className="flex mt-4 px-7 flex-col  mb-10">
             {/* cart detail header  */}
             <div className="font-semibold text-lg mb-2 text-primary">
-              Amount Detail
+              Cart Detail
             </div>
             <table className="table-auto w-full border">
               <thead className="bg-gray-200">
                 <tr className="font-semibold text-gray-700 text-xs ">
+                  <th className="text-left border-b py-2 pl-2">PRODUCT NAME</th>
                   <th className="text-left border-b py-2 pl-2">
-                    INITIAL AMOUNT
+                    PRODUCT QUANTITY
                   </th>
                   <th className="text-left border-b py-2 pl-2">
-                    INCREASED AMOUNT
+                    PRODUCT PRICE
                   </th>
-                  <th className="text-left border-b py-2 pl-2">TOTAL AMOUNT</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="cursor-pointer hover:bg-gray-100 text-xs lg:text-sm text-gray-600  border-b transition-all duration-300">
-                  <td className="py-2 text-center">{initial_price}</td>
-                  <td className="py-2 text-center">${increased_price}</td>
-                  <td className=" flex space-x-4 py-2 items-center pl-2">
-                    <span className="font-semibold text-gray-800">
-                      ${total_price}
-                    </span>
-                    {paid && (
+                {Array.isArray(cart_detail) &&
+                  cart_detail.map((cart, index) => {
+                    const { product_name, product_quantity, product_price } =
+                      cart;
+                    return (
+                      <tr
+                        className="cursor-pointer hover:bg-gray-100 text-xs lg:text-sm text-gray-600  border-b transition-all duration-300"
+                        key={index}
+                      >
+                        <td className="py-2 text-center">{product_name}</td>
+                        <td className="py-2 text-center">
+                          ${product_quantity}
+                        </td>
+                        <td className=" flex space-x-4 py-2 items-center pl-2">
+                          <span className="font-semibold text-gray-800">
+                            ${product_price}
+                          </span>
+                          {/* {paid && (
                       <span className="bg-green-300 rounded px-2 lg:py-0.5 text-xs">
                         Paid
                       </span>
@@ -133,9 +146,11 @@ function TransactionDetail({
                       <span className="bg-red-400 rounded px-2 lg:py-0.5 text-xs">
                         Unpaid
                       </span>
-                    )}
-                  </td>
-                </tr>
+                    )} */}
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>

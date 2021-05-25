@@ -1,86 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // import axios from "axios";
 // import { baseUrl } from "../../authentication/authorization";
-import process from "../../../assets/images/loading/progress.svg";
+// import process from "../../../assets/images/loading/progress.svg";
 import info from "../../../assets/images/loading/info.svg";
 import aspiration from "../../../assets/images/homepage/aspiration.svg";
 function StripeRegForm({ submitMerchatForm, loading }) {
-  const [istrue, setIstrue] = useState(false);
-
-  // let result;
+  const [userimage, setuserImage] = useState("");
+  const [imageError, setImageError] = useState("");
   const [Tooltips, setTooltips] = useState(false);
+  const selectedImageName = useRef();
   const [merchant, setMerchant] = useState({
-    business_type: "individual",
-    first_name: "",
-    last_name: "",
-    business_name: "",
-    dob_year: "",
-    dob_month: "",
-    dob_date: "",
-    donation: "0",
+    acc_type: "IND",
+    f_name: "",
+    l_name: "",
+    carbon_percentage: "0",
+    contact: "",
+    shop_addr: "",
+    address: "",
     error: {
-      first_name: "",
-      last_name: "",
-      dob_year: "",
-      dob_month: "",
-      dob_date: "",
+      f_name: "",
+      l_name: "",
+      business_name: "",
+      contact: "",
+      shop_addr: "",
+      image: "",
+      address: "",
     },
   });
   const handleTooltips = () => {
     Tooltips ? setTooltips(false) : setTooltips(true);
   };
   const handleCompany = (value) => {
-    setMerchant({ ...merchant, business_type: value });
-    if (value === "individual") {
-      // setMerchant({ ...merchant, business_name: "" });
-      setIstrue(false);
-    } else {
-      setIstrue(true);
-    }
+    setMerchant({ ...merchant, acc_type: value });
+    // if (value === "IND") {
+    //   setMerchant({ ...merchant, business_name: "" });
+    //   setIstrue(false);
+    // } else {
+    //   setIstrue(true);
+    // }
   };
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-
-    const {
-      error,
-      business_type,
-      business_name,
-      first_name,
-      last_name,
-      dob_date,
-      dob_month,
-      dob_year,
-      donation,
-    } = merchant;
+    const { error, f_name, l_name, carbon_percentage, contact, address } =
+      merchant;
     // validation
-    if (first_name === "") {
-      error.first_name = "Enter first name";
-    } else if (last_name === "") {
-      error.last_name = "Enter last name";
-    } else if (dob_year === "" || dob_year.length > 5) {
-      error.dob_year = "Invalid birth year";
-    } else if (dob_month === "" || dob_month.length > 2) {
-      error.dob_month = "Invalid birth month";
-    } else if (dob_date === "" || dob_date.length > 3) {
-      error.dob_date = "Invalid birth date";
+    if (f_name === "") {
+      error.f_name = "Enter first name";
+    } else if (l_name === "") {
+      error.l_name = "Enter last name";
+    } else if (address === "") {
+      error.address = "Enter address";
+    } else if (contact === "" || isNaN(contact)) {
+      error.contact = "invalid contact";
+    } else if (shop_addr === "") {
+      error.shop_addr = "Enter shop address";
+    } else if (imageError === "Invalid file") {
+      setImageError("Invalid image file");
     } else {
-      error.dob_date = "";
-
+      setImageError("");
       const formData = new FormData();
-      formData.append("business_type", business_type);
-      formData.append("first_name", first_name);
-      formData.append("last_name", last_name);
-      formData.append("dob_year", dob_year);
-      formData.append("dob_month", dob_month);
-      formData.append("dob_date", dob_date);
-      formData.append("donation", donation);
-      if (business_type === "company") {
-        formData.append("business_name", business_name);
-      } else {
-        formData.append("business_name", "");
-      }
+      formData.append("acc_type", acc_type);
+      formData.append("f_name", f_name);
+      formData.append("l_name", l_name);
+      formData.append("image", userimage);
+      formData.append("contact", contact);
+      formData.append("address", address);
+      formData.append("shop_addr", shop_addr);
+      formData.append("carbon_percentage", carbon_percentage);
 
-      console.log(merchant);
       submitMerchatForm(formData);
     }
     setMerchant({ ...merchant, error });
@@ -89,47 +76,34 @@ function StripeRegForm({ submitMerchatForm, loading }) {
     const { error } = merchant;
 
     if (value.trim() === "") {
-      error[property] = `${property[0].toUpperCase()}${property.slice(
-        1,
-        property.length
-      )} cannot be left empty`;
-      // result = false;
+      error[property] = `cannot be left empty`;
     } else {
       // validation
-      if (property === "first_name") {
-        error.first_name = "";
-        // // result = true;
-      } else if (property === "last_name") {
+      if (property === "f_name") {
+        error.f_name = "";
+      } else if (property === "l_name") {
         if (value === "") {
-          error.last_name = "Enter last name";
-          // result = false;
+          error.l_name = "Enter last name";
         } else {
-          error.last_name = "";
-          // result = true;
+          error.l_name = "";
         }
-      } else if (property === "dob_year") {
-        if (value.length > 4 || value.length < 4) {
-          error.dob_year = "Invalid birth year";
-          // result = false;
+      } else if (property === "address") {
+        if (value === "") {
+          error.address = "Address cannot be empty";
         } else {
-          error.dob_year = "";
-          // result = true;
+          error.address = "";
         }
-      } else if (property === "dob_month") {
-        if (value.length > 2) {
-          error.dob_month = "Invalid birth month";
-          // result = false;
+      } else if (property === "shop_addr") {
+        if (value === "") {
+          error.shop_addr = "enter the shop address";
         } else {
-          error.dob_year = "";
-          // result = true;
+          error.shop_addr = "";
         }
-      } else if (property === "dob_date") {
-        if (value.length > 2) {
-          error.dob_date = "Invalid birth date";
-          // result = false;
+      } else if (property === "contact") {
+        if (value === "" || isNaN(value)) {
+          error.contact = " contact must be a number";
         } else {
-          error.dob_date = "";
-          // result = true;
+          error.contact = "";
         }
       }
     }
@@ -140,33 +114,33 @@ function StripeRegForm({ submitMerchatForm, loading }) {
     setMerchant({ ...merchant, [property]: value });
   };
   const {
-    first_name,
-    last_name,
-    business_name,
-    dob_date,
-    dob_month,
-    dob_year,
-    business_type,
-    donation,
+    f_name,
+    l_name,
+    acc_type,
+    carbon_percentage,
+    contact,
+    shop_addr,
+    address,
     error,
   } = merchant;
-
   const {
-    first_name: efirst_name,
-    last_name: elast_name,
-    dob_date: edob_date,
-    dob_month: edob_month,
-    dob_year: edob_year,
+    f_name: ef_name,
+    l_name: el_name,
+    address: e_address,
+    contact: e_contact,
+    shop_addr: eshop_addr,
   } = error;
   return (
-    <div className=" w-full min-h-screen justify-center items-center  font-rubik overflow-auto py-10 absolute top-0">
+    <div
+      className={` w-full min-h-screen justify-center items-center  font-rubik absolute py-10 top-0`}
+    >
       <form
-        className="w-full md:max-w-xl mx-auto border p-10 border-gray-300 grid grid-cols-2 gap-6"
+        className={`w-full md:max-w-xl mx-auto  border border-gray-300  p-10  grid grid-cols-2 gap-6`}
         onSubmit={handleLoginSubmit}
       >
         {/* header  */}
         <div className="text-2xl font-semibold mx-auto col-span-2">
-          Merchant Form
+          Complete your registration account
         </div>
         {/* business type  */}
         <div className="space-y-1 flex flex-col relative col-span-2">
@@ -175,13 +149,13 @@ function StripeRegForm({ submitMerchatForm, loading }) {
           </label>
           <select
             className="appearance-none bg-white border text-gray-700 w-full px-3 py-2 border-gray-300 focus:border-indigo-500 focus:outline-none text-sm"
-            value={business_type}
+            value={acc_type}
             onChange={(e) => {
               handleCompany(e.target.value);
             }}
           >
-            <option value="individual">Individual</option>
-            <option value="company">Company</option>
+            <option value="IND">Individual</option>
+            <option value="BUS">Company</option>
           </select>
           <svg
             className="w-4 h-4  top-8 right-2 absolute text-gray-600"
@@ -208,15 +182,13 @@ function StripeRegForm({ submitMerchatForm, loading }) {
             </label>
             <input
               type="text"
-              value={first_name}
-              id="first_name"
+              value={f_name}
+              id="f_name"
               className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
-              onChange={(event) => handleChange(event, "first_name")}
+              onChange={(event) => handleChange(event, "f_name")}
             />
           </div>
-          {efirst_name && (
-            <div className="error text-red-600">{efirst_name}</div>
-          )}
+          {ef_name && <div className="error text-red-600">{ef_name}</div>}
         </div>
         {/* last name  */}
         <div className="space-y-1 flex flex-col col-span-1">
@@ -226,19 +198,17 @@ function StripeRegForm({ submitMerchatForm, loading }) {
             </label>
             <input
               type="text"
-              value={last_name}
-              id="last_name"
+              value={l_name}
+              id="l_name"
               className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
-              onChange={(event) => handleChange(event, "last_name")}
+              onChange={(event) => handleChange(event, "l_name")}
             />
           </div>
-          {elast_name && <div className="error text-red-600">{elast_name}</div>}
+          {el_name && <div className="error text-red-600">{el_name}</div>}
         </div>
-
-        {/* business name and donation percentage  */}
-
+        {/* business name and carbon_percentage percentage  */}
         {/* business name  */}
-        {istrue && (
+        {/* {istrue && (
           <div className="space-y-1 flex flex-col col-span-1">
             <label htmlFor="text" className="text-sm text-gray-500">
               Business Name
@@ -251,68 +221,127 @@ function StripeRegForm({ submitMerchatForm, loading }) {
               onChange={(event) => handleChange(event, "business_name")}
             />
           </div>
-        )}
+        )} */}
+        {/* address name  */}
+        <div className=" flex flex-col col-span-1">
+          <div className="space-y-1 flex flex-col">
+            <label htmlFor="text" className="text-sm text-gray-500">
+              Address
+            </label>
+            <input
+              type="text"
+              value={address}
+              id="address"
+              className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
+              onChange={(event) => handleChange(event, "address")}
+            />
+          </div>
+          {e_address && <div className="error text-red-600">{e_address}</div>}
+        </div>
+        {/* Contact */}
+        <div className=" flex flex-col col-span-1">
+          <div className="space-y-1 flex flex-col">
+            <label htmlFor="text" className="text-sm text-gray-500">
+              Contact
+            </label>
+            <input
+              type="text"
+              value={contact}
+              id="contact"
+              className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
+              onChange={(event) => handleChange(event, "contact")}
+            />
+          </div>
+          {e_contact && <div className="error text-red-600">{e_contact}</div>}
+        </div>
+        {/* Stripe Id */}
+        <div className=" flex flex-col col-span-1">
+          <div className="space-y-1 flex flex-col">
+            <label htmlFor="text" className="text-sm text-gray-500">
+              Shop Address
+            </label>
+            <input
+              type="url"
+              value={shop_addr}
+              id="shop_addr"
+              placeholder="https://"
+              className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
+              onChange={(event) => handleChange(event, "shop_addr")}
+            />
+          </div>
+          {eshop_addr && <div className="error text-red-600">{eshop_addr}</div>}
+        </div>
+        {/* image  */}
+        <div className="flex flex-col space-y-2 relative ">
+          <label className="text-sm font-medium text-gray-700">
+            Select Image <span>(optional)</span>
+          </label>
 
-        {/* date month year  */}
-        {/* year  */}
-        <div className="space-y-1 flex flex-col col-span-1">
-          <div className="space-y-1 flex flex-col">
-            <label htmlFor="text" className="text-sm text-gray-500">
-              Birth Year
-            </label>
-            <input
-              type="number"
-              value={dob_year}
-              id="dob_year"
-              className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
-              onChange={(event) => handleChange(event, "dob_year")}
-            />
-          </div>
-          {edob_year && <div className="error text-red-600">{edob_year}</div>}
+          <label
+            htmlFor="input-file"
+            className="bg-gray-50 p-2.5 w-full text-gray-500 text-sm overflow-hidden"
+            ref={selectedImageName}
+          >
+            Select Image
+          </label>
+          <input
+            type="file"
+            id="input-file"
+            className="hidden"
+            onChange={(event) => {
+              const file = event.target.files[0];
+              const fileName = file.name;
+              const image = new Image();
+              image.src = URL.createObjectURL(file);
+              image.onload = function () {
+                let arr = fileName.split(".");
+                let extension = arr[arr.length - 1];
+                const extensions = ["png", "jpg", "jpeg", "webp"];
+                let bool = false;
+                for (let i = 0; i < extensions.length; i++) {
+                  if (extensions[i] === extension) {
+                    bool = true;
+                    i = extensions.length;
+                  }
+                }
+                if (bool) {
+                  setuserImage(file);
+                  setImageError("");
+                } else {
+                  setuserImage("");
+                  setImageError("Invalid file");
+                }
+              };
+
+              image.onerror = function () {
+                setuserImage("");
+                setImageError("Invalid file");
+              };
+              selectedImageName.current.innerHTML = fileName;
+            }}
+          />
+          <label
+            htmlFor="input-file"
+            className="bg-gray-200 text-gray-600 py-2 px-4 absolute top-5 right-0 cursor-pointer"
+          >
+            Browse...
+          </label>
+          {imageError && (
+            <div className="text-red-500 text-sm">{imageError}</div>
+          )}
         </div>
-        {/* month  */}
-        <div className="space-y-1 flex flex-col col-span-1">
-          <div className="space-y-1 flex flex-col">
-            <label htmlFor="text" className="text-sm text-gray-500">
-              Birth Month
-            </label>
-            <input
-              type="number"
-              id="dob_month"
-              value={dob_month}
-              className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
-              onChange={(event) => handleChange(event, "dob_month")}
-            />
-          </div>
-          {edob_month && <div className="error text-red-600">{edob_month}</div>}
-        </div>
-        {/* date  */}
-        <div className="space-y-1 flex flex-col col-span-1">
-          <div className="space-y-1 flex flex-col">
-            <label htmlFor="text" className="text-sm text-gray-500">
-              Birth Date
-            </label>
-            <input
-              type="number"
-              id="dob_date"
-              value={dob_date}
-              className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
-              onChange={(event) => handleChange(event, "dob_date")}
-            />
-          </div>
-          {edob_date && <div className="error text-red-600">{edob_date}</div>}
-        </div>
-        {/* donation  */}
+
+        {/* carbon_percentage  */}
         <div className="space-y-1 flex flex-col col-span-1 relative">
           <div className="space-y-1 flex flex-col">
             <label htmlFor="text" className="text-sm text-gray-500">
-              Donation in %
+              Donation % to Carbonpay
             </label>
             <select
               className="appearance-none bg-white border text-gray-700 w-full px-3 py-2 border-gray-300 focus:border-indigo-500 focus:outline-none text-sm"
-              id="donation"
-              value={donation}
-              onChange={(event) => handleChange(event, "donation")}
+              id="carbon_percentage"
+              value={carbon_percentage}
+              onChange={(event) => handleChange(event, "carbon_percentage")}
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -374,18 +403,16 @@ function StripeRegForm({ submitMerchatForm, loading }) {
           <div className="button-animation" style={{ display: "block" }}>
             <button
               type="submit"
-              className="animation-text text-center px-5 py-3 w-full"
+              className="animation-text text-center px-5 py-3 w-full flex items-center space-x-4"
             >
-              {!loading ? (
-                <span>Submit</span>
-              ) : (
-                <span>
-                  <img
-                    src={process}
-                    className="animate-spin h-5 w-5 mx-auto"
-                    alt=""
-                  />
-                </span>
+              <span>{loading ? "Submiting" : "Submit"}</span>
+              {loading && (
+                <div className="lds-ring">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               )}
             </button>
             <div className="animation-bg"></div>

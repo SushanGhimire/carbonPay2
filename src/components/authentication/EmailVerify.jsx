@@ -6,6 +6,7 @@ function EmailVerify() {
   const { token } = useParams();
   // let token = window.location.pathname.split("/")[3];
   const [verified, setVerified] = useState(false);
+  let stop = "stop";
   useEffect(() => {
     const controller = new AbortController();
     const { signal } = controller;
@@ -31,7 +32,8 @@ function EmailVerify() {
     return () => {
       controller.abort();
     };
-  }, [token]);
+    // eslint-disable-next-line
+  }, [stop]);
   return (
     <div className="w-full  flex justify-center items-center py-20">
       <div

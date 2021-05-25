@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import leaf from "../../../assets/images/dashboard/leaf.png";
 // import { handleLogout } from "../../authentication/authorization";
 import { baseUrl } from "../../authentication/authorization";
 import axios from "axios";
@@ -105,17 +106,17 @@ function NavBar({ handleVerify }) {
 
   return (
     <div
-      className="bg-white z-30 w-full py-2  border-b transition-all duration-300 ease-in-out lg:px-10 sticky top-0"
+      className="bg-white z-30 w-full py-4  border-b transition-all duration-300 ease-in-out lg:px-10 sticky top-0"
       onMouseLeave={() => setIsShown(false)}
     >
       {/* nav bar  */}
       <div className="w-full flex justify-end space-x-4 px-5 py-2 items-center">
-        <button
+        {/* <button
           className="bg-primary hover:bg-secondary transition-all duration-300 ease-in-out text-white px-5 py-2 rounded "
           onClick={handleVerify}
         >
           Verify Account
-        </button>
+        </button> */}
         <div
           className=" cursor-pointer text-gray-600 flex lg:hidden "
           onClick={toggleMobIpadSidebar}
@@ -159,7 +160,7 @@ function NavBar({ handleVerify }) {
             <div
               className={`absolute solution-list top-10 -right-10 bg-gray-100 text-secondary   rounded-md shadow-md cursor-pointer p-3 `}
             >
-              <Link
+              {/* <Link
                 to="/dashboard/userprofile"
                 className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out flex items-center space-x-2"
               >
@@ -180,7 +181,7 @@ function NavBar({ handleVerify }) {
                   </svg>
                 </div>
                 <span>Profile</span>
-              </Link>
+              </Link> */}
               <div
                 className=" px-3 hover:bg-secondary hover:text-white py-2 rounded-md transition-all duration-300 ease-in-out flex items-center space-x-2"
                 onClick={handleLogout}
@@ -224,20 +225,7 @@ function NavBar({ handleVerify }) {
             <div className="flex px-5 py-3.5 items-center space-x-2">
               <div className="flex space-x-2  items-center flex-1">
                 <div>
-                  <svg
-                    className="w-6 h-6 text-gray-900"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
+                  <img src={leaf} alt="" className="w-8" />
                 </div>
                 {/* carbonpay  */}
                 <Link to="/" className="text-lg font-semibold">

@@ -1,6 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 // import logo from "../../assets/images/homepage/carbonPayLogo2.png";
 import { Link } from "react-router-dom";
+import leaf from "../../../assets/images/dashboard/leaf.png";
 function NavBar({ loggedIn }) {
   const [width, setWidth] = useState(window.innerWidth);
   let nav = window.location.pathname.split("/")[1];
@@ -91,8 +92,16 @@ function NavBar({ loggedIn }) {
       className={`sticky top-0 z-50 bg-white w-full font-header transition-all duration-300 ease-in-out text-lg shadow-md py-6 lg:py-0 `}
     >
       <div className="w-full flex justify-between px-10 items-center">
-        <Link to="/" className="cursor-pointer" onClick={scrollToTop}>
-          Carbon Pay
+        <Link
+          to="/"
+          className="cursor-pointer flex space-x-2  items-center"
+          onClick={scrollToTop}
+        >
+          <div>
+            <img src={leaf} alt="" className="w-8" />
+          </div>
+          {/* carbonpay  */}
+          <div className="text-lg font-semibold">CarbonPay</div>
         </Link>
         {width > 1023 && (
           <>
@@ -121,11 +130,11 @@ function NavBar({ loggedIn }) {
             </div>
 
             <Link
-              to={loggedIn ? "/dashboard/home" : "/login"}
+              to={loggedIn ? "/dashboard/transaction" : "/login"}
               className="button-animation"
             >
               <div className="animation-text px-6 rounded-full py-2">
-                {loggedIn ? "Connect with stripe" : "Sign in"}
+                {loggedIn ? "Dashboard" : "Sign in"}
               </div>
               <div className="animation-bg"></div>
             </Link>

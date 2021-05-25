@@ -85,6 +85,10 @@ export default function Register() {
     formData.append("email", email);
     formData.append("password", password);
     setLoading(true);
+    setData({
+      ...data,
+      confirmationEmail: "",
+    });
     axios
       .post(`${baseUrl}/user/register/`, formData)
       .then((res) => {

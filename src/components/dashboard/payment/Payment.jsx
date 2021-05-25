@@ -111,6 +111,7 @@ function Payment() {
   // const handleTransactionAlt = () => {
   //   setTransactionAlt(!transactionAlt);
   // };
+  console.log(Transactions);
   return (
     <div className="flex md:p-10 flex-col relative h-full">
       {transactionDetail && (

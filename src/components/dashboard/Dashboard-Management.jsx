@@ -1,11 +1,11 @@
 import { Route, Switch } from "react-router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./Static/NavBar";
 import Aside from "./Static/Aside";
-import Home from "./Home/Home";
+// import Home from "./Home/Home";
 import Payment from "../dashboard/payment/Payment";
 // import Balance from "../dashboard/balance/Balance";
-import StripeRegForm from "./StripeRegForm.jsx/StripeRegForm";
+import StripeRegForm from "./StripeRegForm/StripeRegForm";
 import axios from "axios";
 import { baseUrl } from "../authentication/authorization";
 import Profile from "./profile/Profile";
@@ -15,7 +15,7 @@ import Integration from "./integration/Integration";
 function DashboardManagement() {
   const token = localStorage.getItem("access");
   const [redirect, setRedirect] = useState("");
-  const [isForm, setIsForm] = useState(false);
+  const [isForm, setIsForm] = useState(true);
   const [loading, setLoading] = useState(false);
   // const form = () => {
   //   setIsForm(false);
@@ -23,10 +23,10 @@ function DashboardManagement() {
   const submitMerchatForm = (formData) => {
     setLoading(true);
     axios
-      .post(`${baseUrl}/merchants/create-stripe-account/`, formData, {
+      .put(`${baseUrl}/user/profile/`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          // "Content-Type": `application/json`,
+          "Content-Type": `application/json`,
         },
       })
       .then((res) => {
@@ -63,12 +63,33 @@ function DashboardManagement() {
         }
       });
   };
-
+  useEffect(() => {
+    setIsForm(false);
+    axios
+      .get(`${baseUrl}/user/profile/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": `application/json`,
+        },
+      })
+      .then((res) => {
+        if (res.data.f_name === null) {
+          setIsForm(true);
+        } else {
+          setIsForm(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className="bg-white h-screen flex font-rubik relative">
       {isForm && (
         <StripeRegForm
           className=""
+          position="true"
           loading={loading}
           submitMerchatForm={submitMerchatForm}
         />
@@ -79,7 +100,7 @@ function DashboardManagement() {
           <div className="flex-1 flex flex-col overflow-auto">
             <NavBar handleVerify={handleVerify} />
             <Switch>
-              <Route exact path="/dashboard/home" component={Home}></Route>
+              {/* <Route exact path="/dashboard/home" component={Home}></Route> */}
               <Route
                 exact
                 path="/dashboard/userprofile"
