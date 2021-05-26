@@ -37,7 +37,7 @@ function ForConsumer() {
   return (
     <div>
       <FrontPage
-        header="CarbonPay"
+        header="CarbonPay for Consumer"
         des="Removing Carbon with Every Online Purchase"
         img={image}
       />

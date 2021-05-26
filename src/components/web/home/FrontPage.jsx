@@ -26,14 +26,14 @@ function FrontPage({ header, des, img }) {
         <div className="text-base md:text-lg font-semibold text-gray-600 font-rubik">
           {des}
         </div>
-        <div>
+        {/* <div>
           <div className="button-animation">
             <div className="animation-text px-6 rounded-full py-2">
               Start Now
             </div>
             <div className="animation-bg"></div>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* right side  */}
 

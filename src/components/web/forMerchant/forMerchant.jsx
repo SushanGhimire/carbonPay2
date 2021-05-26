@@ -35,7 +35,7 @@ function forMerchant() {
   return (
     <div>
       <FrontPage
-        header="CarbonPay"
+        header="CarbonPay for Merchants"
         des="Removing Carbon with Every Online Purchase"
         img={image}
       />
