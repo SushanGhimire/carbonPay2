@@ -8,6 +8,7 @@ import CarbonpayCheckout from "./carbonPayCheckout/CarbonpayCheckout";
 import CarbonNeutralCheckout from "./carbonNeutral/CarbonNeutralCheckout";
 import HowCarbonPayWorks from "./carbonpay/HowCarbonPayWorks";
 import CarbonPayLogin from "./carbonpay/CarbonPayLogin";
+import WooCommerce from "./wooCommerce/WooCommerce";
 function Docsmgnt() {
   return (
     <div className="flex relative">
@@ -33,6 +34,7 @@ function Docsmgnt() {
             path="/docs/charbonpaycheckout"
             component={CarbonpayCheckout}
           />
+          <Route exact path="/docs/woocommerce" component={WooCommerce} />
         </Switch>
       </div>
     </div>

@@ -46,6 +46,7 @@ function App(props) {
           path="/docs/charbonpaycheckout"
           render={() => <Docsmgnt />}
         />
+        <Route exact path="/docs/woocommerce" render={() => <Docsmgnt />} />
         <Route exact path="/confirmemail" component={EmailVerification} />
         <Route
           exact
