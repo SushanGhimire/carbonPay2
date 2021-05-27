@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import wpLogin from "../../../assets/images/documentation/wpLogin.png";
 import wp from "../../../assets/images/documentation/wp.png";
 import carbonpay from "../../../assets/images/documentation/carbonpay.png";
+import activate from "../../../assets/images/documentation/activate.png";
 function WooCommerce() {
   return (
     <div className="flex flex-col pt-10 px-7 md:px-16">
@@ -77,7 +78,7 @@ function WooCommerce() {
           {/*   Become a Merchant  */}
           <div className="flex  text-sm md:text-base">
             In the left hand sidebar of your WordPress admin dashboard, hover
-            over Plugins, then click Add New.
+            over Plugins, then click "Add New".
           </div>
           <div className="">
             <img src={wp} alt="" className="mt-3" />
@@ -103,18 +104,19 @@ function WooCommerce() {
           </div>
           {/*   Become a Merchant  */}
           <div className="flex  text-sm md:text-base">
-            Now that you activated the plugin, you can click the CarbonPay
-            plugin link now shown in the left side admin navigation (towards the
-            bottom usually), to navigate to the plugin settings window.
+            Once you finished installing plugin, you can navigate to installed
+            plugin pages from the left hand sidebar of your WordPress admin
+            dashboard, hover over Plugins, then click "Installed Plugins" and
+            click the "Activate" button right below the installed plugin "Carbon
+            Pay".
           </div>
-          <div className="h-32 bg-gray-700 text-white flex justify-center items-center">
-            carbonpay plugin activation image here
-            {/* <img src={wp} alt="" className="mt-3" /> */}
+          <div className="">
+            <img src={activate} alt="" className="mt-3" />
           </div>
         </div>
         <div className="flex flex-col  max-w-2xl space-y-2 mt-10">
           <div className="text-xl md:text-2xl font-semibold text-primary">
-            Configure Fast plugin settings
+            Configure CarbonPay plugin settings
           </div>
           {/*   Become a Merchant  */}
           <div className="flex  text-sm md:text-base">
