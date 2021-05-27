@@ -60,7 +60,10 @@ function Payment() {
           setTransactions(res.data.data);
         })
         .catch((err) => {
-          if (err.response.data.code === "token_not_valid") {
+          if (!err.response) {
+            localStorage.clear();
+            window.location = "/";
+          } else if (err.response.data.code === "token_not_valid") {
             localStorage.clear();
             window.location = "/";
           }
@@ -78,7 +81,10 @@ function Payment() {
           setTransactions(res.data.data);
         })
         .catch((err) => {
-          if (err.response.data.code === "token_not_valid") {
+          if (!err.response) {
+            localStorage.clear();
+            window.location = "/";
+          } else if (err.response.data.code === "token_not_valid") {
             localStorage.clear();
             window.location = "/";
           }
@@ -96,21 +102,16 @@ function Payment() {
           setTransactions(res.data.data);
         })
         .catch((err) => {
-          if (err.response.data.code === "token_not_valid") {
+          if (!err.response) {
+            localStorage.clear();
+            window.location = "/";
+          } else if (err.response.data.code === "token_not_valid") {
             localStorage.clear();
             window.location = "/";
           }
         });
     }
-    // else if (name === "Date") {
-    //   subTitle[index].isTrue = true;
-    //   setPaymentSubLists(subTitle);
-    // }
   };
-  // const [transactionAlt, setTransactionAlt] = useState(false);
-  // const handleTransactionAlt = () => {
-  //   setTransactionAlt(!transactionAlt);
-  // };
   console.log(Transactions);
   return (
     <div className="flex md:p-10 flex-col relative h-full">
@@ -152,8 +153,8 @@ function Payment() {
           return (
             <div
               key={index}
-              className={`transition-all duration-300 ease-in-out cursor-pointer border-b border-white py-2 px-3 hover:bg-indigo-500 hover:text-white font-semibold 
-              ${isTrue ? "bg-indigo-500 text-white" : ""}`}
+              className={`transition-all duration-300 ease-in-out cursor-pointer border-b border-white py-2 px-3 hover:bg-primary hover:text-white font-semibold 
+              ${isTrue ? "bg-primary text-white" : ""}`}
               onClick={() => handleTransactionData(name, index)}
             >
               {name}
@@ -232,41 +233,6 @@ function Payment() {
                         />
                       </svg>
                     </td>
-                    {/* <td className="py-2 flex space-x-2 items-center">
-                      
-                      <div>
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                          />
-                        </svg>
-                      </div>
-                    </td> */}
                   </tr>
                 );
               })}
@@ -365,46 +331,6 @@ function Payment() {
                     </svg>
                   </div>
                 </div>
-                {/* Action  */}
-                {/* <div className="flex space-x-4 items-center">
-                  <div className="w-24 text-xs font-semibold">Action</div>
-                  <div className=" flex space-x-4 items-center  text-gray-600">
-                    return 
-                    <div>
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
-                        />
-                      </svg>
-                    </div>
-                    message 
-                    <div>
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             );
           })}

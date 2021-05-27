@@ -97,7 +97,6 @@ export default function Login() {
           } else {
             localStorage.setItem("access", access);
             localStorage.setItem("refresh", refresh);
-
             window.location = "/";
           }
         });

@@ -47,6 +47,7 @@ function App(props) {
           render={() => <Docsmgnt />}
         />
         <Route exact path="/docs/woocommerce" render={() => <Docsmgnt />} />
+        <Route exact path="/docs/shopify" render={() => <Docsmgnt />} />
         <Route exact path="/confirmemail" component={EmailVerification} />
         <Route
           exact

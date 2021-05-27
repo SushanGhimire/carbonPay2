@@ -37,7 +37,10 @@ function DashboardManagement() {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        if (err.response.data.code === "token_not_valid") {
+        if (!err.response) {
+          localStorage.clear();
+          window.location = "/";
+        } else if (err.response.data.code === "token_not_valid") {
           localStorage.clear();
           window.location = "/";
         } else {
@@ -57,7 +60,10 @@ function DashboardManagement() {
         console.log(redirect);
       })
       .catch((err) => {
-        if (err.response.data.code === "token_not_valid") {
+        if (!err.response) {
+          localStorage.clear();
+          window.location = "/";
+        } else if (err.response.data.code === "token_not_valid") {
           localStorage.clear();
           window.location = "/";
         }

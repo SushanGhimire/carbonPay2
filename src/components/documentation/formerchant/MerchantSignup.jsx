@@ -37,7 +37,7 @@ function MerchantSignup() {
               verification.
             </div>
             <div>
-              <img src={register} alt="" />
+              <img src={register} alt="" className="" />
             </div>
           </div>
           {/*  Email Verification  */}
