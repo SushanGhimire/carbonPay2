@@ -4,6 +4,7 @@ import wpLogin from "../../../assets/images/documentation/wpLogin.png";
 import wp from "../../../assets/images/documentation/wp.png";
 import carbonpay from "../../../assets/images/documentation/carbonpay.png";
 import activate from "../../../assets/images/documentation/activate.png";
+import thanku2 from "../../../assets/images/documentation/thanku2.png";
 function WooCommerce() {
   return (
     <div className="flex flex-col pt-10 px-7 md:px-16">
@@ -140,6 +141,23 @@ function WooCommerce() {
           </div>
           <div className="">
             <img src={carbonpay} alt="" className="mt-3" />
+          </div>
+        </div>
+        <div className="flex flex-col  max-w-2xl space-y-2 mt-10">
+          <div className="text-xl md:text-2xl font-semibold text-primary">
+            Thank you message
+          </div>
+          {/*   Become a Merchant  */}
+          <div className="flex  text-sm md:text-base">
+            After the sucessfull checkout, customer will get the email stating
+            their contribution to reduce carbon emission.
+          </div>
+          <div className="">
+            <img
+              src={thanku2}
+              alt=""
+              className="mt-3 border-2 border-primary"
+            />
           </div>
         </div>
       </div>

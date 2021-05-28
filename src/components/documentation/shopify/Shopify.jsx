@@ -7,6 +7,7 @@ import carbon from "../../../assets/images/documentation/carbon.png";
 import addtocart from "../../../assets/images/documentation/addtocart.png";
 import carbonneutral from "../../../assets/images/documentation/carbonneutral.png";
 import thanku from "../../../assets/images/documentation/thanku.png";
+import thanku2 from "../../../assets/images/documentation/thanku2.png";
 
 function Shopify() {
   return (
@@ -152,6 +153,23 @@ function Shopify() {
           </div>
           <div className="">
             <img src={thanku} alt="" className="mt-3 border-2 border-primary" />
+          </div>
+        </div>
+        <div className="flex flex-col  max-w-2xl space-y-2 mt-10">
+          <div className="text-xl md:text-2xl font-semibold text-primary">
+            Thank you message
+          </div>
+          {/*   Become a Merchant  */}
+          <div className="flex  text-sm md:text-base">
+            After the sucessfull checkout, customer will get the email stating
+            their contribution to reduce carbon emission.
+          </div>
+          <div className="">
+            <img
+              src={thanku2}
+              alt=""
+              className="mt-3 border-2 border-primary"
+            />
           </div>
         </div>
       </div>

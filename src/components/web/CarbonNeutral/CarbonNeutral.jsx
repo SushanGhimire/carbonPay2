@@ -14,20 +14,17 @@ import StakeHolders from "../../../common/StakeHolders";
 function CarbonNeutral() {
   const Carbonclimate = [
     {
-      blog:
-        "CarbonPay dynamically creates a new Climate Conscious price for each selected item in a merchant’s inventory. ",
+      blog: "CarbonPay dynamically creates a new Climate Conscious price for each selected item in a merchant’s inventory. ",
       aos: "fade-up",
       time: "1500",
     },
     {
-      blog:
-        "Consumers see the climate cost of purchasing an item and can pay a small additional amount to make a carbon neutral purchase. ",
+      blog: "Consumers see the climate cost of purchasing an item and can pay a small additional amount to make a carbon neutral purchase. ",
       aos: "fade-up",
       time: "1700",
     },
     {
-      blog:
-        "The carbon is offsets through our network of Carbon Offset non-profits and consumers can learn more through a link in their email receipt.",
+      blog: "The carbon is offsets through our network of Carbon Offset non-profits and consumers can learn more through a link in their email receipt.",
       aos: "fade-up",
       time: "1900",
     },

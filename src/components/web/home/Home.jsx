@@ -1,16 +1,17 @@
 import { React } from "react";
 // import Faq from "./Faq";
-import FrontPage from "./FrontPage";
+// import FrontPage from "./FrontPage";
 import FundClimate from "./FundClimate";
 // import MerchantConsumer from "./MerchantConsumer";
 import StakeHolders from "../../../common/StakeHolders";
 import WhatImpact from "../../../common/WhatImpact";
 import WhyPayment from "../../../common/WhyPayment";
-import image from "../../../assets/images/homepage/forest.svg";
+
 import merchant from "../../../assets/images/homepage/merchant.svg";
 import consumer from "../../../assets/images/homepage/consumer.svg";
 import nature from "../../../assets/images/homepage/nature.svg";
 import cardImage from "../../../assets/images/homepage/impact.jpg";
+import VideoFrontPage from "./VideoFrontPage";
 function Home() {
   // let Faqs = [
   //   {
@@ -71,8 +72,7 @@ function Home() {
       time: "1500",
     },
     {
-      blog:
-        "CarbonPay dynamically selects Non-profit with highest net carbon capture effort.",
+      blog: "CarbonPay dynamically selects Non-profit with highest net carbon capture effort.",
       aos: "fade-up",
       time: "1700",
     },
@@ -82,19 +82,19 @@ function Home() {
       time: "1900",
     },
     {
-      blog:
-        "Our software help maximize the long-term impact. CarbonPay buys carbon removal from the exact same Nonprofits.",
+      blog: "Our software help maximize the long-term impact. CarbonPay buys carbon removal from the exact same Nonprofits.",
       aos: "fade-up",
       time: "2100",
     },
   ];
   return (
     <div>
-      <FrontPage
+      {/* <FrontPage
         header="CarbonPay"
         des="Removing Carbon with Every Online Purchase"
         img={image}
-      />
+      /> */}
+      <VideoFrontPage />
       <FundClimate />
       <WhyPayment
         title="Why payment?"
