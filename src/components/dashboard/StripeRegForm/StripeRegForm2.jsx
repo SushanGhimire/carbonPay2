@@ -14,13 +14,11 @@ function StripeRegForm2({
   fcarbon_percentage,
   fshop_addr,
   faddress,
-  fimage,
 }) {
   const [userimage, setuserImage] = useState("");
   const [imageError, setImageError] = useState("");
   const [Tooltips, setTooltips] = useState(false);
   const selectedImageName = useRef();
-  console.log(facc_type);
   const [merchant, setMerchant] = useState({
     acc_type: facc_type,
     f_name: ff_name,
@@ -146,7 +144,7 @@ function StripeRegForm2({
   } = error;
   return (
     <div
-      className={` w-full min-h-screen justify-center items-center  font-rubik    top-0`}
+      className={` w-full min-h-screen justify-center items-center  font-rubik  top-0`}
     >
       <form
         className={`w-full  md:max-w-2xl p-10  grid grid-cols-2 gap-6`}

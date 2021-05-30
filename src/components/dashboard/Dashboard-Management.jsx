@@ -12,6 +12,7 @@ import Profile from "./profile/Profile";
 import EmailVerification from "../authentication/EmailVerification";
 import Billing from "./billing/Billing";
 import Integration from "./integration/Integration";
+import LoggedUserLogout from "../authentication/LoggedUserLogout";
 function DashboardManagement() {
   const token = localStorage.getItem("access");
   const [redirect, setRedirect] = useState("");
@@ -111,6 +112,11 @@ function DashboardManagement() {
                 exact
                 path="/dashboard/userprofile"
                 component={Profile}
+              ></Route>
+              <Route
+                exact
+                path="/dashboard/user-password-reset/:uId"
+                component={LoggedUserLogout}
               ></Route>
               <Route
                 path="/dashboard/confirmemail"

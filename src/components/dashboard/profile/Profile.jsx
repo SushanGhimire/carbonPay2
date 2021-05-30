@@ -33,7 +33,9 @@ function Profile() {
       })
       .then(() => {
         setLoading(false);
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       })
       .catch((err) => {
         console.log(err);
@@ -82,10 +84,9 @@ function Profile() {
       });
     // eslint-disable-next-line
   }, []);
-  // console.log(userInfo);
   return (
     <>
-      <div className="flex p-5 md:p-10 flex-col">
+      <div className="flex p-5 md:p-10 flex-col relative">
         {/* top header  */}
         <div className="w-full flex justify-between items-center  p-5 lg:px-0 border-b">
           <div className="text-3xl font-semibold">Profile</div>
@@ -179,7 +180,7 @@ function Profile() {
                   Password
                 </label>
                 <Link
-                  to="/confirmemail"
+                  to={`/dashboard/user-password-reset/${userInfo.user}`}
                   className="border text-gray-700 px-3 py-1 text-sm rounded-md shadow-md font-semibold"
                 >
                   Change Password..
