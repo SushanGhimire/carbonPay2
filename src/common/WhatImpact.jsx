@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-// import planet from "../../assets/images/homepage/noPlanet.jpg";
-
+import { Link } from "react-router-dom";
 import check from "../assets/images/homepage/check.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -50,14 +49,16 @@ function WhatImpact({ Carbonclimate, cardImage, title }) {
             })}
           </ul>
         </div>
-        <div>
-          <div className="button-animation mt-8">
-            <div className="animation-text px-6 rounded-full py-2 text-lg lg:text-xl font-header">
-              Remove Carbon Now
-            </div>
-            <div className="animation-bg"></div>
+        {!localStorage.getItem("access") && (
+          <div>
+            <Link to="/register" className="button-animation mt-8">
+              <div className="animation-text px-6 rounded-full py-2 text-lg lg:text-xl font-header">
+                Register Now
+              </div>
+              <div className="animation-bg"></div>
+            </Link>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

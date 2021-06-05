@@ -1,21 +1,98 @@
 import React, { useState } from "react";
-
+import { baseUrl } from "../../authentication/authorization";
+import axios from "axios";
 function Billing() {
   const [cardInfo, setCardInfo] = useState({
-    card_number: "",
-    card_name: "",
+    number: "",
+    // card_name: "",
     exp_month: "",
     exp_year: "",
-    cvccvv: "",
+    cvc: "",
+    error: {
+      number: "",
+      // card_name: "",
+      exp_month: "",
+      exp_year: "",
+      cvc: "",
+    },
   });
+  const token = localStorage.getItem("access");
   const handleCardInfo = (e) => {
     e.preventDefault();
+    const { number, exp_month, exp_year, cvc, error } = cardInfo;
+    // validation
+    if (number === "") {
+      error.number = "Number cannot be left empty.";
+    } else if (exp_month === "") {
+      error.exp_month = "Month cannot be left empty.";
+    } else if (exp_year === "") {
+      error.exp_year = "Year cannot be left empty.";
+    } else if (cvc === "") {
+      error.cvc = "CVC/CVV cannot be left empty.";
+    } else {
+      error.cvc = "";
+      const formData = new FormData();
+      formData.append("number", number);
+      formData.append("exp_month", exp_month);
+      formData.append("exp_year", exp_year);
+      formData.append("cvc", cvc);
+      axios
+        .post(`${baseUrl}/transactions/save-cardinfo/`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": `application/json`,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          if (!err.response) {
+            localStorage.clear();
+            window.location = "/";
+          } else if (err.response.data.code === "token_not_valid") {
+            localStorage.clear();
+            window.location = "/";
+          }
+        });
+    }
+    setCardInfo({ ...cardInfo, error });
   };
   const handleChange = ({ target: { value } }, property) => {
-    // handleError(property, value);
+    handleError(property, value);
     setCardInfo({ ...cardInfo, [property]: value });
   };
-  const { card_name, card_number, exp_month, exp_year, cvccvv } = cardInfo;
+  const handleError = (property, value) => {
+    const { error } = cardInfo;
+
+    if (value.trim() === "") {
+      // error[property] = `cannot be left empty`;
+      return true;
+    } else {
+      // validation
+      if (property === "exp_month") {
+        if (value.length < 2 || value.length > 2) {
+          error.exp_month = "Invalid mongth length. Length must be 2";
+        } else {
+          error.exp_month = "";
+        }
+      } else if (property === "exp_year") {
+        if (value.length < 4 || value.length > 4) {
+          error.exp_year = "Invalid year length. Length must me 4";
+        } else {
+          error.exp_year = "";
+        }
+      } else if (property === "cvc") {
+        if (value.length < 3 || value.length > 3) {
+          error.cvc = "Invalid CVC/CVV length. Length must be 3";
+        } else {
+          error.cvc = "";
+        }
+      }
+    }
+    setCardInfo({ ...cardInfo, error });
+  };
+  const { number, exp_month, exp_year, cvc, error } = cardInfo;
   return (
     <div className="flex p-5 md:p-10 flex-col">
       {/* top header  */}
@@ -36,18 +113,21 @@ function Billing() {
           <label htmlFor="">Card Number</label>
           <div>
             <input
-              type="text"
-              name="card_number"
-              value={card_number}
+              type="number"
+              name="number"
+              value={number}
               className="border border-gray-300 px-6 py-2 rounded-md w-full"
-              onChange={(e) => handleChange(e, "card_number")}
+              onChange={(e) => handleChange(e, "number")}
             />
           </div>
+          {error.number && (
+            <div className="error text-red-600">{error.number}</div>
+          )}
         </div>
         {/* card name and expiry date  */}
         <div className="md:flex w-full md:space-x-6 space-y-2 md:space-y-0">
           {/* card name  */}
-          <div className="flex flex-1 flex-col font-rubik space-y-2">
+          {/* <div className="flex flex-1 flex-col font-rubik space-y-2">
             <label htmlFor="">Name on Number</label>
             <div>
               <input
@@ -58,44 +138,52 @@ function Billing() {
                 onChange={(e) => handleChange(e, "card_name")}
               />
             </div>
-          </div>
+          </div> */}
           {/* Expiration */}
-          <div className="flex flex-col font-rubik space-y-2">
+          <div className="flex-1 flex flex-col font-rubik space-y-2">
             <label htmlFor="">Expiration Date</label>
             <div className="flex space-x-2">
               <input
-                type="text"
-                className="border border-gray-300 px-6 py-2 rounded-md w-28 placeholder-gray-600"
+                type="number"
+                className="border flex-1 border-gray-300 px-6 py-2 rounded-md w-28 placeholder-gray-600"
                 placeholder="MM"
                 name="exp_month"
                 value={exp_month}
                 onChange={(e) => handleChange(e, "exp_month")}
               />
               <input
-                type="text"
-                className="border border-gray-300 px-6 py-2 rounded-md w-28 placeholder-gray-600"
+                type="number"
+                className="border flex-1 border-gray-300 px-6 py-2 rounded-md w-28 placeholder-gray-600"
                 placeholder="YY"
                 name="exp_year"
                 value={exp_year}
                 onChange={(e) => handleChange(e, "exp_year")}
               />
             </div>
+            {error.exp_month && (
+              <div className="error text-red-600">{error.exp_month}</div>
+            )}
+            {error.exp_year && (
+              <div className="error text-red-600">{error.exp_year}</div>
+            )}
+          </div>
+          {/* CVC/CVV  */}
+          <div className="flex w-56 flex-col font-rubik space-y-2">
+            <label htmlFor="">CVC/CVV</label>
+            <div>
+              <input
+                type="number"
+                className="border  border-gray-300 px-6 py-2 rounded-md w-28 placeholder-gray-700"
+                placeholder="XXX"
+                name="cvc"
+                value={cvc}
+                onChange={(e) => handleChange(e, "cvc")}
+              />
+            </div>
+            {error.cvc && <div className="error text-red-600">{error.cvc}</div>}
           </div>
         </div>
-        {/* CVC/CVV  */}
-        <div className="flex flex-col font-rubik space-y-2">
-          <label htmlFor="">CVC/CVV</label>
-          <div>
-            <input
-              type="text"
-              className="border border-gray-300 px-6 py-2 rounded-md w-28 placeholder-gray-700"
-              placeholder="XXX"
-              name="cvccvv"
-              value={cvccvv}
-              onChange={(e) => handleChange(e, "cvccvv")}
-            />
-          </div>
-        </div>
+
         <div className="flex mx-auto">
           <button className="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-full ">
             Add Your Card
@@ -103,7 +191,7 @@ function Billing() {
         </div>
       </form>
       {/* add stripe account  */}
-      <div className="flex  mt-10">
+      {/* <div className="flex  mt-10">
         <button className="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-full flex space-x-2 items-center group">
           <span>Add Stripe Account</span>
           <div>
@@ -123,7 +211,7 @@ function Billing() {
             </svg>
           </div>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

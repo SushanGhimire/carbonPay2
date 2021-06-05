@@ -5,14 +5,14 @@ import axios from "axios";
 function Payment() {
   const [paymentSubLists, setPaymentSubLists] = useState([
     { isTrue: true, name: "All" },
-    { isTrue: false, name: "Paid" },
-    { isTrue: false, name: "Unpaid" },
+    { isTrue: false, name: "Donated" },
+    { isTrue: false, name: "Not Donated" },
     // { isTrue: false, name: "Date" },
   ]);
   const subTitle = [
     { isTrue: false, name: "All" },
-    { isTrue: false, name: "Paid" },
-    { isTrue: false, name: "Unpaid" },
+    { isTrue: false, name: "Donated" },
+    { isTrue: false, name: "Not Donated" },
     // { isTrue: false, name: "Date" },
   ];
 
@@ -68,7 +68,7 @@ function Payment() {
             window.location = "/";
           }
         });
-    } else if (name === "Paid") {
+    } else if (name === "Donated") {
       subTitle[index].isTrue = true;
       setPaymentSubLists(subTitle);
       axios
@@ -89,7 +89,7 @@ function Payment() {
             window.location = "/";
           }
         });
-    } else if (name === "Unpaid") {
+    } else if (name === "Not Donated") {
       subTitle[index].isTrue = true;
       setPaymentSubLists(subTitle);
       axios
@@ -112,7 +112,6 @@ function Payment() {
         });
     }
   };
-  console.log(Transactions);
   return (
     <div className="flex md:p-10 flex-col relative h-full">
       {transactionDetail && (
@@ -186,9 +185,9 @@ function Payment() {
                   customer_name,
                   increased_price,
                   initial_price,
-                  paid,
                   timestamp,
                   total_price,
+                  donated,
                 } = pay;
                 return (
                   <tr
@@ -203,14 +202,14 @@ function Payment() {
                       <span className="font-semibold text-gray-800">
                         ${total_price}
                       </span>
-                      {paid && (
+                      {donated && (
                         <span className="bg-green-300 rounded px-2 lg:py-0.5 text-xs">
-                          Paid
+                          donated
                         </span>
                       )}
-                      {!paid && (
+                      {!donated && (
                         <span className="bg-red-400 rounded px-2 lg:py-0.5 text-xs">
-                          Unpaid
+                          not donated
                         </span>
                       )}
                     </td>
