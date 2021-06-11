@@ -33,6 +33,14 @@ function Footer() {
       name: "Carbon Neutral",
       to: "/carbonneutral",
     },
+    {
+      name: "Privacy/Policy",
+      to: "/privacy-policy",
+    },
+    {
+      name: "FAQs",
+      to: "/faqs",
+    },
   ];
   return (
     <div className="w-full p-5 md:pt-10  bg-gray-100 flex-col font-rubik">
@@ -84,7 +92,7 @@ function Footer() {
             })}
           </div>
         </div>
-        <div className="col-span-1 mx-auto flex flex-col items-center justify-center">
+        <div className="col-span-1 mx-auto flex flex-col items-center justify-center text-center">
           <div className="text-2xl font-bold mx-auto text-primary font-header ">
             Quick Links
           </div>
