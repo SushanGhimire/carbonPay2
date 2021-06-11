@@ -8,6 +8,7 @@ import Register from "./components/authentication/register";
 import Docsmgnt from "./components/documentation/Docsmgnt";
 import CarbonNeutral from "./components/web/CarbonNeutral/CarbonNeutral";
 import ClimateChange from "./components/web/climate_change/ClimateChange";
+import Faq from "./components/web/faqs/Faq";
 import ForConsumer from "./components/web/forConsumer/ForConsumer";
 import forMerchant from "./components/web/forMerchant/forMerchant";
 import Home from "./components/web/home/Home";
@@ -27,6 +28,7 @@ function App(props) {
         <Route exact path="/privacy-policy" component={PrivacyPolicy} />
         <Route exact path="/formerchants" component={forMerchant} />
         <Route exact path="/carbonneutral" component={CarbonNeutral} />
+        <Route exact path="/faqs" component={Faq} />
         <Route exact path="/forconsumers" component={ForConsumer} />
         <Route exact path="/docs/aboutcarbonpay" render={() => <Docsmgnt />} />
         <Route exact path="/docs/merchantsignup" render={() => <Docsmgnt />} />
