@@ -42,6 +42,7 @@ function Footer() {
       to: "/faqs",
     },
   ];
+  const scrollToTop = () => window.scrollTo(0, 0);
   return (
     <div className="w-full p-5 md:pt-10  bg-gray-100 flex-col font-rubik">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-b p-5">
@@ -104,6 +105,7 @@ function Footer() {
                   className="cursor-pointer hover:text-primary tracking-wider text-lg"
                   key={index}
                   to={to}
+                  onClick={scrollToTop}
                 >
                   {name}
                 </Link>

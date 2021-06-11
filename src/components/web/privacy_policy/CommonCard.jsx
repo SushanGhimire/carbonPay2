@@ -11,7 +11,7 @@ function CommonCard({ cards }) {
             {infos.map((i, index) => {
               const { info } = i;
               return (
-                <div className="" key={index}>
+                <div className="text-xs sm:text-sm lg:text-lg" key={index}>
                   {info}
                 </div>
               );
