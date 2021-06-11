@@ -136,7 +136,7 @@ function Faq() {
           data-aos-duration="1500"
         >
           <div className="font-bold text-4xl  mt-10 md:mt-0">
-            Get started with EcoCart
+            Get started with
           </div>
           <div className="text-base md:text-lg font-semibold text-gray-600 font-rubik">
             A more sustainable shopping experience for your customers, at no

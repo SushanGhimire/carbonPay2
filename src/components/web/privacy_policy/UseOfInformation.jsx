@@ -8,7 +8,7 @@ function UseOfInformation() {
   const points = [
     {
       point:
-        "To provide, enhance, improve and develop the Website, the Software, future EcoCart products, and their respective content and services;",
+        "To provide, enhance, improve and develop the Website, the Software, future  products, and their respective content and services;",
     },
     {
       point:
