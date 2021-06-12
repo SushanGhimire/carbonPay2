@@ -30,6 +30,13 @@ function Faq() {
       time: "2200",
     },
     {
+      qst: "What does CarbonPay do with the collected funds from the merchant??",
+      ans: "CarbonPay collects free from Merchant and donates to non-profit with highest net carbon capiture efforts.",
+      isTrue: false,
+      aos: "fade-up",
+      time: "2200",
+    },
+    {
       qst: "Will CarbonPay interfere with my current checkout process?",
       ans: "No, in fact CarbonPay works to improve conversion. CarbonPay exists within the cart and not the checkout process. Your customers will see that they have the option to make their order carbon neutral while browsing their cart, improving the likelihood that they will continue to checkout and complete their order when they see your brand’s values are aligned with their own.",
       isTrue: false,
