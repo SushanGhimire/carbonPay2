@@ -11,8 +11,8 @@ function CarbonpayCheckout() {
           </div>
           <div className="flex text-sm md:text-base mt-2 border-b border-gray-300 pb-5">
             No passwords. No long forms. No hassle. With one click, CarbonPay
-            lets customers securely log in, check out and perform safe
-            transaction.
+            lets customers securely log in, check out, and perform safe
+            transactions.
           </div>
           <div className="h-64 bg-gray-800 flex justify-center items-center">
             {/* <img src="" alt="" /> */}

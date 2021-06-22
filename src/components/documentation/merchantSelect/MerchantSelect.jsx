@@ -15,10 +15,9 @@ function MerchantSelect() {
             Merchant Select Donation %
           </div>
           <div className="flex  mt-2 text-sm md:text-base">
-            After Login with login credintials merchat can fill their
-            information on Merchant Form along with donation percentage they
-            want to donate on every online purchanse which is powered by
-            Aspiration.
+            After logging in with your credentials, merchants can fill their
+            information in the Merchant Form along with the donation percentage
+            they want to donate on every online purchase, powered by Aspiration.
           </div>
           <div>
             <img src={merchantform} alt="" />

@@ -57,7 +57,6 @@ function WooCommerce() {
           {/*   Become a Merchant  */}
           <div className="flex  text-sm md:text-base">
             Login to the admin side of your WordPress site. The url for this is
-            usually
           </div>
           <div>
             <span className="inline-block border text-red-600 border-gray-300 ml-2 bg-gray-50">
@@ -121,8 +120,7 @@ function WooCommerce() {
           </div>
           {/*   Become a Merchant  */}
           <div className="flex  text-sm md:text-base">
-            Login to the admin side of your WordPress site. The url for this is
-            usually
+            Login to the admin side of your WordPress site.
           </div>
           <div className="flex items-center">
             <span> url to your plugin settings</span>
@@ -136,8 +134,8 @@ function WooCommerce() {
             Add your merchant secret key
           </div>
           <div className="flex  text-sm md:text-base">
-            copy your secrect key from carbonpay merchant setting dashboard and
-            paste in "Enter Merchant ID" field and you are done
+            Copy your secret key from the CarbonPay merchant setting dashboard,
+            paste in "Enter Merchant ID" field, and you are done!
           </div>
           <div className="">
             <img src={carbonpay} alt="" className="mt-3" />
@@ -149,8 +147,8 @@ function WooCommerce() {
           </div>
           {/*   Become a Merchant  */}
           <div className="flex  text-sm md:text-base">
-            After the sucessfull checkout, customer will get the email stating
-            their contribution to reduce carbon emission.
+            After the successful checkout, you will get an email stating your
+            contributions to reducing carbon emissions.
           </div>
           <div className="">
             <img

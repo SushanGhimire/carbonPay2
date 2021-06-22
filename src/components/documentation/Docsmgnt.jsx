@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import DocsAside from "./static/DocsAside";
-import About from "./About.jsx/About";
+import About from "./About/About";
 import MerchantSignup from "./formerchant/MerchantSignup";
 import MerchantSelect from "./merchantSelect/MerchantSelect";
 import CarbonpayCheckout from "./carbonPayCheckout/CarbonpayCheckout";

@@ -12,8 +12,8 @@ function CarbonPayLogin() {
           </div>
           <div className="flex mt-2 text-sm md:text-base ">
             After clicking the email verification link, your email will be
-            verified and it will redirect you to login page and fill the form
-            with your credintials.
+            verified and it will redirect you to the login page and fill the
+            form with your credentials.
           </div>
           <div>
             <img src={login} alt="" />
