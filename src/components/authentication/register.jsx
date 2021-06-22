@@ -114,37 +114,6 @@ export default function Register() {
         }
         setLoading(false);
       });
-    // fetch(url, {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((response) => response.json())
-    //   .then((dta) => {
-    //     const { email, username } = dta;
-
-    //     if (Array.isArray(email) || Array.isArray(username)) {
-    //       if (Array.isArray(email)) {
-    //         errors.email = "Email already exists";
-    //       }
-    //       if (Array.isArray(username)) {
-    //         errors.username = "Username already exists";
-    //       }
-    //       setData({
-    //         ...data,
-    //         errors,
-    //       });
-    //     } else {
-    //       setLoading(false);
-    //       setData({
-    //         ...data,
-    //         confirmationEmail: "Confirmation link has been sent to your email",
-    //       });
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     setLoading(false);
-    //   });
   };
 
   const {

@@ -14,14 +14,6 @@ function NavBar({ loggedIn }) {
       name: "Climate Change",
       to: "/climatechange",
     },
-    // {
-    //   name: "Carbon Offsets?",
-    //   to: "/carbonoffsets",
-    // },
-    // {
-    //   name: "About Us",
-    //   to: "/about",
-    // },
     {
       name: "For Merchants",
       to: "/formerchants",
@@ -71,13 +63,6 @@ function NavBar({ loggedIn }) {
   };
   const scrollToTop = () => window.scrollTo(0, 0);
 
-  // const handleScroll = () => {
-  //   if (window.pageYOffset > 0 && position === 0) {
-  //     setPosition(1);
-  //   } else if (window.pageYOffset === 0 && position > 0) {
-  //     setPosition(0);
-  //   }
-  // };
   useEffect(() => {
     // handleScroll();
     window.addEventListener("resize", handleWidth);

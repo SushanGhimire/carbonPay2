@@ -18,6 +18,7 @@ function DashboardManagement() {
   const [redirect, setRedirect] = useState("");
   const [isForm, setIsForm] = useState(true);
   const [loading, setLoading] = useState(false);
+
   // const form = () => {
   //   setIsForm(false);
   // };
@@ -84,7 +85,10 @@ function DashboardManagement() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.data.code) {
+          localStorage.clear();
+          window.location = "/login";
+        }
       });
     // eslint-disable-next-line
   }, []);

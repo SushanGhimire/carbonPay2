@@ -8,6 +8,8 @@ function Profile() {
   const [loading, setLoading] = useState(false);
   const [isSecret, setIsSecret] = useState(true);
   const [userInfo, setUserInfo] = useState([]);
+  const [isImageLoaded, setIsImageLoaded] = useState(true);
+  const [fCharacter, setFCharacter] = useState("");
   const handleEdit = () => {
     if (edit) {
       setEdit(false);
@@ -68,6 +70,11 @@ function Profile() {
       });
     // eslint-disable-next-line
   };
+  const errorImg = (e) => {
+    if (e.type === "error") {
+      setIsImageLoaded(false);
+    }
+  };
   useEffect(() => {
     axios
       .get(`${baseUrl}/user/profile/`, {
@@ -78,6 +85,7 @@ function Profile() {
       })
       .then((res) => {
         setUserInfo(res.data);
+        setFCharacter(res.data.f_name.slice(0, 1));
       })
       .catch((err) => {
         console.log(err);
@@ -142,11 +150,20 @@ function Profile() {
         <div className="flex border-b items-center">
           {/* user image  */}
           <div className="w-80 flex flex-col">
-            <img
-              src={`${baseUrl}${userInfo.image}`}
-              alt=""
-              className="h-44 w-44 object-cover object-center rounded-full mx-auto border-4 p-0.5 border-primary"
-            />
+            {!isImageLoaded ? (
+              <img
+                src={`${baseUrl}${userInfo.image}`}
+                onError={errorImg}
+                alt=""
+                className="h-44 w-44 object-cover object-center rounded-full mx-auto border-4 p-0.5 border-primary"
+              />
+            ) : (
+              <div
+                className={`h-44 w-44 object-cover object-center rounded-full mx-auto border-4 p-0.5 border-primary flex items-center justify-center text-6xl font-bold bg-gray-200 text-primary`}
+              >
+                <div className="">{fCharacter}</div>
+              </div>
+            )}
             <div className=" flex mt-2">
               <div className="mx-auto text-lg font-semibold">
                 {userInfo.f_name} {userInfo.l_name}
