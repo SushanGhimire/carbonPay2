@@ -3,7 +3,7 @@ import register from "../../../assets/images/documentation/register.png";
 import verify from "../../../assets/images/documentation/emailverify.png";
 import link from "../../../assets/images/documentation/link.png";
 import login from "../../../assets/images/documentation/login.png";
-
+import { Link } from "react-router-dom";
 function MerchantSignup() {
   return (
     <div className="flex flex-col pt-10  px-7 md:px-16 ">
@@ -15,9 +15,9 @@ function MerchantSignup() {
           </div>
           {/* what is carbonpay  */}
           <div className="flex  ">
-            The first step to integrating CarbonPay with your store is to become
-            a merchant with CarbonPay. here are the some steps to get started
-            with CarbonPay.
+            The first step in integrating CarbonPay with your store is to become
+            a merchant with CarbonPay. Here are the steps to get started with
+            us.
           </div>
         </div>
         {/*Merchant Signup */}
@@ -31,9 +31,9 @@ function MerchantSignup() {
               Create an account
             </div>
             <div className="flex text-sm md:text-base">
-              Start by completing the account form with your username, email and
-              password. This will establish your authentication with your
-              CarbonPay make sure you enter your email correctly for the account
+              Start by completing the account form with your username, email,
+              and password. This will establish your authentication with
+              CarbonPay. Make sure you enter your email correctly for account
               verification.
             </div>
             <div>
@@ -46,8 +46,8 @@ function MerchantSignup() {
               Email Verification
             </div>
             <div className="flex  mb-2">
-              After completing the account form with your username, email and
-              password. Email verification link is sent to your email.
+              After completing the account form an email verification link is
+              sent to your email.
             </div>
             <div>
               <img src={verify} alt="" />
@@ -63,11 +63,22 @@ function MerchantSignup() {
             </div>
             <div className="flex  ">
               After clicking the email verification link, your email will be
-              verified and it will redirect you to login page and fill the form
-              with your credintials.
+              verified, and it will redirect you to the login page. Fill the
+              form with your credentials.
             </div>
             <div>
               <img src={login} alt="" />
+            </div>
+            <div className="flex space-x-3 items-center pb-5">
+              <span>Try it!</span>
+              <div>
+                <Link
+                  to="/register"
+                  className="bg-primary text-white px-6 py-2 rounded-lg"
+                >
+                  Register Now
+                </Link>
+              </div>
             </div>
           </div>
         </div>

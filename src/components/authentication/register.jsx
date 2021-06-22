@@ -237,6 +237,15 @@ export default function Register() {
               Login here
             </Link>
           </div>
+          <div className="text-xs mt-4 text-center">
+            <Link
+              to="/docs/merchantsignup"
+              className="underline"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              Need help?
+            </Link>
+          </div>
         </form>
       </div>
     </div>

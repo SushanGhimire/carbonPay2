@@ -13,20 +13,20 @@ function Home() {
   const cards = [
     {
       logo: merchant,
-      name: "Merchant",
+      name: "Merchants: ???",
       title: "Climate Impact Payment to increase transaction.",
       bg: "bg-seconday",
       aos: "fade-down",
     },
     {
       logo: consumer,
-      name: "Consumers",
+      name: "Consumers: ???",
       title: "Make Climate Conscious purchase with impact tracking page.",
       aos: "fade-up",
     },
     {
       logo: nature,
-      name: "Climate impact non-Profit",
+      name: "Environmental Non-profits: ???",
       title:
         "Accountability and Incentives for highest net carbon capture efforts.",
       aos: "fade-down",
@@ -39,17 +39,17 @@ function Home() {
       time: "1500",
     },
     {
-      blog: "CarbonPay dynamically selects Non-profit with highest net carbon capture effort.",
+      blog: "We dynamically select Non-profit with highest net carbon capture effort.",
       aos: "fade-up",
       time: "1700",
     },
     {
-      blog: "This creates environment of accountability and innovation.",
+      blog: "We create an environment of accountability and innovation with our tracking systems.",
       aos: "fade-up",
       time: "1900",
     },
     {
-      blog: "Our software help maximize the long-term impact. CarbonPay buys carbon removal from the exact same Nonprofits.",
+      blog: "We help maximize the long-term impact of carbon-removal, purchased from the best non-profits ",
       aos: "fade-up",
       time: "2100",
     },
@@ -59,14 +59,13 @@ function Home() {
       <VideoFrontPage />
       <FundClimate />
       <WhyPayment
-        title="Why payment?"
-        des=" Taking 1% of every internet transaction to fund Climate Change effort
-          has fastest impact."
+        title="Why Pay?"
+        des="Taking 1% of every  transaction to fund Carbon removal efforts has the fastest, easiest, and best impact."
       />
       <StakeHolders cards={cards} title="Stakeholders" grid="grid-cols-3" />
       {/* <MerchantConsumer /> */}
       <WhatImpact
-        title="What is CarbonPay for climate impact and our planet?"
+        title="What does CarbonPay do for our climate and planet? "
         Carbonclimate={Carbonclimate}
         cardImage={cardImage}
       />

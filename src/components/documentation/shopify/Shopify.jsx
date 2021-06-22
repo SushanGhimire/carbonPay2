@@ -55,10 +55,10 @@ function Shopify() {
         </div>
         <div className="flex flex-col  max-w-2xl space-y-4 mt-5">
           <div className="text-xl md:text-2xl font-semibold text-primary">
-            Login to your shopify account
+            Login to your Shopify account
           </div>
           <div className="flex  text-sm md:text-base">
-            Firstly, login to shopify with your shopify login credentials.
+            Firstly, login to Shopify with your Shopify login credentials.
           </div>
           <div>
             <img src={shopifyLogin} alt="" />
@@ -70,7 +70,7 @@ function Shopify() {
           </div>
           {/*   Become a Merchant  */}
           <div className="flex  text-sm md:text-base">
-            In the left hand sidebar of your shopify admin dashboard, click on
+            In the left hand sidebar of your Shopify admin dashboard, click on
             the Apps .
           </div>
           <div className="">
@@ -118,7 +118,7 @@ function Shopify() {
           </div>
           {/*   Become a Merchant  */}
           <div className="flex  text-sm md:text-base">
-            Select the your desired product from shopify store click to "ADD TO
+            Select the your desired product from Shopify store click to "ADD TO
             CART" button for the checkout
           </div>
           <div className="">

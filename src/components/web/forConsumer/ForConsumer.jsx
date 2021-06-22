@@ -19,18 +19,19 @@ function ForConsumer() {
     {
       logo: choose,
       title:
-        "Consumers can choose to make the purchase climate neutral or even  contribute extra.",
+        "Choose to make the purchase climate neutral or even contribute extra.",
       aos: "fade-up",
     },
     {
       logo: tracking,
       title:
-        "Track their Carbon Capture efforts and the positive impact of their purchases.",
+        "Track your Carbon Capture efforts and the positive impact of your purchases.",
       aos: "fade-down",
     },
     {
       logo: capture,
-      title: "Creates buying habits and awareness that helps the planet.",
+      title:
+        "Creates environmentally-friendly buying habits and spreads action against climate change.",
       aos: "fade-up",
     },
   ];
@@ -43,7 +44,7 @@ function ForConsumer() {
       />
       <FlexCard
         title="What is CarbonPay for consumers?"
-        des="CarbonPay Lets consumer know about merchants commitment with a new badge updated automatically on CarbonPay checkout, receipts, and invoices. In our website consumers track summary of their Carbon Capture efforts and how much impact it was able to create. It helps create better habits that helps the planet."
+        des="CarbonPay lets consumers know about merchants' commitment with a new unique badge updated automatically on CarbonPay checkout, receipts, and invoices. In our website, consumers track the summary of their Carbon Capture efforts and how much impact they were able to create.  As a result, this helps create better habits which benefit our planet."
         img={consumer}
         direction=""
       />

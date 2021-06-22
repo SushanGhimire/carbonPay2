@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-function FlexCard({ title, des, direction, img }) {
+function FlexCard({ title, des, des2, direction, img }) {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -22,6 +22,9 @@ function FlexCard({ title, des, direction, img }) {
         </div>
         <div className="lg:text-base text-center md:text-left text-gray-700 font-rubik">
           {des}
+        </div>
+        <div className="lg:text-base text-center md:text-left text-gray-700 font-rubik">
+          {des2}
         </div>
       </div>
       <div

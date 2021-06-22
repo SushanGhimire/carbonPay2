@@ -16,8 +16,8 @@ function About() {
           </div>
           {/* what is carbonpay  */}
           <div className="flex  text-sm md:text-base">
-            CarbonPay is a standard through which any user can help to remove
-            carbon from environment with every Online Perchase.
+            CarbonPay is an application through which any user can help to
+            remove carbon from the environment with every online purchase.
           </div>
         </div>
         {/* Fund Climate Change Efforts with Payment */}
@@ -26,23 +26,24 @@ function About() {
             Fund Climate Change Efforts with Payment
           </div>
           <div className="flex text-sm md:text-base">
-            With CarbonPay, you can direct a fraction of each payment to donate
-            to best carbon removal non-profits in just a few clicks.{" "}
+            <div>
+              With CarbonPay, you can direct a fraction of each payment to the
+              best carbon removal non-profits in just a few clicks.
+            </div>
           </div>
           <div className=" max-w-2xl   pl-4 ">
             <ol className="list-decimal space-y-1 text-sm md:text-base">
               <li>
-                CarbonPay dynamically connects small percentage of each
-                transaction with non-profit with highest net-carbon removal
+                CarbonPay dynamically connects a small percentage of each
+                transaction to a non-profit with the highest net carbon-removal
                 efforts
               </li>
               <li>
-                CarbonPay automatically sends confirmation email to customer
-                about what happened to their purchase.
+                CarbonPay automatically sends a confirmation email to customers
+                about what happened with their purchase.
               </li>
               <li>
-                CarbonPay Carbon Neutral Purchase dynamically calculates the
-                cost for climate on each item and automatically add extra cost
+                CarbonPay’s Carbon Neutral Purchase calculates the extra cost
                 that will be required to offset the carbon from the climate on
                 your use of that specific item.
               </li>
@@ -55,8 +56,10 @@ function About() {
             Fight Climate Change with each Payment
           </div>
           <div className="flex ">
-            With CarbonPay you donate a portion of each payment to a non-profit
-            fighting climate change
+            With CarbonPay, you donate a portion of each online payment to
+            non-profits with the highest net-carbon removal efforts. CarbonPay
+            lets customers know their purchase supported a good cause in their
+            email receipt, allowing them to track their own contributions!
           </div>
           <div className=" flex  pl-4 ">
             <ol className="list-decimal space-y-1">
@@ -78,7 +81,7 @@ function About() {
           </div>
           {/* what is carbonpay  */}
           <div className="flex  pb-20">
-            Taking merchant selecetd % off of every internet transaction to fund
+            Taking merchant selected % off of every internet transaction to fund
             the highest impact Climate Change efforts
           </div>
         </div>

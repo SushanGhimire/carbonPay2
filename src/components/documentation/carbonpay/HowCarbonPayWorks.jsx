@@ -13,12 +13,11 @@ function HowCarbonPayWorks() {
           <div className="flex  text-sm md:text-base">
             CarbonPay makes it quick and painless for new and existing customers
             to log into your site. If someone visiting your site already has a
-            CarbonPay account, we authenticate them and log them into your site
-            with just one click. If they don’t, we create a new CarbonPay
-            account with their email, username and password and authenticate
-            them with that new CarbonPay account. Once Authenticated, you can
-            choose to create an account on your site for them, if one doesn’t
-            exist already. ‍
+            CarbonPay account, log them into your site with just one click. If
+            they don’t, we create a new CarbonPay account with their email,
+            username and password and authenticate them with that new account.
+            Once authenticated, you can choose to create an account on your site
+            for them, if one doesn’t exist already. ‍‍
           </div>
           <div className="h-96 bg-gray-800 flex justify-center items-center mt-10">
             {/* <img src="" alt="" /> */}
@@ -52,7 +51,7 @@ function HowCarbonPayWorks() {
             Secure
           </div>
           <div className="flex  mt-2 pb-5 text-sm md:text-base">
-            CarbonPay Checkout ishighly secure. We use security and encryption
+            CarbonPay checkout is highly secure. We use security and encryption
             technology to fight fraud and protect data, and we’ll never sell
             your information to anyone.
           </div>
