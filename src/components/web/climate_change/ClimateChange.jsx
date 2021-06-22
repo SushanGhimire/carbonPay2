@@ -16,7 +16,10 @@ function ClimateChange() {
       />
       <FlexCard
         title="What is climate change?"
-        des="According to the EPA, climate change refers to any significant change in the measures of climate lasting for an extended period of time. In other words, climate change includes major changes in temperature, precipitation, or wind patterns that occur over several decades or longer. An analogy we like is that climate change is like a baseball player on steroids. A baseball player will still hit home runs if not taking steroids, but as he takes steroids, the frequency and intensity of the home runs increase. Just like we will still have hurricanes, hot days, and other significant climate events without climate change, the frequency and intensity of these events increases with climate change."
+        des=" According to the EPA, climate change refers to any significant change in the measures of climate lasting for an extended period of time. In other words, climate change includes major changes in temperature, precipitation, or wind patterns that occur over several decades or longer.
+        "
+        des2="        
+        An analogy we like is that climate change is like a baseball player on steroids. A baseball player will still hit home runs if he’s not taking steroids, but as soon as he takes steroids, the frequency and intensity of the home runs increase. Just like we will still have hurricanes, hot days, and other significant climate events without climate change, the frequency and intensity of these events increases with it."
         img={temprature}
         direction="true"
       />
@@ -27,8 +30,8 @@ function ClimateChange() {
         direction=""
       /> */}
       <FlexCard
-        title="How can I reduce  carbon with Carbonpay?"
-        des="The first step to reducing your carbon is knowing where carbon emissions are coming from. On every transaction you can donate the some percentage of your transaction amount for carbon removal. You can donate according to your wish to make the better environment and better earth."
+        title="How can I reduce carbon with Carbonpay?"
+        des="The first step to reducing your carbon is knowing where your carbon emissions are coming from. On every transaction you can donate a percentage of your transaction amount towards carbon removal. Donate according to your wish to make a better environment and better earth!"
         img={save}
         direction=""
       />

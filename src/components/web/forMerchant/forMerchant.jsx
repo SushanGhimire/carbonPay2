@@ -41,7 +41,7 @@ function forMerchant() {
       />
       <FlexCard
         title="What is CarbonPay for merchants?"
-        des="A payment infrastructure app for internet business that runs in Shopify, BigCommerce WooCommerce and Magento. It’s an easy to implement native apps that lets you and your customers give back to the climate. CarbonPay lets you select your % contribution in each transaction. With every e-commerce transaction your customer get a confirmation email with the impact of their purchase towards the climate."
+        des="A payment infrastructure app for internet businesses that runs in Shopify, BigCommerce, WooCommerce, and Magento. It’s an easy-to-implement native app that lets you AND your customers give back to the climate/Earth. CarbonPay lets you select your % contribution in each transaction. With every e-commerce transaction, your customer gets a confirmation email with the impact of their purchase towards the climate."
         img={merchant}
         direction="true"
       />

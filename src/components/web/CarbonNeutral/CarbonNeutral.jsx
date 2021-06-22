@@ -14,17 +14,17 @@ import StakeHolders from "../../../common/StakeHolders";
 function CarbonNeutral() {
   const Carbonclimate = [
     {
-      blog: "CarbonPay dynamically creates a new Climate Conscious price for each selected item in a merchant’s inventory. ",
+      blog: "CarbonPay dynamically creates a new climate conscious (CC) price for each selected item in a merchant’s inventory.",
       aos: "fade-up",
       time: "1500",
     },
     {
-      blog: "Consumers see the climate cost of purchasing an item and can pay a small additional amount to make a carbon neutral purchase. ",
+      blog: "Consumers see the CC price of purchasing an item and can pay a small additional amount to make a carbon neutral purchase. ",
       aos: "fade-up",
       time: "1700",
     },
     {
-      blog: "The carbon is offsets through our network of Carbon Offset non-profits and consumers can learn more through a link in their email receipt.",
+      blog: "Carbon is offset through our network of carbon-offsetting non-profits and consumers can learn more through a link in their email receipt.",
       aos: "fade-up",
       time: "1900",
     },
@@ -33,28 +33,28 @@ function CarbonNeutral() {
     {
       logo: install,
       name: "1. Install",
-      title: "Install the CarbonPay plugin in minutes.",
+      title: "Install the CarbonPay plugin in minutes",
       aos: "fade-down",
     },
     {
       logo: co2,
       name: "2. Calculate CO2 footprint",
       title:
-        "Our algorithm determines the exact cost of offsetting the emissions from manufacturing & shipping of each order.",
+        "Our algorithm determines the exact cost of offsetting emissions from the manufacturing & shipping of each order.",
       aos: "fade-up",
     },
     {
       logo: checkout,
       name: "3. Customer checkout",
       title:
-        " Customers have the option to check a box to make their order carbon neutral, usually adding 1-2% to their total.",
+        "Customers have the option to check a box to make their order carbon neutral, usually adding 1-2% to their total.",
       aos: "fade-down",
     },
     {
       logo: track,
       name: "4. Track & share impact",
       title:
-        "Our algorithm determines the exact cost of offsetting the emissions from manufacturing & shipping of each order.",
+        "Our algorithm determines the exact cost of offsetting emissions from the manufacturing & shipping of each order.",
       aos: "fade-up",
     },
   ];
@@ -67,8 +67,8 @@ function CarbonNeutral() {
       />
 
       <FlexCard
-        title="How carbon neutral purchase works?"
-        des="It’s an easy to implement plugin that educates the consumer on the true cost of purchasing an item for the climate and how to pay a climate conscious price to offset the carbon. Merchants can Create CarbonPay account select their E-Commerce Inventory and CarbonPay will dynamically create a new Climate Conscious price for each item in the inventory. Now, in every e-commerce transaction a customer can select a Climate Conscious price and the CarbonPay helps offset the carbon with it’s network of Carbon Offset non-profits."
+        title="How does Carbon neutral Purchase works?"
+        des="It’s an easy to implement plugin that educates the consumer on the true cost of purchasing an item for the climate and how to pay a climate conscious price to offset the carbon. Merchants can create a CarbonPay account by simply selecting their E-Commerce Inventory. CarbonPay will dynamically create a new Climate Conscious , or CC, price for each item in the inventory. Now, in every e-commerce transaction a customer can select a Climate Conscious price, and CarbonPay helps offset emissions with its network of carbon-offsetting non-profits."
         img={purchase}
         direction=""
       />

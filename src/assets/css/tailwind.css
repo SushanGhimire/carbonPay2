@@ -48,9 +48,6 @@
   #hover:hover> .hoverme{
     display: block;
   }
-  #homeBg {
-    background-image: url("../images/homepage/animalBg4.jpg");
-  }
   /* for the animation in the buttons */
   .button-animation {
     position: relative;
@@ -80,7 +77,9 @@
   .button-animation:hover > .animation-bg {
     height: 100%;
   }
- 
+ .input-style{
+   @apply border border-gray-300 py-2.5 px-6 focus:outline-none focus:border-primary rounded;
+ }
   /* for the loader */
 .lds-ring {
   display: inline-block;
