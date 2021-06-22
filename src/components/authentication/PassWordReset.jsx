@@ -52,7 +52,7 @@ function PassWordReset() {
               </label>
               <input
                 type="password"
-                id="email"
+                id="password"
                 value={Password.password}
                 onChange={(e) =>
                   setPassword({ ...Password, password: e.target.value })

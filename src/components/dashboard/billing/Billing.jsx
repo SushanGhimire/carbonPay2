@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import { baseUrl } from "../../authentication/authorization";
+import axios from "axios";
 import {
   CardElement,
   Elements,
@@ -66,7 +68,7 @@ const ErrorMessage = ({ children }) => (
     {children}
   </div>
 );
-const CheckoutForm = () => {
+const CheckoutForm = ({ getCardInfo }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
@@ -114,17 +116,16 @@ const CheckoutForm = () => {
     }
   };
   function getPaymentIntent() {
-    fetch("http://127.0.0.1:5000/transactions/save-cardinfo/", {
+    fetch(`${baseUrl}/transactions/create-setup-intent/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setClientSecret(data.client_secret);
       })
       .catch((err) => {
@@ -194,65 +195,248 @@ const CheckoutForm = () => {
 };
 
 const stripePromise = loadStripe(
-  "pk_test_51HmQ6yDvx1549lk5zlQu2UTcarzAgDT2SIP0BLJLWGWuxCvJ4LjtzGePwEVlR4tFRerJQ0wvxlgVsSqRP0ntSbjz00eVVcHLkw"
+  "pk_test_51IJjYBIAj3oA61dKazU5ltxC1HBATIQZUbSBjrMCu9EXMbAs1x3PTq0uhkoD8mG75A15eScNJxJdmRRLn5Hlr5Ow00FYTBme4K"
 );
 function Billing() {
   const [isPayment, setIspayment] = useState(false);
   const handlePaymentToggle = () => {
     setIspayment(!isPayment);
   };
+  const [loading, setLoading] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [isPaymentInfo, setIsPaymentInfo] = useState();
+  const token = localStorage.getItem("access");
+  function getCardInfo() {
+    setLoading(true);
+    axios
+      .get(`${baseUrl}/transactions/card-info/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        if (res.data.data === "no card info") {
+          setIsPaymentInfo("");
+          setLoading(false);
+        } else {
+          setIsPaymentInfo(res.data);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (!err.response) {
+          localStorage.clear();
+          window.location = "/";
+        } else if (err.response.data.code === "token_not_valid") {
+          localStorage.clear();
+          window.location = "/";
+        }
+      });
+  }
+  const handleModalTogle = () => {
+    setModal(!modal);
+  };
+  const deletePayment = () => {
+    axios
+      .delete(`${baseUrl}/transactions/remove-card-info/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setModal(false);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useState(() => {
+    getCardInfo();
+  }, []);
   return (
-    <div className="flex p-5 md:p-10 flex-col">
+    <div className="flex p-5 md:p-10 flex-col  h-full relative">
+      {modal && (
+        <>
+          <div className="w-full h-full absolute top-0 right-0 bg-black opacity-30 flex justify-center items-center z-10"></div>
+          <div className="w-full h-full absolute top-0 right-0 z-20 flex justify-center items-center">
+            <div className="bg-white rounded p-5 w-64 flex flex-col">
+              <span> Are you surely want to delete your card information?</span>
+              <div className="flex space-x-1 mt-2 justify-center">
+                <button
+                  className="bg-indigo-600 text-white px-3 py-2 rounded focus:outline-none animation hover:bg-indigo-700"
+                  onClick={handleModalTogle}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="bg-red-600 text-white px-3 py-2 rounded focus:outline-none animation hover:bg-red-700"
+                  onClick={deletePayment}
+                >
+                  delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       {/* top header  */}
       <div className="w-full flex flex-col justify-between  space-y-1 p-5 lg:px-0">
         <div className="text-3xl font-semibold">Billing</div>
       </div>
-      <div>
-        {isPayment ? (
-          <button className="button-style" onClick={handlePaymentToggle}>
-            <div>
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+      {/* info table  */}
+      {isPaymentInfo && (
+        <>
+          <div className="w-full hidden md:flex">
+            <table className="w-full table-auto">
+              <thead>
+                <tr className="bg-gray-200">
+                  <th className="py-3">Brand</th>
+                  <th className="py-3">Name</th>
+                  <th className="py-3">Exp Month</th>
+                  <th className="py-3">Exp Year</th>
+                  <th className="py-3">Card No</th>
+                  <th className="py-3">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="text-center py-3 border-b">
+                    {isPaymentInfo.brand}
+                  </td>
+                  <td className="text-center py-3 border-b">
+                    {isPaymentInfo.name}
+                  </td>
+                  <td className="text-center py-3 border-b">
+                    {isPaymentInfo.exp_month}
+                  </td>
+                  <td className="text-center py-3 border-b">
+                    {isPaymentInfo.exp_year}
+                  </td>
+                  <td className="text-center py-3 border-b">
+                    ************{isPaymentInfo.last4}
+                  </td>
+                  <td className="text-center py-3 border-b">
+                    <button
+                      className="bg-red-600 text-white px-3 py-2 rounded focus:outline-none animation hover:bg-red-700"
+                      onClick={handleModalTogle}
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="flex md:hidden flex-col bg-gray-50 shadow mt-2 py-2 rounded px-5 text-sm space-y-1">
+            {/* Brand  */}
+            <div className="flex space-x-4 items-center">
+              <div className="w-24 text-xs font-semibold">BRAND</div>
+              <div className=" flex space-x-4 items-center text-gray-600">
+                {isPaymentInfo.brand}
+              </div>
             </div>
-            <span>Close Payment</span>
-          </button>
-        ) : (
-          <button className="button-style" onClick={handlePaymentToggle}>
-            <div>
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+            {/* Brand  */}
+            <div className="flex space-x-4 items-center">
+              <div className="w-24 text-xs font-semibold">NAME</div>
+              <div className=" flex space-x-4 items-center text-gray-600">
+                {isPaymentInfo.name}
+              </div>
             </div>
-            <span>Add Payment</span>
-          </button>
-        )}
-      </div>
+            {/* EXP MONTH  */}
+            <div className="flex space-x-4 items-center">
+              <div className="w-24 text-xs font-semibold">EXP MONTH</div>
+              <div className=" flex space-x-4 items-center text-gray-600">
+                {isPaymentInfo.exp_month}
+              </div>
+            </div>
+            {/* EXP_YEAR  */}
+            <div className="flex space-x-4 items-center">
+              <div className="w-24 text-xs font-semibold">EXP_YEAR</div>
+              <div className=" flex space-x-4 items-center text-gray-600">
+                {isPaymentInfo.exp_year}
+              </div>
+            </div>
+            {/* CARD NO  */}
+            <div className="flex space-x-4 items-center">
+              <div className="w-24 text-xs font-semibold">CARD NO</div>
+              <div className=" flex space-x-4 items-center text-gray-600">
+                ************{isPaymentInfo.last4}
+              </div>
+            </div>
+            {/* ACTION  */}
+            <div className="flex space-x-4 items-center">
+              <div className="w-24 text-xs font-semibold">ACTION</div>
+              <div className=" flex space-x-4 items-center text-gray-600">
+                <button
+                  className="bg-red-600 text-white px-3 py-2 rounded focus:outline-none animation hover:bg-red-700"
+                  onClick={handleModalTogle}
+                >
+                  delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      {!isPaymentInfo && loading && (
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      )}
+      {!isPaymentInfo && !loading && (
+        <div>
+          {isPayment ? (
+            <button className="button-style" onClick={handlePaymentToggle}>
+              <div>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <span>Close Payment</span>
+            </button>
+          ) : (
+            <button className="button-style" onClick={handlePaymentToggle}>
+              <div>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <span>Add Payment</span>
+            </button>
+          )}
+        </div>
+      )}
       {isPayment && (
         <Elements stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm getCardInfo={getCardInfo} />
         </Elements>
       )}
       {/* card form  */}
