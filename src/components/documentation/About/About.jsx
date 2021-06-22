@@ -27,9 +27,8 @@ function About() {
           </div>
           <div className="flex text-sm md:text-base">
             <div>
-              With CarbonPay, you can direct a fraction of each payment{" "}
-              <strong>to the best</strong> carbon removal non-profits in just a
-              few clicks.
+              With CarbonPay, you can direct a fraction of each payment to the
+              best carbon removal non-profits in just a few clicks.
             </div>
           </div>
           <div className=" max-w-2xl   pl-4 ">
