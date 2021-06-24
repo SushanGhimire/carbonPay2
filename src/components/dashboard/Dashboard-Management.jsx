@@ -31,8 +31,7 @@ function DashboardManagement() {
           "Content-Type": `application/json`,
         },
       })
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
         // setLoading(false);
         setIsForm(false);
       })

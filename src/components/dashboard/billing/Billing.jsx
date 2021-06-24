@@ -243,8 +243,7 @@ function Billing() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         setModal(false);
         window.location.reload();
       })
