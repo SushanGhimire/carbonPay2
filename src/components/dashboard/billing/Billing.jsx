@@ -195,7 +195,7 @@ const CheckoutForm = ({ getCardInfo }) => {
 };
 
 const stripePromise = loadStripe(
-  "pk_test_51IJjYBIAj3oA61dKazU5ltxC1HBATIQZUbSBjrMCu9EXMbAs1x3PTq0uhkoD8mG75A15eScNJxJdmRRLn5Hlr5Ow00FYTBme4K"
+  "pk_test_51HmQ6yDvx1549lk5zlQu2UTcarzAgDT2SIP0BLJLWGWuxCvJ4LjtzGePwEVlR4tFRerJQ0wvxlgVsSqRP0ntSbjz00eVVcHLkw"
 );
 function Billing() {
   const [isPayment, setIspayment] = useState(false);
@@ -243,8 +243,7 @@ function Billing() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         setModal(false);
         window.location.reload();
       })

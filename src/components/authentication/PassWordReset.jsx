@@ -23,8 +23,7 @@ function PassWordReset() {
       setLoading(true);
       axios
         .patch(`${baseUrl}/user/password-reset-complete/`, Password)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           setLoading(false);
           window.location = "/login";
         })

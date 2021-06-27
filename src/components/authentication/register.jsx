@@ -31,7 +31,11 @@ export default function Register() {
       result = false;
     } else {
       if (property === "email") {
-        if (!value.match(/^\w+@\w+\.\w+(\.\w+)?$/gi)) {
+        if (
+          !value.match(
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/gi
+          )
+        ) {
           errors.email = "Invalid email";
           result = false;
         } else {

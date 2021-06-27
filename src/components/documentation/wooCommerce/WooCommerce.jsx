@@ -10,7 +10,7 @@ function WooCommerce() {
     <div className="flex flex-col pt-10 px-7 md:px-16">
       {/* top header  */}
       <div className="text-2xl md:text-3xl font-semibold  text-primary pb-8">
-        CarbonPay for WooCommerce Installation Guide
+        CarbonPay for Consumers Transaction Guide
       </div>
       {/*  Become a Merchant  */}
       <div className="flex flex-col ">

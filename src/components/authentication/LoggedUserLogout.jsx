@@ -102,10 +102,9 @@ export default function LoggedUserLogout() {
           "Content-Type": `application/json`,
         },
       })
-      .then((res) => {
+      .then(() => {
         localStorage.clear();
         window.location = "/";
-        console.log(res);
       })
       .catch((err) => {
         if (!err.response) {
