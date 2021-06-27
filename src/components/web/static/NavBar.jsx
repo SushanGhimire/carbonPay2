@@ -119,7 +119,7 @@ function NavBar({ loggedIn }) {
               className="button-animation"
             >
               <div className="animation-text px-6 rounded-full py-2">
-                {loggedIn ? "Dashboard" : "Sign in"}
+                {loggedIn ? "Dashboard" : "Login Here"}
               </div>
               <div className="animation-bg"></div>
             </Link>
@@ -194,7 +194,7 @@ function NavBar({ loggedIn }) {
                 className="button-animation text-center mt-2"
               >
                 <div className="animation-text px-6 rounded-full py-2">
-                  {loggedIn ? "Connect with stripe" : "Sign in"}
+                  {loggedIn ? "Connect with stripe" : "Login Here"}
                 </div>
                 <div className="animation-bg"></div>
               </Link>

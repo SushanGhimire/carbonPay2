@@ -39,7 +39,7 @@ function ForConsumer() {
     <div>
       <FrontPage
         header="CarbonPay for Consumer"
-        des="Removing Carbon with Every Online Purchase"
+        des="Saving the Earth while buying what you want"
         img={image}
       />
       <FlexCard

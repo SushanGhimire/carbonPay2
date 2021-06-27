@@ -15,7 +15,7 @@ function ClimateChange() {
         img={climate}
       />
       <FlexCard
-        title="What is climate change?"
+        title="Preserving our planet for generations to come"
         des=" According to the EPA, climate change refers to any significant change in the measures of climate lasting for an extended period of time. In other words, climate change includes major changes in temperature, precipitation, or wind patterns that occur over several decades or longer.
         "
         des2="        
