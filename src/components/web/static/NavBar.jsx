@@ -6,10 +6,34 @@ function NavBar({ loggedIn }) {
   const [width, setWidth] = useState(window.innerWidth);
   let nav = window.location.pathname.split("/")[1];
   const [navListName, setNavListName] = useState(`/${nav}`);
+  const climateNav = `/${nav}`;
+  const [isShown, setIsShown] = useState(false);
   const mobileSidebar = useRef();
   const coverAll = useRef();
   // const [position, setPosition] = useState(0);
   const navlist = [
+    // {
+    //   name: "Climate Change",
+    //   to: "/climatechange",
+    // },
+    {
+      name: "For Merchants",
+      to: "/formerchants",
+    },
+    {
+      name: "For Consumers",
+      to: "/forconsumers",
+    },
+    // {
+    //   name: "Carbon Neutral",
+    //   to: "/carbonneutral",
+    // },
+    {
+      name: "Docs",
+      to: "/docs/aboutcarbonpay",
+    },
+  ];
+  const mobNavlist = [
     {
       name: "Climate Change",
       to: "/climatechange",
@@ -62,7 +86,13 @@ function NavBar({ loggedIn }) {
     }
   };
   const scrollToTop = () => window.scrollTo(0, 0);
-
+  const handleShown = () => {
+    if (isShown) {
+      setIsShown(false);
+    } else {
+      setIsShown(true);
+    }
+  };
   useEffect(() => {
     // handleScroll();
     window.addEventListener("resize", handleWidth);
@@ -95,6 +125,58 @@ function NavBar({ loggedIn }) {
               onMouseEnter={changeNavListName}
               onMouseLeave={changeNavListName}
             >
+              <div
+                className={`cursor-pointer  tracking-wider text-lg py-6   border-b-4 border-white relative   `}
+              >
+                <span
+                  className={` transition-all duration-300 ease-linear hover:text-primary ${
+                    climateNav === "/climatechange" ||
+                    climateNav === "/carbonneutral"
+                      ? " text-primary font-semibold"
+                      : ""
+                  } `}
+                  onMouseEnter={handleShown}
+                >
+                  Climate
+                </span>
+                {isShown && (
+                  <>
+                    <div className="absolute bg-white w-4 h-4 transform rotate-45 -bottom-4 border left-0"></div>
+                    <div
+                      className="absolute bg-white w-44 -bottom-24 rounded shadow-md -right-10 flex flex-col py-1"
+                      onMouseEnter={() => {
+                        setIsShown(true);
+                      }}
+                      onMouseLeave={() => setIsShown(false)}
+                    >
+                      <Link
+                        to="/climatechange"
+                        className={`px-5 py-2 border-l-2 border-transparent hover:border-primary transition-all duration-300 ease-linear text-base hover:text-
+                    ${
+                      climateNav === "/climatechange"
+                        ? "border-primary  border-l-2 text-primary font-semibold"
+                        : ""
+                    }
+                    `}
+                      >
+                        Climate Change
+                      </Link>
+                      <Link
+                        to="/carbonneutral"
+                        className={`px-5 py-2 border-l-2 border-transparent hover:border-primary transition-all duration-300 ease-linear text-base hover:text-
+                    ${
+                      climateNav === "/carbonneutral"
+                        ? "border-primary  border-l-2 text-primary font-semibold"
+                        : ""
+                    }
+                    `}
+                      >
+                        Carbon Neutral{" "}
+                      </Link>
+                    </div>
+                  </>
+                )}
+              </div>
               {navlist.map((list, index) => {
                 const { name, to } = list;
                 return (
@@ -107,6 +189,9 @@ function NavBar({ loggedIn }) {
                     key={index}
                     to={to}
                     onClick={scrollToTop}
+                    onMouseEnter={() => {
+                      setIsShown(false);
+                    }}
                   >
                     {name}
                   </Link>
@@ -171,7 +256,7 @@ function NavBar({ loggedIn }) {
               </Link>
 
               <div className="flex flex-col space-y-2 items-center">
-                {navlist.map((list, index) => {
+                {mobNavlist.map((list, index) => {
                   const { name, to } = list;
                   return (
                     <Link

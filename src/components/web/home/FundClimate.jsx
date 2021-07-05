@@ -58,7 +58,7 @@ function FundClimate() {
             return (
               <div
                 key={index}
-                className="flex  flex-col cursor-pointer bg-gray-100 hover:bg-gray-200 hover:border-green-primary rounded-lg shadow-lg p-5 "
+                className="flex  flex-col  hover:border-green-primary  p-5 "
                 data-aos={climate.aos}
                 data-aos-anchor-placement="top-bottom"
                 data-aos-duration="1500"
