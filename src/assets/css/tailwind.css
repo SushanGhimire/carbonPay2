@@ -1,86 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-  .button-style{
+@layer components {
+  .button-style {
     @apply cursor-pointer flex space-x-2 bg-primary text-white px-4 py-2 rounded shadow  items-center hover:bg-secondary transition-all duration-300 ease-in-out;
   }
-  .button-style2{
+  .button-style2 {
     @apply flex bg-primary text-white rounded-full px-5 py-2 items-center text-center hover:bg-secondary transition-all duration-200 focus:border-primary;
   }
 }
 
 :root {
-  --primary-color: #057D3A;
-  --secondary-color: #1FC157;
+  --primary-color: #057d3a;
+  --secondary-color: #1fc157;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /* background-color: #FAFAFA; */
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
-  }
-  a:focus,
-  button:focus,
-  input:focus {
-    outline: none;
-  }
-  .hoverme{
-    display: "block";
-  }
-  #hover:hover> .hoverme{
-    display: block;
-  }
-  /* for the animation in the buttons */
-  .button-animation {
-    position: relative;
-    background-color: var(--primary-color);
-    display: inline-block;
-    border-radius: 9999px;
-    color: white;
-    cursor: pointer;
-    overflow: hidden;
-    width: auto;
-  }
-  .button-animation > .animation-text {
-    z-index: 2;
-    position: relative;
-    display: inline-block;
-    border-radius: 9999px;
-  }
-  .button-animation > .animation-bg {
-    background-color: var(--secondary-color);
-    z-index: 1;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    transition: 0.3s ease;
-    height: 0;
-  }
-  .button-animation:hover > .animation-bg {
-    height: 100%;
-  }
- .input-style{
-   @apply border border-gray-300 py-2.5 px-6 focus:outline-none focus:border-primary rounded;
- }
-  /* for the loader */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: #FAFAFA; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+a:focus,
+button:focus,
+input:focus {
+  outline: none;
+}
+.hoverme {
+  display: "block";
+}
+#hover:hover > .hoverme {
+  display: block;
+}
+/* for the animation in the buttons */
+.button-animation {
+  position: relative;
+  background-color: var(--primary-color);
+  display: inline-block;
+  border-radius: 9999px;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+  width: auto;
+}
+.button-animation-outline {
+  position: relative;
+  border: var(--primary-color) 1px solid;
+  display: inline-block;
+  border-radius: 9999px;
+  color: var(--primary-color);
+  cursor: pointer;
+  overflow: hidden;
+  width: auto;
+}
+.button-animation > .animation-text {
+  z-index: 2;
+  position: relative;
+  display: inline-block;
+  border-radius: 9999px;
+}
+.button-animation > .animation-bg {
+  background-color: var(--secondary-color);
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: 0.3s ease;
+  height: 0;
+}
+.button-animation:hover > .animation-bg {
+  height: 100%;
+}
+.input-style {
+  @apply border border-gray-300 py-2.5 px-6 focus:outline-none focus:border-primary rounded;
+}
+/* for the loader */
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -119,20 +129,25 @@
 textarea {
   resize: none;
 }
-.animation-card{
+.animation-card {
   position: relative;
   animation-name: example;
   animation-duration: 4s;
-   animation-iteration-count: infinite;
-   animation-direction: alternate;
-   animation-timing-function: linear; 
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
 }
 @keyframes example {
-  0%   {top:-0px;}
-  50%  {top:15px;}
-  100% {top:-15px;}
+  0% {
+    top: -0px;
+  }
+  50% {
+    top: 15px;
+  }
+  100% {
+    top: -15px;
+  }
 }
-
 
 /* loading animation  */
 .lds-ellipsis {
@@ -147,7 +162,7 @@ textarea {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #057D3A;
+  background: #057d3a;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .lds-ellipsis div:nth-child(1) {
