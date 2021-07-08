@@ -17,6 +17,9 @@ import PrivacyPolicy from "./components/web/privacy_policy/PrivacyPolicy";
 import Footer from "./components/web/static/Footer";
 import NavBar from "./components/web/static/NavBar";
 
+//-----
+import Product from "./components/web/products/Products";
+
 function App(props) {
   const { loggedIn } = props;
   return (
@@ -34,6 +37,7 @@ function App(props) {
         <Route exact path="/docs/merchantsignup" render={() => <Docsmgnt />} />
         <Route exact path="/docs/merchantselect" render={() => <Docsmgnt />} />
         <Route exact path="/docs/carbonpaylogin" render={() => <Docsmgnt />} />
+        <Route exact path="/products" component={Product} />
         <Route
           exact
           path="/docs/howcarbonpayworks"

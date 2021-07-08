@@ -24,6 +24,10 @@ function NavBar({ loggedIn }) {
       name: "For Consumers",
       to: "/forconsumers",
     },
+    {
+      name: "Products",
+      to: "/products",
+    },
     // {
     //   name: "Carbon Neutral",
     //   to: "/carbonneutral",
@@ -49,6 +53,10 @@ function NavBar({ loggedIn }) {
     {
       name: "Carbon Neutral",
       to: "/carbonneutral",
+    },
+    {
+      name: "Products",
+      to: "/products",
     },
     {
       name: "Docs",
