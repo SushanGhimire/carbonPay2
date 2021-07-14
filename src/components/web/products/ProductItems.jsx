@@ -1,28 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const ProductItems = ({ data }) => {
-  return (
-    <>
-      <div className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {data.map((item, index) => {
-          return (
-            <div
-              key={index}
-              className="overflow-hidden shadow-lg rounded-lg h-90 max-w-xs m-auto"
-            >
-              <div className="w-full block h-full">
-                <img
+function ProductItems() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.joincarbonpay.com/products/list/")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <ul className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {items.map(item => (
+          <li key={item.id} className="overflow-hidden shadow-lg rounded-lg h-90 max-w-xs m-auto">
+        <div className="w-full block h-full">
+					<img
                   alt=""
                   src={item.image}
                   className="max-h-44 w-full object-cover"
-                />
+					/>
                 <div className="bg-white w-full p-4">
-                  <div className="text-primary link">{item.brand}</div>
+                  <div className="text-primary link">{item.category}</div>
                   <div className="text-secondary heading-5 mb-2">
-                    {item.product_name}
+                    {item.name}
                   </div>
                   <div className="caption text-text line-clamp-2">
-                    {item.details}
+                    {item.description}
                   </div>
                   <div className="flex items-center justify-between mt-4">
                     <div className="block relative">
@@ -38,18 +57,12 @@ const ProductItems = ({ data }) => {
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+          </li>
 
-      <div className="flex justify-center pt-6 md:pt-10">
-        <button className="button-animation px-6 rounded-full py-2" type="button">
-          Load More
-        </button>
-      </div>
-    </>
-  );
-};
+        ))}
+      </ul>
+    );
+  }
+}
 
-export default ProductItems;
+export default ProductItems
