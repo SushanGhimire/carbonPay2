@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 function StakeHolders({ cards, title, grid }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  // useEffect(() => {
+  //   AOS.init();
+  // }, []);
 
   return (
     <>
@@ -27,9 +27,9 @@ function StakeHolders({ cards, title, grid }) {
             <div
               className="col-span-1 py-10 transition-all duration-300 ease-in-out px-3 hover:bg-gray-50 "
               key={index}
-              data-aos={card.aos}
-              data-aos-anchor-placement="top-bottom"
-              data-aos-duration="1500"
+              // data-aos={card.aos}
+              // data-aos-anchor-placement="top-bottom"
+              // data-aos-duration="1500"
             >
               <div className={`flex flex-col space-y-4 `}>
                 <div className="mx-auto h-12 w-12 sm:h-16 sm:w-16 lg:w-20 lg:h-20">
