@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import buy from "../../../assets/images/homepage/buy.svg";
 import click from "../../../assets/images/homepage/click.svg";
 import email from "../../../assets/images/homepage/email.svg";
 import save from "../../../assets/images/homepage/save.svg";
-import AOS from "aos";
-import "aos/dist/aos.css";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 
 function FundClimate() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  // useEffect(() => {
+  //   AOS.init();
+  // }, []);
   const climates = [
     {
       img: buy,
@@ -59,9 +59,9 @@ function FundClimate() {
               <div
                 key={index}
                 className="flex  flex-col  hover:border-green-primary  p-5 "
-                data-aos={climate.aos}
-                data-aos-anchor-placement="top-bottom"
-                data-aos-duration="1500"
+                // data-aos={climate.aos}
+                // data-aos-anchor-placement="top-bottom"
+                // data-aos-duration="1500"
               >
                 <div className="w-16 h-16 mx-auto">
                   <img src={climate.img} alt="" />

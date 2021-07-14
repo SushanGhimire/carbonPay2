@@ -1,13 +1,13 @@
-import { React, useEffect } from "react";
+import { React} from "react";
 // import image from "../../../assets/images/homepage/forest.svg";
 // import wave from "../../assets/img/svg.png";
 import bubble from "../../../assets/images/homepage/bubble.svg";
-import AOS from "aos";
-import "aos/dist/aos.css";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 function FrontPage({ header, des, img }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  // useEffect(() => {
+  //   AOS.init();
+  // }, []);
   return (
     <div
       className="md:min-h-screen md:flex px-10 md:relative bg-no-repeat bg-cover bg-center"
@@ -16,9 +16,9 @@ function FrontPage({ header, des, img }) {
       {/* left side  */}
       <div
         className="md:w-1/2  flex flex-col space-y-4 text-center items-center justify-center z-20"
-        data-aos="fade-right"
-        data-aos-anchor-placement="top-bottom"
-        data-aos-duration="1500"
+        // data-aos="fade-right"
+        // data-aos-anchor-placement="top-bottom"
+        // data-aos-duration="1500"
       >
         <div className="font-bold text-4xl md:text-6xl mt-10 md:mt-0">
           {header}
@@ -39,9 +39,9 @@ function FrontPage({ header, des, img }) {
 
       <div
         className="flex-1 mt-5 md:mt-0 z-20 flex justify-center items-center bg-no-repeat bg-center "
-        data-aos="fade-left"
-        data-aos-anchor-placement="top-bottom"
-        data-aos-duration="1500"
+        // data-aos="fade-left"
+        // data-aos-anchor-placement="top-bottom"
+        // data-aos-duration="1500"
       >
         <img src={img} className="  object-cover" alt="" />
       </div>
