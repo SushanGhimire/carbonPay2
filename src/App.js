@@ -38,6 +38,7 @@ function App(props) {
         <Route exact path="/docs/merchantselect" render={() => <Docsmgnt />} />
         <Route exact path="/docs/carbonpaylogin" render={() => <Docsmgnt />} />
         <Route exact path="/products" component={Product} />
+        <Route exact path="/products/:id" component={Product} />
         <Route
           exact
           path="/docs/howcarbonpayworks"

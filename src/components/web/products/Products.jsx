@@ -1,139 +1,112 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { baseUrl } from "../../authentication/authorization";
 import ProductItems from "./ProductItems";
+import { useHistory } from "react-router";
+const Products = ({ match }) => {
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+  const [sussessData, setSuccessData] = useState({})
+  useEffect(() => {
+    const id = match.params.id;
+    if(id){
+      const fetchStoreData = async () => {
+          fetch(`${baseUrl}/products/${id}`)
+            .then(res => res.json())
+            .then(
+              (result) => {
+                setShowModal(true);
+                setSuccessData(result);
+                // setItems(result);
+              },
+              (error) => {
+                console.log(error)
+                // setIsLoaded(true);
+                // setError(error);
+              }
+            )
+      };
+      fetchStoreData();
+    }    
+  }, [match.params.id]);
 
-const products = [
-  {
-    id: "_1",
-    image:
-      "https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1630&q=80",
-    brand: "Nova",
-    product_name: "Natural Perfumes",
-    details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at cupiditate debitis dolore ducimus facilis in inventore ipsam mollitia nesciunt, praesentium provident quia ratione repellendus sapiente, sit tempora totam, velit?",
-    price: "$122",
-    company_name: "Fashion Nova",
-    company_website: "www.fashionnova.com",
-  },
-  {
-    id: "_2",
-    image:
-      "https://images.unsplash.com/photo-1556301590-319c5b2ac83d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-    brand: "Levis",
-    product_name: "Jeans",
-    details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at cupiditate debitis dolore ducimus facilis in inventore ipsam mollitia nesciunt, praesentium provident quia ratione repellendus sapiente, sit tempora totam, velit?",
-    price: "$12",
-    company_name: "Levis Jeans",
-    company_website: "www.levisjeans.com",
-  },
-  {
-    id: "_3",
-    image:
-      "https://images.unsplash.com/photo-1566207274740-0f8cf6b7d5a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-    brand: "Celvin Kelin",
-    product_name: "Blue Jeans",
-    details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at cupiditate debitis dolore ducimus facilis in inventore ipsam mollitia nesciunt, praesentium provident quia ratione repellendus sapiente, sit tempora totam, velit?",
-    price: "$22",
-    company_name: "Celvin Kelin",
-    company_website: "www.celvinkelin.com",
-  },
-  {
-    id: "_4",
-    image:
-      "https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80",
-    brand: "Ray-Ban",
-    product_name: "Sun Glasses",
-    details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at cupiditate debitis dolore ducimus facilis in inventore ipsam mollitia nesciunt, praesentium provident quia ratione repellendus sapiente, sit tempora totam, velit?",
-    price: "$10",
-    company_name: "Ray-Ban",
-    company_website: "www.rayban.com",
-  },
-  {
-    id: "_1",
-    image:
-      "https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1630&q=80",
-    brand: "Nova",
-    product_name: "Natural Perfumes",
-    details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at cupiditate debitis dolore ducimus facilis in inventore ipsam mollitia nesciunt, praesentium provident quia ratione repellendus sapiente, sit tempora totam, velit?",
-    price: "$122",
-    company_name: "Fashion Nova",
-    company_website: "www.fashionnova.com",
-  },
-  {
-    id: "_2",
-    image:
-      "https://images.unsplash.com/photo-1556301590-319c5b2ac83d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-    brand: "Levis",
-    product_name: "Jeans",
-    details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at cupiditate debitis dolore ducimus facilis in inventore ipsam mollitia nesciunt, praesentium provident quia ratione repellendus sapiente, sit tempora totam, velit?",
-    price: "$12",
-    company_name: "Levis Jeans",
-    company_website: "www.levisjeans.com",
-  },
-  {
-    id: "_3",
-    image:
-      "https://images.unsplash.com/photo-1566207274740-0f8cf6b7d5a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-    brand: "Celvin Kelin",
-    product_name: "Blue Jeans",
-    details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at cupiditate debitis dolore ducimus facilis in inventore ipsam mollitia nesciunt, praesentium provident quia ratione repellendus sapiente, sit tempora totam, velit?",
-    price: "$22",
-    company_name: "Celvin Kelin",
-    company_website: "www.celvinkelin.com",
-  },
-  {
-    id: "_4",
-    image:
-      "https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80",
-    brand: "Ray-Ban",
-    product_name: "Sun Glasses",
-    details:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at cupiditate debitis dolore ducimus facilis in inventore ipsam mollitia nesciunt, praesentium provident quia ratione repellendus sapiente, sit tempora totam, velit?",
-    price: "$10",
-    company_name: "Ray-Ban",
-    company_website: "www.rayban.com",
-  },
-];
-const Products = () => {
-  //   const [data, setData] = useState(products);
-  const data = products;
+  const closeModal = () => {
+    setShowModal(false);
+    history.push(`/products`);
+  }
+
   return (
     <>
-      <div className="w-full">
-        <div className="px-10 lg:px-20 py-20 bg-light_white font-rubik">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12">
-            <div className="title mb-4 lg:mb-0">
-              <div className="text-2xl font-bold mx-auto text-primary font-header ">
-                Search from millions
+        <div className="w-full">
+          <div className="px-10 lg:px-20 py-20 bg-light_white font-rubik">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12">
+              <div className="title mb-4 lg:mb-0">
+                <div className="text-2xl font-bold mx-auto text-primary font-header ">
+                  Search from millions
+                </div>
+                <div className="tracking-wider text-lg">
+                  Best place to find products you always dreamed online.
+                </div>
               </div>
-              <div className="tracking-wider text-lg">
-                Best place to find products you always dreamed online.
+              <div className="text-end">
+                <form className="flex flex-col sm:flex-row w-full max-w-sm sm:space-x-3">
+                  <div className="relative mb-2 sm:mb-0">
+                    <input
+                      type="text"
+                      className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Search item"
+                    />
+                  </div>
+                  <button className="primary-button cursor-pointer hover:text-primary tracking-wider text-lg" type="button">
+                    Search
+                  </button>
+                </form>
               </div>
             </div>
-            <div className="text-end">
-              <form className="flex flex-col sm:flex-row w-full max-w-sm sm:space-x-3">
-                <div className="relative mb-2 sm:mb-0">
-                  <input
-                    type="text"
-                    className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    placeholder="Search item"
-                  />
+            {/*Products*/}
+            <ProductItems />
+          </div>
+        </div>
+      
+        {/* Success Modal */}
+        {showModal && (
+          <>
+          <div className="w-full h-screen overflow-hidden fixed inset-0 font-rubik bg-black bg-opacity-40 z-20">
+            <div className="w-full h-full relative flex justify-center items-center ">
+              <div className="w-full max-w-lg mx-auto bg-white z-20 font-semibold  flex flex-col rounded-md overflow-hidden shadow-md border border-gray-300">
+                {/* header  */}
+                <div className="bg-gray-200 py-3 flex justify-between px-7 items-center">
+                  <span className=" text-lg md:text-xl">Success</span>
+                  <button
+                    className="bg-red-600 text-white px-3 py-1 rounded-md text-xs md:text-sm"
+                    onClick={closeModal}
+                  >
+                    close
+                  </button>
                 </div>
-                <button className="primary-button cursor-pointer hover:text-primary tracking-wider text-lg" type="button">
-                  Search
-                </button>
-              </form>
+
+                <div className="p-6">
+                  <div className="flex flex-col items-center text-center justify-center">
+                      <div className="">
+                        <svg id="b76bd6b3-ad77-41ff-b778-1d1d054fe577" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 570 511.67482"><path d="M879.99927,389.83741a.99678.99678,0,0,1-.5708-.1792L602.86963,197.05469a5.01548,5.01548,0,0,0-5.72852.00977L322.57434,389.65626a1.00019,1.00019,0,0,1-1.14868-1.6377l274.567-192.5918a7.02216,7.02216,0,0,1,8.02-.01318l276.55883,192.603a1.00019,1.00019,0,0,1-.57226,1.8208Z" transform="translate(-315 -194.16259)" fill="#3f3d56"/><polygon points="23.264 202.502 285.276 8.319 549.276 216.319 298.776 364.819 162.776 333.819 23.264 202.502" fill="#e6e6e6"/><path d="M489.25553,650.70367H359.81522a6.04737,6.04737,0,1,1,0-12.09473H489.25553a6.04737,6.04737,0,1,1,0,12.09473Z" transform="translate(-315 -194.16259)" fill="#4ad594"/><path d="M406.25553,624.70367H359.81522a6.04737,6.04737,0,1,1,0-12.09473h46.44031a6.04737,6.04737,0,1,1,0,12.09473Z" transform="translate(-315 -194.16259)" fill="#4ad594"/><path d="M603.96016,504.82207a7.56366,7.56366,0,0,1-2.86914-.562L439.5002,437.21123v-209.874a7.00817,7.00817,0,0,1,7-7h310a7.00818,7.00818,0,0,1,7,7v210.0205l-.30371.12989L606.91622,504.22734A7.61624,7.61624,0,0,1,603.96016,504.82207Z" transform="translate(-315 -194.16259)" fill="#fff"/><path d="M603.96016,505.32158a8.07177,8.07177,0,0,1-3.05957-.59863L439.0002,437.54521v-210.208a7.50851,7.50851,0,0,1,7.5-7.5h310a7.50851,7.50851,0,0,1,7.5,7.5V437.68779l-156.8877,66.999A8.10957,8.10957,0,0,1,603.96016,505.32158Zm-162.96-69.1123,160.66309,66.66455a6.1182,6.1182,0,0,0,4.668-.02784l155.669-66.47851V227.33721a5.50653,5.50653,0,0,0-5.5-5.5h-310a5.50653,5.50653,0,0,0-5.5,5.5Z" transform="translate(-315 -194.16259)" fill="#3f3d56"/><path d="M878,387.83741h-.2002L763,436.85743l-157.06982,67.07a5.06614,5.06614,0,0,1-3.88038.02L440,436.71741l-117.62012-48.8-.17968-.08H322a7.00778,7.00778,0,0,0-7,7v304a7.00779,7.00779,0,0,0,7,7H878a7.00779,7.00779,0,0,0,7-7v-304A7.00778,7.00778,0,0,0,878,387.83741Zm5,311a5.002,5.002,0,0,1-5,5H322a5.002,5.002,0,0,1-5-5v-304a5.01106,5.01106,0,0,1,4.81006-5L440,438.87739l161.28027,66.92a7.12081,7.12081,0,0,0,5.43994-.03L763,439.02741l115.2002-49.19a5.01621,5.01621,0,0,1,4.7998,5Z" transform="translate(-315 -194.16259)" fill="#3f3d56"/><path d="M602.345,445.30958a27.49862,27.49862,0,0,1-16.5459-5.4961l-.2959-.22217-62.311-47.70752a27.68337,27.68337,0,1,1,33.67407-43.94921l40.36035,30.94775,95.37793-124.38672a27.68235,27.68235,0,0,1,38.81323-5.12353l-.593.80517.6084-.79346a27.71447,27.71447,0,0,1,5.12353,38.81348L624.36938,434.50586A27.69447,27.69447,0,0,1,602.345,445.30958Z" transform="translate(-315 -194.16259)" fill="#4ad594"/></svg>  
+                      </div>
+                      <div className="text-lg text-primary mt-4">
+                      {sussessData.message}
+                      </div>
+                      <div className="text-2xl font-semibold text-secondary py-3">
+                        ${sussessData.amount_total}
+                      </div>
+                      <div className="leading-5">
+                        An email with your order detail has been sent to your mail address.
+                      </div>
+                    </div>
+                  </div>
+                
+              </div>
             </div>
           </div>
-          {/*Products*/}
-          <ProductItems data={data} />
-        </div>
-      </div>
+        
+          </>
+        )}
     </>
   );
 };

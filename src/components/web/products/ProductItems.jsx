@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { baseUrl } from "../../authentication/authorization";
 import { loadStripe } from "@stripe/stripe-js";
-const stripePromise = loadStripe(
-  "pk_test_51HmQ6yDvx1549lk5zlQu2UTcarzAgDT2SIP0BLJLWGWuxCvJ4LjtzGePwEVlR4tFRerJQ0wvxlgVsSqRP0ntSbjz00eVVcHLkw"
-);
+const stripePromise = loadStripe("pk_test_51IJjYBIAj3oA61dKazU5ltxC1HBATIQZUbSBjrMCu9EXMbAs1x3PTq0uhkoD8mG75A15eScNJxJdmRRLn5Hlr5Ow00FYTBme4K");
 
 function ProductItems() {
   const [error, setError] = useState(null);
@@ -11,23 +10,24 @@ function ProductItems() {
 
 
   useEffect(() => {
-      createCheckoutSession();
+      //createCheckoutSession();
       // eslint-disable-next-line
   }, []);
 
-  const createCheckoutSession = async () => {
+  const createCheckoutSession = async (id) => {
     const data = [
       {
-        id: items.id,
+        id: id,
         quantity: 1
       }
     ]
-    return await fetch("https://api.joincarbonpay.com/products/create-checkout-session/", {
+    console.log(data);
+    return await fetch(`${baseUrl}/products/create-checkout-session/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
       body: JSON.stringify({ cartItems: data }),
     }).then(function (response) {
@@ -35,27 +35,27 @@ function ProductItems() {
     });
   };
   //let checkoutSessionId;
-  const confirmPayment = async () => {
-  // await stripePromise.then((res) => {
-  //     createCheckoutSession().then(function (response) {
-  //       window.location.href = response.redirect_uri
-  //       // stripePromise
-  //       //   .redirectToCheckout({
-  //       //     sessionId: response.checkoutSessionId,
-  //       //   })
-  //       //   .then(function (result) {
-  //       //     console.log(result);
-  //       //   })
-  //       //   .catch(function (err) {
-  //       //     console.log(err);
-  //       //   });
-  //     });
-  //   })
+  const confirmPayment = async (id) => {
+  await stripePromise.then((res) => {
+      createCheckoutSession(id).then(function (response) {
+        window.location.href = response.redirect_uri
+        // stripePromise
+        //   .redirectToCheckout({
+        //     sessionId: response.checkoutSessionId,
+        //   })
+        //   .then(function (result) {
+        //     console.log(result);
+        //   })
+        //   .catch(function (err) {
+        //     console.log(err);
+        //   });
+      });
+    })
     
   }
 
   useEffect(() => {
-    fetch("https://api.joincarbonpay.com/products/list/")
+    fetch(`${baseUrl}/products/list/`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -67,9 +67,7 @@ function ProductItems() {
           setError(error);
         }
       )
-  }, [])
-
-  console.log(items);
+  }, []);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -97,11 +95,11 @@ function ProductItems() {
                   <div className="flex items-center justify-between mt-4">
                     <div className="block relative">
                       <div className="text-secondary font-semibold heading-4">
-                        {item.price}
+                        ${item.price}
                       </div>
                     </div>
                     <div className="flex flex-col justify-between text-sm">
-                      <div className="button-animation-outline px-6 rounded-full py-2" onClick={confirmPayment}>
+                      <div className="button-animation-outline px-6 rounded-full py-2" onClick={() => confirmPayment(item.id)}>
                         Buy Now
                       </div>
                     </div>
