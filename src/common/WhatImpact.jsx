@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import check from "../assets/images/homepage/check.svg";
-import AOS from "aos";
-import "aos/dist/aos.css";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 function WhatImpact({ Carbonclimate, cardImage, title }) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  // useEffect(() => {
+  //   AOS.init();
+  // }, []);
 
   return (
     <div className="md:flex pt-10 pb-20 px-5 bg-white font-rubik">
@@ -15,9 +15,9 @@ function WhatImpact({ Carbonclimate, cardImage, title }) {
           src={cardImage}
           className="w-full h-full md:w-full md:h-1/2 lg:h-full lg:w-full object-cover "
           alt=""
-          data-aos="flip-left"
-          data-aos-anchor-placement="top-bottom"
-          data-aos-duration="2000"
+          // data-aos="flip-left"
+          // data-aos-anchor-placement="top-bottom"
+          // data-aos-duration="2000"
         />
       </div>
       <div className="flex-1 flex flex-col p-5 md:p-10 justify-center items-center">
@@ -34,9 +34,9 @@ function WhatImpact({ Carbonclimate, cardImage, title }) {
                 <div
                   key={index}
                   className="flex space-x-3 items-center"
-                  data-aos={blog.aos}
-                  data-aos-anchor-placement="top-bottom"
-                  data-aos-duration={blog.time}
+                  // data-aos={blog.aos}
+                  // data-aos-anchor-placement="top-bottom"
+                  // data-aos-duration={blog.time}
                 >
                   <div className="lg:w-8 w-6 h-6 lg:h-8">
                     <img src={check} className="w-full h-full" alt="" />
