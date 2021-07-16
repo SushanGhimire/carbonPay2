@@ -2,10 +2,32 @@ import React, {useState, useEffect} from "react";
 import { baseUrl } from "../../authentication/authorization";
 import ProductItems from "./ProductItems";
 import { useHistory } from "react-router";
+
 const Products = ({ match }) => {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
-  const [sussessData, setSuccessData] = useState({})
+  const [sussessData, setSuccessData] = useState({});
+  //Check login
+  const [isLoggenIn, setIsLoggedIn] = useState(false)
+
+  //Items
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+  //Checking Login
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    errors: {
+      email: "",
+      password: "",
+      login: "",
+    },
+  });
+
+
   useEffect(() => {
     const id = match.params.id;
     if(id){
@@ -16,12 +38,9 @@ const Products = ({ match }) => {
               (result) => {
                 setShowModal(true);
                 setSuccessData(result);
-                // setItems(result);
               },
               (error) => {
                 console.log(error)
-                // setIsLoaded(true);
-                // setError(error);
               }
             )
       };
@@ -29,44 +48,242 @@ const Products = ({ match }) => {
     }    
   }, [match.params.id]);
 
+  useEffect(() => {
+    fetchItems();
+  }, []);
+  const fetchItems = async() => {
+    await fetch(`${baseUrl}/products/list/`)
+    .then(res => res.json())
+    .then(
+      (result) => {
+        if(result.detail === "Unauthorized"){
+          setIsLoggedIn(false);
+        } else {
+          // setIsLoggedIn(true);
+          // setIsLoaded(true);
+          // setItems(result);
+        }
+      },
+      (error) => {
+        setIsLoaded(true);
+        setError(error);
+      }
+    )
+  }
+
+  const handleErrors = (property, value) => {
+    const { errors } = data;
+    value = value === undefined ? data[property] : value;
+    errors.login = errors.login && "";
+    let result;
+    if (value.trim() === "") {
+      errors[property] = `${property[0].toUpperCase()}${property.slice(
+        1,
+        property.length
+      )} cannot be left empty`;
+      result = false;
+    } else {
+      if (property === "email") {
+        if (
+          !value.match(
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/gi
+          )
+        ) {
+          errors.email = "Invalid email";
+          result = false;
+        } else {
+          errors.email = "";
+          result = true;
+        }
+      } else {
+        if (value.length < 6) {
+          errors.password = "Password must be atleast 6 characters long";
+          result = false;
+        } else {
+          errors.password = "";
+          result = true;
+        }
+      }
+    }
+
+    setData({
+      ...data,
+      errors,
+    });
+    return result;
+  };
+
+  const handleChange = ({ target: { value } }, property) => {
+    handleErrors(property, value);
+    setData({
+      ...data,
+      [property]: value,
+    });
+  };
+
+  const handleLoginSubmit = (event) => {
+    event.preventDefault();
+    const url = `${baseUrl}/products/list/`;
+
+    const { email, password, errors } = data;
+    const credentials = ["email", "password"];
+    let goAhead;
+    for (let i = 0; i < credentials.length; i++) {
+      const result = handleErrors(credentials[i]);
+      if (goAhead !== false) {
+        goAhead = result;
+      }
+    }
+
+    if (goAhead) {
+      // submitting the form if all input fields are validated
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("password", password);
+      setLoading(true);
+      fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((dta) => {
+            if(dta.detail === "Unauthorized") {
+              errors.login = "Unauthorized";
+              setLoading(false);
+              setData({
+                ...data,
+                errors,
+              });
+            } else {
+              setIsLoggedIn(true);
+              setIsLoaded(true);
+              setItems(dta);
+              //history.push('/products');
+              //fetchItems();
+            }
+        });
+    }
+  };
+
+  const {
+    email,
+    password,
+    errors: { email: emailError, password: passwordError, login: loginError },
+  } = data;
+
+  
+
   const closeModal = () => {
     setShowModal(false);
     history.push(`/products`);
   }
 
   return (
-    <>
-        <div className="w-full">
-          <div className="px-10 lg:px-20 py-20 bg-light_white font-rubik">
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12">
-              <div className="title mb-4 lg:mb-0">
-                <div className="text-2xl font-bold mx-auto text-primary font-header ">
-                  Search from millions
-                </div>
-                <div className="tracking-wider text-lg">
-                  Best place to find products you always dreamed online.
-                </div>
-              </div>
-              <div className="text-end">
-                <form className="flex flex-col sm:flex-row w-full max-w-sm sm:space-x-3">
-                  <div className="relative mb-2 sm:mb-0">
-                    <input
-                      type="text"
-                      className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Search item"
-                    />
+    <>  
+        {isLoggenIn ? (
+          <>
+            <div className="w-full">
+              <div className="px-10 lg:px-20 py-20 bg-light_white font-rubik">
+                <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12">
+                  <div className="title mb-4 lg:mb-0">
+                    <div className="text-2xl font-bold mx-auto text-primary font-header ">
+                      Search from millions
+                    </div>
+                    <div className="tracking-wider text-lg">
+                      Best place to find products you always dreamed online.
+                    </div>
                   </div>
-                  <button className="primary-button cursor-pointer hover:text-primary tracking-wider text-lg" type="button">
-                    Search
-                  </button>
-                </form>
+                  <div className="text-end">
+                    <form className="flex flex-col sm:flex-row w-full max-w-sm sm:space-x-3">
+                      <div className="relative mb-2 sm:mb-0">
+                        <input
+                          type="text"
+                          className="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          placeholder="Search item"
+                        />
+                      </div>
+                      <button className="primary-button cursor-pointer hover:text-primary tracking-wider text-lg" type="button">
+                        Search
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                {/*Products*/}
+                <ProductItems items={items} error={error} isLoaded={isLoaded} />
               </div>
             </div>
-            {/*Products*/}
-            <ProductItems />
+          </>
+        ) : (
+          <>
+            <div>
+      <div className="  w-full h-full grid place-items-center py-16">
+        <form
+          className="bg-white border border-gray-300 mx-5 max-w-sm w-full authentication-form"
+          // autoComplete="off"
+          onSubmit={handleLoginSubmit}
+        >
+          
+          <div className="space-y-5 p-5">
+            <div className="space-y-1 flex flex-col">
+              <label htmlFor="email" className="text-gray-500">
+                Email
+              </label>
+              <input
+                type="text"
+                id="email"
+                value={email}
+                className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
+                onChange={(event) => handleChange(event, "email")}
+                autoComplete="off"
+              />
+              {emailError && (
+                <div className="error text-red-600">{emailError}</div>
+              )}
+            </div>
+            <div className="space-y-1 flex flex-col">
+              <div className="flex">
+                <label htmlFor="password" className="text-gray-500">
+                  Password
+                </label>
+              </div>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                className="border border-gray-300 py-2 px-6 focus:outline-none focus:border-primary"
+                onChange={(event) => handleChange(event, "password")}
+                autoComplete="off"
+              />
+              {passwordError && (
+                <div className="error text-red-600">{passwordError}</div>
+              )}
+              {loginError && (
+                <div className="error text-red-600">{loginError}</div>
+              )}
+            </div>
+
+            <div className="button-animation" style={{ display: "block", borderRadius: "0", marginTop: "30px" }}>
+              <button className="animation-text text-center px-5 py-3 w-full flex items-center space-x-4">
+                <span>Sign In</span>
+                {loading && (
+                  <div className="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                )}
+              </button>
+              <div className="animation-bg"></div>
+            </div>
           </div>
-        </div>
-      
+        </form>
+      </div>
+    </div>
+  
+          </>
+        )}
+        
         {/* Success Modal */}
         {showModal && (
           <>

@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { baseUrl } from "../../authentication/authorization";
 import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe("pk_test_51IJjYBIAj3oA61dKazU5ltxC1HBATIQZUbSBjrMCu9EXMbAs1x3PTq0uhkoD8mG75A15eScNJxJdmRRLn5Hlr5Ow00FYTBme4K");
 
-function ProductItems() {
-  const [error, setError] = useState(null);
+function ProductItems({error, isLoaded, items}) {
+ /*  const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
-
-
-  useEffect(() => {
-      //createCheckoutSession();
-      // eslint-disable-next-line
-  }, []);
+  const [items, setItems] = useState([]); */
 
   const createCheckoutSession = async (id) => {
     const data = [
@@ -21,13 +15,11 @@ function ProductItems() {
         quantity: 1
       }
     ]
-    console.log(data);
     return await fetch(`${baseUrl}/products/create-checkout-session/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
       body: JSON.stringify({ cartItems: data }),
     }).then(function (response) {
@@ -38,6 +30,7 @@ function ProductItems() {
   const confirmPayment = async (id) => {
   await stripePromise.then((res) => {
       createCheckoutSession(id).then(function (response) {
+        //console.log(response);
         window.location.href = response.redirect_uri
         // stripePromise
         //   .redirectToCheckout({
@@ -54,20 +47,24 @@ function ProductItems() {
     
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     fetch(`${baseUrl}/products/list/`)
       .then(res => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
-          setItems(result);
+          if(result.detail === "Unauthorized"){
+
+          } else {
+            setIsLoaded(true);
+            setItems(result);
+          }
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
         }
       )
-  }, []);
+  }, []); */
 
   if (error) {
     return <div>Error: {error.message}</div>;
