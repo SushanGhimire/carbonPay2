@@ -207,15 +207,16 @@ function NavBar({ loggedIn }) {
               })}
             </div>
 
-            <Link
-              to={loggedIn ? "/dashboard/transaction" : "/login"}
+            <a 
+            href="https://apps.shopify.com/carbon-neutral-checkout"
+            target="new tab"            
               className="button-animation"
             >
               <div className="animation-text px-6 rounded-full py-2">
-                {loggedIn ? "Dashboard" : "Login Here"}
+              Add Shopify App
               </div>
               <div className="animation-bg"></div>
-            </Link>
+            </a>
           </>
         )}
 
@@ -282,15 +283,16 @@ function NavBar({ loggedIn }) {
                 })}
               </div>
 
-              <Link
-                to={loggedIn ? "/dashboard/stripeform" : "/login"}
-                className="button-animation text-center mt-2"
-              >
-                <div className="animation-text px-6 rounded-full py-2">
-                  {loggedIn ? "Connect with stripe" : "Login Here"}
-                </div>
-                <div className="animation-bg"></div>
-              </Link>
+              <a 
+            href="https://apps.shopify.com/carbon-neutral-checkout"
+            target="new tab"            
+              className="button-animation text-center mt-5"
+            >
+              <div className="animation-text px-6 rounded-full py-2 text-center">
+              Add Shopify App
+              </div>
+              <div className="animation-bg"></div>
+            </a>
             </div>
           </div>
         </>

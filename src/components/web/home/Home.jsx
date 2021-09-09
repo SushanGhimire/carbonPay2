@@ -13,20 +13,20 @@ function Home() {
   const cards = [
     {
       logo: merchant,
-      name: "Merchants: ???",
+      name: "Merchants",
       title: "Climate Impact Payment to increase transaction.",
       bg: "bg-seconday",
       aos: "fade-down",
     },
     {
       logo: consumer,
-      name: "Consumers: ???",
+      name: "Consumers",
       title: "Make Climate Conscious purchase with impact tracking page.",
       aos: "fade-up",
     },
     {
       logo: nature,
-      name: "Environmental Non-profits: ???",
+      name: "Environmental Non-profits",
       title:
         "Accountability and Incentives for highest net carbon capture efforts.",
       aos: "fade-down",

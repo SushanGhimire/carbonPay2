@@ -2,9 +2,9 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import PageNotFound from "./common/page-not-found";
 import EmailVerification from "./components/authentication/EmailVerification";
 import EmailVerify from "./components/authentication/EmailVerify";
-import Login from "./components/authentication/login";
+// import Login from "./components/authentication/login";
 import PassWordReset from "./components/authentication/PassWordReset";
-import Register from "./components/authentication/register";
+// import Register from "./components/authentication/register";
 import Docsmgnt from "./components/documentation/Docsmgnt";
 import CarbonNeutral from "./components/web/CarbonNeutral/CarbonNeutral";
 import ClimateChange from "./components/web/climate_change/ClimateChange";
@@ -64,12 +64,12 @@ function App(props) {
         />
         <Route exact path="/user/email-verify/:token" component={EmailVerify} />
         {/* <Route exact path="/carbonoffsets" component={offset} /> */}
-        {!loggedIn && (
+        {/* {!loggedIn && (
           <>
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
           </>
-        )}
+        )} */}
         <Route path="/page-not-found" component={PageNotFound} />
         <Redirect to="/page-not-found"></Redirect>
       </Switch>

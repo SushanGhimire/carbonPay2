@@ -1,7 +1,7 @@
 import React from "react";
 import { baseUrl } from "../../authentication/authorization";
 import { loadStripe } from "@stripe/stripe-js";
-const stripePromise = loadStripe("pk_test_51IJjYBIAj3oA61dKazU5ltxC1HBATIQZUbSBjrMCu9EXMbAs1x3PTq0uhkoD8mG75A15eScNJxJdmRRLn5Hlr5Ow00FYTBme4K");
+const stripePromise = loadStripe("pk_live_51IJjYBIAj3oA61dKQGeGfJaXzImMsA7rGZY121lN7raRwEUCrPnCN2qLEFBlzsBlzf5Pjz5w5cHjuGahzGDk1pSG00hc0J1EQT");
 
 function ProductItems({error, isLoaded, items}) {
  /*  const [error, setError] = useState(null);
